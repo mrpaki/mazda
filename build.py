@@ -6,6 +6,8 @@ prekopira u projekat, promeniti IMG u "img/" i ponovo pokrenuti: python3 build.p
 import os
 
 IMG = "https://eastservis.rs/img/"
+# Apsolutna baza za og:image / deljenje na mrežama. PROMENITI na https://eastservis.rs u produkciji.
+BASE_URL = "https://mrpaki.github.io/mazda"
 PHONE = "+381641446343"
 PHONE_TXT = "064 144 63 43"
 EMAIL = "office@eastservis.rs"
@@ -46,6 +48,12 @@ def head(title, desc, current, extra=""):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sr_RS">
+<meta property="og:image" content="{BASE_URL}/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mazda CX-5 na dizalici u servisu EAST Auto Servis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{BASE_URL}/img/og-image.jpg">
 <meta name="theme-color" content="#18202C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2318202C'/%3E%3Cpath d='M9 8h14v3.5H13v3h9v3.5h-9v3h10V24H9z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
