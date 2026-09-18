@@ -182,6 +182,21 @@
     });
   }
 
+  /* Potpis izrade: klik na auto → auto odlazi, ostaje tekst sa linkom */
+  var credit = document.querySelector(".credit");
+  if (credit) {
+    var car = credit.querySelector(".credit-car");
+    car.addEventListener("click", function () {
+      credit.classList.add("is-open");
+      car.setAttribute("aria-expanded", "true");
+      var link = credit.querySelector(".credit-text a");
+      setTimeout(function () {
+        car.hidden = true;
+        if (link) link.focus({ preventScroll: true });
+      }, 1300);
+    });
+  }
+
   /* Godina u footeru */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
