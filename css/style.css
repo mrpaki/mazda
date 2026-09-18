@@ -61,6 +61,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .header-inner{display:flex;align-items:center;gap:2rem;height:var(--header-h)}
 .brand{display:flex;flex-direction:column;text-decoration:none;line-height:1;margin-right:auto}
 .brand-name{font-stretch:125%;font-weight:850;font-size:1.6rem;letter-spacing:.02em}
+.brand-jp{font-stretch:normal;font-weight:600;font-size:.6em;letter-spacing:0;margin-left:.4em;opacity:.75;vertical-align:.08em}
 .brand-sub{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.3rem}
 .nav ul{display:flex;gap:1.6rem}
 .nav a{display:block;padding:.4rem 0;font-size:.95rem;text-decoration:none;color:rgba(255,255,255,.78)}

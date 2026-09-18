@@ -70,7 +70,7 @@ def head(title, desc, current, extra=""):
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="EAST Auto Servis, naslovna">
-      <span class="brand-name">EAST</span>
+      <span class="brand-name">EAST<span class="brand-jp" lang="ja">ひがし</span></span>
       <span class="brand-sub">Mazda servis Beograd</span>
     </a>
     <nav class="nav" id="nav" aria-label="Glavni meni">
@@ -128,7 +128,7 @@ def foot(lightbox=False):
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="brand-name">EAST</span><span class="brand-sub">Mazda servis Beograd</span></a>
+        <a class="brand" href="index.html"><span class="brand-name">EAST<span class="brand-jp" lang="ja">ひがし</span></span><span class="brand-sub">Mazda servis Beograd</span></a>
         <p>Specijalizovani servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
       </div>
       <div>
