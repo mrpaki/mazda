@@ -12,6 +12,7 @@ PHONE = "+381641446343"
 PHONE_TXT = "064 144 63 43"
 EMAIL = "office@eastservis.rs"
 FB = "https://www.facebook.com/eastautoservis"
+IG = "https://www.instagram.com/east_mazda_servis/"
 MAP = ("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.421125364123!2d20.540623215535767"
        "!3d44.81298467909866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a3ecfc94c91%3A"
        "0x3dd3f6d00bd5e0ab!2sMazda+Servis%22East+Auto+Servis%22!5e0!3m2!1ssr!2srs!4v1486586850562")
@@ -21,6 +22,9 @@ MAP_LINK = "https://www.google.com/maps/search/?api=1&query=Slana%C4%8Dki+put+12
 ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>'
 ICON_CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>'
 ICON_SOUND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="snd-off" d="M22 9l-6 6M16 9l6 6"/><path class="snd-on" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>'
+ICON_FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>'
+ICON_IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>'
+SOCIAL = f'<span class="social"><a href="{FB}" target="_blank" rel="noopener" aria-label="EAST Auto Servis na Facebook-u">{ICON_FB}</a><a href="{IG}" target="_blank" rel="noopener" aria-label="EAST Auto Servis na Instagram-u">{ICON_IG}</a></span>'
 
 PAGES = [
     ("index.html", "Naslovna"),
@@ -140,7 +144,7 @@ def foot(lightbox=False):
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li><a href="{MAP_LINK}" target="_blank" rel="noopener">Slanački put 123a<br>Višnjička Banja, Beograd</a></li>
           <li>Pon–pet 08–17 h</li>
-          <li><a href="{FB}" rel="noopener" target="_blank">Facebook stranica</a></li>
+          <li>{SOCIAL}</li>
         </ul>
       </div>
     </div>
@@ -714,7 +718,7 @@ kontakt = head("Kontakt i zakazivanje | EAST Auto Servis",
         <div class="info-block"><h2>Radno vreme</h2>
           <dl class="hours"><dt>Ponedeljak–petak</dt><dd>08–17 h</dd><dt>Subota i nedelja</dt><dd>Ne radimo</dd></dl></div>
         <div class="info-block"><h2>Adresa</h2><a href="{MAP_LINK}" target="_blank" rel="noopener">Slanački put 123a<br>Višnjička Banja, Beograd</a></div>
-        <div class="info-block"><h2>Društvene mreže</h2><a href="{FB}" target="_blank" rel="noopener">Facebook: East Auto Servis</a></div>
+        <div class="info-block"><h2>Društvene mreže</h2>{SOCIAL}</div>
       </aside>
     </div>
     <div class="map-full"><iframe src="{MAP}" title="Lokacija servisa na mapi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
