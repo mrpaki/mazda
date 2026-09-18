@@ -129,7 +129,7 @@ def foot(lightbox=False):
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html"><span class="brand-name">EAST</span><span class="brand-sub">Mazda servis Beograd</span></a>
-        <p>Specijalizovani servis za Mazda vozila od 2010. godine. Redovno održavanje, dijagnostika i remont.</p>
+        <p>Specijalizovani servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
       </div>
       <div>
         <h2>Stranice</h2>
@@ -265,7 +265,7 @@ def wall(models):
 # ---------------- NASLOVNA ----------------
 jsonld = f"""<script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"AutoRepair","name":"EAST Auto Servis","url":"https://eastservis.rs",
-"telephone":"{PHONE}","email":"{EMAIL}","foundingDate":"2010",
+"telephone":"{PHONE}","email":"{EMAIL}","foundingDate":"2000",
 "description":"Specijalizovani servis za Mazda vozila u Beogradu.",
 "address":{{"@type":"PostalAddress","streetAddress":"Slanački put 123a","addressLocality":"Beograd","addressRegion":"Višnjička Banja","addressCountry":"RS"}},
 "openingHoursSpecification":[{{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}}],
@@ -281,7 +281,7 @@ teaser = "\n".join(
     for i, f in enumerate(teaser_imgs))
 
 index = head("EAST Auto Servis | Mazda servis Beograd",
-             "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2010. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
+             "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2000. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
              "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('{IMG}galerija/Servis_mazde.jpg')">
   <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="{IMG}galerija/Servis_mazde.jpg" aria-hidden="true">
     <source src="video/hero.webm" type="video/webm">
@@ -290,7 +290,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
   <button class="hero-sound" type="button" aria-pressed="false" aria-label="Uključi zvuk motora">{ICON_SOUND}<span class="hero-sound-txt">Zvuk</span></button>
   <div class="wrap hero-content">
     <h1>Servis za vašu Mazdu.</h1>
-    <p class="lead">Specijalizovani Mazda servis u Beogradu od 2010. Redovno održavanje, dijagnostika Mazda opremom i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
+    <p class="lead">Specijalizovani Mazda servis u Beogradu od 2000. Redovno održavanje, dijagnostika Mazda opremom i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
     <div class="hero-actions">
       <a class="btn btn-red" href="kontakt.html">{ICON_CAL}Zakažite servis</a>
       <a class="btn btn-ghost" href="tel:{PHONE}">{ICON_PHONE}{PHONE_TXT}</a>
@@ -301,8 +301,8 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
       <div class="tach-unit">×1000 o/min</div>
     </div>
     <ul class="facts">
-      <li><strong>Od 2010.</strong><span>radimo samo Mazde</span></li>
-      <li><strong>500+ klijenata</strong><span>vraća se redovno</span></li>
+      <li><strong>Od 2000.</strong><span>radimo samo Mazde</span></li>
+      <li><strong>1500+ klijenata</strong><span>vraća se redovno</span></li>
       <li><strong>15 sertifikata</strong><span>Mazda obuka mehaničara</span></li>
     </ul>
   </div>
@@ -310,7 +310,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
 
 <section class="section">
   <div class="wrap split">
-    <h2 class="h2">Jedna marka, šesnaest godina iskustva.</h2>
+    <h2 class="h2">Jedna marka, dvadeset šest godina iskustva.</h2>
     <div class="measure">
       <p class="lead">Mazdu znamo do poslednjeg šrafa. Od Mazde 2 do najnovijih CX modela, radimo na njima svakog dana.</p>
       <p class="muted">Naši mehaničari imaju međunarodne Mazda sertifikate, a radionica je od 2012. proširena na više potpuno opremljenih radnih mesta. Održavamo pojedinačna vozila i vozne parkove.</p>
@@ -646,9 +646,9 @@ write("galerija.html", galerija)
 
 # ---------------- O NAMA ----------------
 onama = head("O nama | EAST Auto Servis",
-             "EAST Auto Servis je otvoren 2010. godine kao specijalizovani Mazda servis u Beogradu. Sertifikovani mehaničari i više od 500 stalnih klijenata.",
+             "EAST Auto Servis je otvoren 2000. godine kao specijalizovani Mazda servis u Beogradu. Sertifikovani mehaničari i više od 1500 stalnih klijenata.",
              "o-nama.html") + page_head("O nama",
-             "Otvorili smo servis 2010. sa jednom idejom: da radimo samo Mazde i da ih radimo kako treba.") + f"""
+             "Otvorili smo servis 2000. sa jednom idejom: da radimo samo Mazde i da ih radimo kako treba.") + f"""
 <section class="section">
   <div class="wrap split">
     <div>
@@ -656,7 +656,7 @@ onama = head("O nama | EAST Auto Servis",
     </div>
     <div class="measure">
       <p class="lead">EAST Auto Servis je specijalizovan za vozila marke Mazda. Naši mehaničari imaju višegodišnje iskustvo i međunarodne Mazda sertifikate.</p>
-      <p class="muted">Stalno ulaganje u opremu i obuku omogućilo nam je da danas imamo više od 500 klijenata koji nam se vraćaju. Kod nas možete kompletno održavati svoje vozilo ili ceo vozni park: od automehanike i dijagnostike do popravki.</p>
+      <p class="muted">Stalno ulaganje u opremu i obuku omogućilo nam je da danas imamo više od 1500 klijenata koji nam se vraćaju. Kod nas možete kompletno održavati svoje vozilo ili ceo vozni park: od automehanike i dijagnostike do popravki.</p>
       <img class="photo-wide mt" src="{IMG}galerija/Servis_mazda_dijagnostika_01.jpg" alt="Mazda na dijagnostici u radionici" loading="lazy">
     </div>
   </div>
@@ -666,9 +666,9 @@ onama = head("O nama | EAST Auto Servis",
   <div class="wrap">
     <div class="section-head"><h2 class="h2">Kako smo rasli</h2></div>
     <ol class="timeline">
-      <li><span class="year">2010</span><div><h3 class="h3">Otvaranje servisa</h3><p>Počinjemo kao servis specijalizovan isključivo za Mazda vozila.</p></div></li>
+      <li><span class="year">2000</span><div><h3 class="h3">Otvaranje servisa</h3><p>Počinjemo kao servis specijalizovan isključivo za Mazda vozila.</p></div></li>
       <li><span class="year">2012</span><div><h3 class="h3">Proširenje radionice</h3><p>Servis dobija više radnih mesta, svako kompletno opremljeno potrebnim alatom.</p></div></li>
-      <li><span class="year">Danas</span><div><h3 class="h3">Više od 500 stalnih klijenata</h3><p>Petnaest Mazda sertifikata, savremena dijagnostika i klijenti koji nam poveravaju i svoje vozne parkove.</p></div></li>
+      <li><span class="year">Danas</span><div><h3 class="h3">Više od 1500 stalnih klijenata</h3><p>Petnaest Mazda sertifikata, savremena dijagnostika i klijenti koji nam poveravaju i svoje vozne parkove.</p></div></li>
     </ol>
   </div>
 </section>

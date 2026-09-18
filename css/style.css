@@ -328,7 +328,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   .credit.is-open .credit-car{animation:none;opacity:0;visibility:hidden}
   .credit-text{transition:none}
 }
-@media (max-width:760px){.credit{place-items:center start}.credit-text{text-align:left}}
+@media (max-width:760px){.credit{place-items:center end;width:100%}.credit-text{text-align:right}}
 
 /* ---------- Mobilna traka za poziv ---------- */
 .callbar{display:none}

@@ -32,7 +32,7 @@ Tok rada: izmena u `build.py` (sadržaj/HTML) ili u `css`/`js` → `python3 buil
 
 ## Naslovna, redom sekcija
 
-1. Hero: pozadinska fotografija i opcioni video, naslov "Servis za vašu Mazdu.", CTA dugmad, obrtomer, 3 činjenice (od 2010, 500+ klijenata, 15 sertifikata).
+1. Hero: pozadinska fotografija i opcioni video, naslov "Servis za vašu Mazdu.", CTA dugmad, obrtomer, 3 činjenice (od 2000, 1500+ klijenata, 15 sertifikata).
 2. "Jedna marka, šesnaest godina iskustva."
 3. "Šta radimo": 4 usluge.
 4. "Kako izgleda servis kod nas": 5 numerisanih koraka.
@@ -48,7 +48,7 @@ Tok rada: izmena u `build.py` (sadržaj/HTML) ili u `css`/`js` → `python3 buil
 - Adresa: Slanački put 123a, Višnjička Banja, Beograd
 - Radno vreme: pon–pet 08–17 h; subota i nedelja NE RADI
 - Facebook: https://www.facebook.com/eastautoservis
-- Otvoren 2010, proširen 2012, 500+ klijenata, 15 Mazda sertifikata
+- Otvoren 2000 (26 godina iskustva), proširen 2012, 1500+ klijenata, 15 Mazda sertifikata
 - Radi ISKLJUČIVO Mazda vozila. Nikakve druge marke (Kia, Hyundai, Toyota su namerno izbačene).
 
 ## Strana Modeli (dogovoreno)
