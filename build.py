@@ -4,6 +4,7 @@ Slike se trenutno učitavaju sa postojećeg sajta (IMG). Kada se folder img/
 prekopira u projekat, promeniti IMG u "img/" i ponovo pokrenuti: python3 build.py
 """
 import os
+import re
 
 IMG = "https://eastservis.rs/img/"
 # Apsolutna baza za og:image / deljenje na mrežama. PROMENITI na https://eastservis.rs u produkciji.
@@ -30,7 +31,6 @@ PAGES = [
     ("index.html", "Naslovna"),
     ("servis.html", "Servis i delovi"),
     ("modeli.html", "Modeli"),
-    ("sertifikati.html", "Sertifikati"),
     ("galerija.html", "Galerija"),
     ("o-nama.html", "O nama"),
     ("kontakt.html", "Kontakt"),
@@ -250,6 +250,11 @@ team_html = "\n".join(
 # ovde i wall() ga automatski pretvara u link. Modeli bez unosa ostaju običan tekst.
 MODEL_PAGES = {
     "Mazda 2": "mazda-2.html",
+    "Mazda 3": "mazda-3.html",
+    "Mazda 6": "mazda-6.html",
+    "CX-3": "cx-3.html",
+    "CX-30": "cx-30.html",
+    "CX-5": "cx-5.html",
 }
 
 
@@ -511,21 +516,44 @@ MODELS = {
         "title": "Servis za Mazdu 2 | EAST Auto Servis",
         "desc": "Servis, dijagnostika i popravke za sve generacije Mazde 2 (DY, DE, DJ) u Beogradu. Redovan servis, lanac razvoda, Skyactiv motori i pregled pre kupovine.",
         "lead": "Servisiramo sve generacije Mazde 2, od prvih MZI benzinaca do današnjih Skyactiv motora.",
-        "photo": "mazda2-dimenzije.webp",
+        "photo": "mazda2-blueprint-2019.webp",
         "diagram": True,
-        "blueprint": "mazda2-blueprint-2019.webp",
+        "photo_alt": "Dimenzije i proporcije modela Mazda 2 (tehnički crtež)",
         "intro": ('<p class="lead">Mazda 2 je gradski automobil koji vozači biraju zbog jednostavnosti i niskih troškova održavanja. '
                   'Baš zato je važno da servis rade ljudi koji model dobro poznaju.</p>'
                   '<p class="muted">Kroz našu radionicu prošlo je više generacija Mazde 2, od benzinaca sa lancem razvoda do Skyactiv motora. '
                   'Radimo redovan servis, dijagnostiku i popravke, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>'),
         "gens": [
-            ("1. generacija (DY)", "2002–2007", "Hečbek s pet vrata.",
-             "Benzin: 1.25, 1.3, 1.4, 1.5 i 1.6. Dizel: 1.4 MZ-CDTi."),
-            ("2. generacija (DE)", "2007–2014", "Hečbek s tri i pet vrata i limuzina.",
-             "Benzin: 1.3 i 1.5, kasnije 1.3 Skyactiv-G. Dizel: 1.4 i 1.6."),
-            ("3. generacija (DJ)", "2014–danas", "Hečbek s pet vrata i limuzina.",
-             "Benzin: 1.3, 1.5 i 2.0 Skyactiv-G i 1.5 Skyactiv-Hybrid. Dizel: 1.5 Skyactiv-D (do 2019)."),
+            ("1. generacija (DY)", "2003–2007", "Hečbek s tri i pet vrata.",
+             "mazda2-dy.webp", [
+                ("1.25", "Benzin", "1.242 cm³", "75 KS"),
+                ("1.4", "Benzin", "1.388 cm³", "80 KS"),
+                ("1.6", "Benzin", "1.596 cm³", "100 KS"),
+                ("1.4 MZ-CDTi", "Dizel", "1.399 cm³", "68 KS"),
+             ]),
+            ("2. generacija (DE/DH)", "2007–2014", "Hečbek s tri i pet vrata i limuzina.",
+             "mazda2-de.webp", [
+                ("1.3", "Benzin", "1.349 cm³", "75–86 KS"),
+                ("1.5", "Benzin", "1.498 cm³", "103 KS"),
+                ("1.4 MZ-CD", "Dizel", "1.399 cm³", "68 KS"),
+                ("1.6 MZ-CD", "Dizel", "1.560 cm³", "90 KS"),
+             ]),
+            ("3. generacija (DJ)", "2014–danas", "Hečbek s pet vrata i limuzina. Kroz proizvodnju je dva puta redizajnirana (2019. i 2023). "
+             "Od 2022. paralelno se prodaje i Mazda2 Hybrid (XP210), tehnički baziran na Toyoti Yaris.",
+             "mazda2-dj.webp", [
+                ("1.3 Skyactiv-G", "Benzin", "1.298 cm³", "90–93 KS"),
+                ("1.5 Skyactiv-G", "Benzin", "1.496 cm³", "75–115 KS"),
+                ("1.5 e-Skyactiv G (M Hybrid)", "Benzin (MHEV)", "1.496 cm³", "90–115 KS"),
+                ("1.5 Skyactiv-D", "Dizel", "1.499 cm³", "105 KS"),
+             ], [
+                ("Redizajn 2019", "mazda2-dj-2019.webp"),
+                ("Redizajn 2023", "mazda2-dj-2023.webp"),
+             ]),
         ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora.",
+        "photo_credit": ('Fotografije generacija: Wikimedia Commons — '
+                         'M 93 (CC BY-SA 3.0 DE), OSX (javno vlasništvo), EurovisionNim i '
+                         'Alexander Migl (CC BY-SA 4.0).'),
         "service": [
             ("Lanac razvoda i paljenje",
              "Kod benzinaca proveravamo zategnutost lanca razvoda i stanje bobina i svećica, jer neravnomeran rad motora najčešće počinje odatle."),
@@ -537,13 +565,281 @@ MODELS = {
              "Proveravamo punjenje klime, alternator i akumulator, česte tačke kod manjih gradskih automobila."),
         ],
     },
+    "mazda-3.html": {
+        "name": "Mazda 3",
+        "title": "Servis za Mazdu 3 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde 3 (BK, BL, BM, BP) u Beogradu. MZR benzinci, Skyactiv-G i Skyactiv-D motori, lanac razvoda, DPF i pregled pre kupovine.",
+        "lead": "Servisiramo sve generacije Mazde 3, od prvih MZR benzinaca do današnjih Skyactiv i Skyactiv-X motora.",
+        "photo": "mazda3-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda 3 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda 3 je jedan od najprodavanijih Mazda modela kod nas, u obe karoserije, hečbek i limuzinu. '
+                  'Kroz našu radionicu prošle su sve četiri generacije, pa svaku od njih dobro poznajemo.</p>'
+                  '<p class="muted">Radimo od starijih MZR benzinaca i dizela do Skyactiv-G, Skyactiv-D i Skyactiv-X motora. '
+                  'Redovan servis, dijagnostiku Mazda opremom i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (BK)", "2003–2009", "Hečbek s pet vrata i limuzina.",
+             "mazda3-bk.webp", [
+                ("1.4 MZR", "Benzin", "1.349 cm³", "84 KS"),
+                ("1.6 MZR", "Benzin", "1.598 cm³", "105 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "150 KS"),
+                ("2.3 DISI Turbo (MPS)", "Benzin", "2.261 cm³", "260 KS"),
+                ("1.6 MZR-CD", "Dizel", "1.560 cm³", "90–109 KS"),
+                ("2.0 MZR-CD", "Dizel", "1.998 cm³", "143 KS"),
+             ]),
+            ("2. generacija (BL)", "2009–2013", "Hečbek s pet vrata i limuzina.",
+             "mazda3-bl.webp", [
+                ("1.6 MZR", "Benzin", "1.598 cm³", "105 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "150 KS"),
+                ("2.3 DISI Turbo (MPS)", "Benzin", "2.261 cm³", "260 KS"),
+                ("1.6 MZR-CD", "Dizel", "1.560 cm³", "109 KS"),
+                ("2.2 MZR-CD", "Dizel", "2.184 cm³", "150–185 KS"),
+             ]),
+            ("3. generacija (BM/BN)", "2013–2019", "Hečbek s pet vrata i limuzina.",
+             "mazda3-bm.webp", [
+                ("1.5 Skyactiv-G", "Benzin", "1.496 cm³", "100–120 KS"),
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "120–165 KS"),
+                ("1.5 Skyactiv-D", "Dizel", "1.499 cm³", "105 KS"),
+                ("2.2 Skyactiv-D", "Dizel", "2.191 cm³", "150 KS"),
+             ]),
+            ("4. generacija (BP)", "2019–danas", "Hečbek s pet vrata i limuzina.",
+             "mazda3-bp.webp", [
+                ("2.0 e-Skyactiv G", "Benzin (MHEV)", "1.998 cm³", "122 KS"),
+                ("2.0 e-Skyactiv X", "Benzin (MHEV)", "1.998 cm³", "180–186 KS"),
+                ("1.8 Skyactiv-D", "Dizel", "1.759 cm³", "116 KS"),
+             ]),
+        ],
+        "photo_credit": ('Fotografije generacija: Wikimedia Commons — '
+                         'Vauxford (CC BY-SA 4.0), Kārlis Dambrāns (CC BY 2.0) i javno vlasništvo.'),
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora.",
+        "service": [
+            ("Skyactiv-G benzinci i lanac razvoda",
+             "Kod benzinaca proveravamo lanac razvoda, rad ubrizgavanja i po potrebi čistimo usisni trakt i EGR, jer neravnomeran rad najčešće počinje odatle."),
+            ("Skyactiv-D dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("Trap i kočnice",
+             "Proveravamo amortizere, spone i ležajeve, kao i diskove i pločice, jer se na Mazdi 3 najviše troše u svakodnevnoj vožnji."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora kod novijih generacija."),
+        ],
+    },
+    "mazda-6.html": {
+        "name": "Mazda 6",
+        "title": "Servis za Mazdu 6 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde 6 (GG/GY, GH, GJ/GL) u Beogradu. MZR benzinci, Skyactiv-G i Skyactiv-D motori, lanac razvoda, DPF i pregled pre kupovine.",
+        "lead": "Servisiramo sve generacije Mazde 6, od prvih MZR benzinaca i dizela do Skyactiv-G i Skyactiv-D motora.",
+        "photo": "mazda6-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda 6 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda 6 je porodična limuzina i karavan koji vozači biraju zbog prostora, udobnosti i pouzdanih motora. '
+                  'Kroz našu radionicu prošle su sve tri generacije, pa svaku dobro poznajemo.</p>'
+                  '<p class="muted">Radimo od starijih MZR benzinaca i dizela do Skyactiv-G i Skyactiv-D motora. '
+                  'Redovan servis, dijagnostiku Mazda opremom i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (GG/GY)", "2002–2008", "Limuzina, hečbek i karavan.",
+             "mazda6-gg.webp", [
+                ("1.8 MZR", "Benzin", "1.798 cm³", "120 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "141–147 KS"),
+                ("2.3 MZR", "Benzin", "2.261 cm³", "166 KS"),
+                ("2.3 DISI Turbo (MPS)", "Benzin", "2.261 cm³", "260 KS"),
+                ("2.0 MZR-CD", "Dizel", "1.998 cm³", "121–143 KS"),
+             ]),
+            ("2. generacija (GH)", "2008–2012", "Limuzina, hečbek i karavan.",
+             "mazda6-gh.webp", [
+                ("1.8 MZR", "Benzin", "1.798 cm³", "120 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "147–155 KS"),
+                ("2.5 MZR", "Benzin", "2.488 cm³", "170 KS"),
+                ("2.0 MZR-CD", "Dizel", "1.998 cm³", "121–140 KS"),
+                ("2.2 MZR-CD", "Dizel", "2.184 cm³", "129–180 KS"),
+             ]),
+            ("3. generacija (GJ/GL)", "2012–2024", "Limuzina i karavan. Kroz proizvodnju je dva puta redizajnirana (2015. i 2018).",
+             "mazda6-gj.webp", [
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "145–165 KS"),
+                ("2.5 Skyactiv-G", "Benzin", "2.488 cm³", "192–194 KS"),
+                ("2.2 Skyactiv-D", "Dizel", "2.191 cm³", "150–184 KS"),
+             ], [
+                ("Redizajn 2015", "mazda6-gj-2015.webp"),
+                ("Redizajn 2018", "mazda6-gj-2018.webp"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora.",
+        "photo_credit": ('Fotografije generacija: Wikimedia Commons — '
+                         'Vauxford i Alexander-93 (CC BY-SA 4.0), M 93 (CC BY-SA 3.0 DE) i RL GNZLZ (CC BY-SA 2.0).'),
+        "service": [
+            ("MZR benzinci i lanac razvoda",
+             "Kod starijih MZR benzinaca proveravamo lanac razvoda, bobine i svećice, jer neravnomeran rad motora najčešće počinje odatle."),
+            ("Skyactiv-D dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod autoputa i gradske vožnje na kratkim relacijama."),
+            ("Trap i kočnice",
+             "Kod limuzine i karavana proveravamo amortizere, spone i ležajeve, kao i diskove i pločice, jer veći auto više opterećuje trap."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora kod novijih generacija."),
+        ],
+    },
+    "cx-3.html": {
+        "name": "CX-3",
+        "title": "Servis za Mazdu CX-3 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu CX-3 (DK) u Beogradu. Skyactiv-G benzinci i Skyactiv-D dizeli, i-Activ AWD, DPF i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu CX-3, kompaktni gradski krosover sa Skyactiv-G i Skyactiv-D motorima.",
+        "photo": "cx3-side.webp",
+        "diagram": True,
+        "photo_alt": "Mazda CX-3 — bočni izgled",
+        "intro": ('<p class="lead">Mazda CX-3 je kompaktni krosover baziran na platformi Mazde 2, popularan zbog povišene pozicije za vožnju, kompaktnih dimenzija i niske potrošnje. '
+                  'Kroz našu radionicu prošlo je dosta ovih vozila, pa model dobro poznajemo.</p>'
+                  '<p class="muted">Radimo Skyactiv-G benzince i Skyactiv-D dizele, uključujući i-Activ AWD verzije sa pogonom na sve točkove. '
+                  'Redovan servis, dijagnostiku Mazda opremom i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (DK)", "2015–2021", "Kompaktni krosover (SUV), FWD i i-Activ AWD. Redizajniran 2018. (osvežena maska, oprema i šasija).",
+             "cx3-dk.webp", [
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "120–121 KS"),
+                ("1.5 Skyactiv-D", "Dizel", "1.499 cm³", "105 KS"),
+                ("1.8 Skyactiv-D", "Dizel", "1.759 cm³", "115 KS"),
+             ], [
+                ("Redizajn 2018", "cx3-2018.webp"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora. Dizel 1.5 (2015–2018), 1.8 (2018–2021).",
+        "photo_credit": "Fotografije: Wikimedia Commons — Vauxford (CC BY-SA 4.0).",
+        "service": [
+            ("Skyactiv-G benzinci i lanac razvoda",
+             "Kod benzinaca proveravamo lanac razvoda, rad ubrizgavanja i po potrebi čistimo usisni trakt i EGR, jer neravnomeran rad najčešće počinje odatle."),
+            ("Skyactiv-D dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("Trap, kočnice i AWD",
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora asistencije."),
+        ],
+    },
+    "cx-30.html": {
+        "name": "CX-30",
+        "title": "Servis za Mazdu CX-30 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu CX-30 (DM) u Beogradu. Skyactiv-G i Skyactiv-X benzinci, Skyactiv-D dizel, i-Activ AWD, blaga hibridna podrška i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu CX-30, kompaktni krosover sa Skyactiv-G, Skyactiv-X i Skyactiv-D motorima.",
+        "photo": "cx30-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda CX-30 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda CX-30 je kompaktni krosover baziran na platformi Mazde 3, sa nešto povišenom pozicijom, kvalitetnom kabinom i modernim Skyactiv motorima. '
+                  'Novijeg je datuma, ali smo već dobro upoznati sa njegovim održavanjem.</p>'
+                  '<p class="muted">Radimo Skyactiv-G i Skyactiv-X benzince sa blagom hibridnom podrškom i Skyactiv-D dizel, uključujući i-Activ AWD verzije. '
+                  'Redovan servis, dijagnostiku Mazda opremom i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (DM)", "2019–danas", "Kompaktni krosover (SUV), FWD i i-Activ AWD, uz blagu hibridnu podršku (M Hybrid).",
+             "cx30-dm.webp", [
+                ("2.0 e-Skyactiv G (M Hybrid)", "Benzin (MHEV)", "1.998 cm³", "122–150 KS"),
+                ("2.0 e-Skyactiv X (M Hybrid)", "Benzin (MHEV)", "1.998 cm³", "180–186 KS"),
+                ("1.8 Skyactiv-D", "Dizel", "1.759 cm³", "116 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora.",
+        "photo_credit": "Fotografije: Wikimedia Commons — EurovisionNim (CC BY-SA 4.0).",
+        "service": [
+            ("Skyactiv-G / Skyactiv-X benzinci",
+             "Kod benzinaca proveravamo lanac razvoda, rad ubrizgavanja i mild-hybrid sistem (24V), a kod Skyactiv-X i rad SPCCI paljenja i senzore pritiska."),
+            ("Skyactiv-D dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("Trap, kočnice i AWD",
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i sistema asistencije vozaču."),
+        ],
+    },
+    "cx-5.html": {
+        "name": "CX-5",
+        "title": "Servis za Mazdu CX-5 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde CX-5 (KE, KF) u Beogradu. Skyactiv-G benzinci i Skyactiv-D dizeli, DPF, i-Activ AWD i pregled pre kupovine.",
+        "lead": "Servisiramo obe generacije Mazde CX-5, sa Skyactiv-G benzincima i Skyactiv-D dizelima.",
+        "photo": "cx5-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda CX-5 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda CX-5 je najprodavaniji Mazdin krosover i čest gost naše radionice, posebno dizel verzije. '
+                  'Prošle su kroz nas obe generacije, pa ih dobro poznajemo.</p>'
+                  '<p class="muted">Radimo Skyactiv-G benzince i Skyactiv-D dizele, uključujući i-Activ AWD verzije sa pogonom na sve točkove. '
+                  'Redovan servis, dijagnostiku Mazda opremom i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (KE)", "2012–2017", "Kompaktni krosover (SUV), FWD i i-Activ AWD. Redizajniran 2015.",
+             "cx5-ke.webp", [
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "160–165 KS"),
+                ("2.2 Skyactiv-D", "Dizel", "2.191 cm³", "150–175 KS"),
+             ]),
+            ("2. generacija (KF)", "2017–danas", "Kompaktni krosover (SUV), FWD i i-Activ AWD. Redizajniran 2021.",
+             "cx5-kf.webp", [
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "165 KS"),
+                ("2.5 Skyactiv-G", "Benzin", "2.488 cm³", "194 KS"),
+                ("2.2 Skyactiv-D", "Dizel", "2.191 cm³", "150–184 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora. Od 2022. 2.0 i 2.2 (KF) dobijaju blagu hibridnu podršku (M Hybrid).",
+        "photo_credit": "Fotografije generacija: Wikimedia Commons — M 93 (CC BY-SA 3.0 DE) i Tokumeigakarinoaoshima (CC0, javno vlasništvo).",
+        "service": [
+            ("Skyactiv-D dizel i DPF",
+             "CX-5 je najčešće dizel; pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("Skyactiv-G benzinci i lanac razvoda",
+             "Kod benzinaca proveravamo lanac razvoda, rad ubrizgavanja i po potrebi čistimo usisni trakt i EGR, jer neravnomeran rad najčešće počinje odatle."),
+            ("Trap, kočnice i AWD",
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i sistema asistencije vozaču."),
+        ],
+    },
 }
 
 
-def gen_cards(gens):
-    return "\n".join(
-        f'      <li><h3 class="h3">{title} · {years}</h3><p>{body} {engines}</p></li>'
-        for title, years, body, engines in gens)
+def gen_engine_table(engines):
+    rows = []
+    for motor, fuel, disp, power in engines:
+        fuel_cls = "is-diesel" if "Dizel" in fuel else "is-petrol"
+        rows.append(
+            f'            <tr><td class="etbl-motor">{motor}</td>'
+            f'<td><span class="etbl-fuel {fuel_cls}">{fuel}</span></td>'
+            f'<td class="etbl-num">{disp}</td>'
+            f'<td class="etbl-num">{power}</td></tr>')
+    body = "\n".join(rows)
+    return f"""        <div class="etbl-wrap">
+          <table class="etbl gen-etbl">
+            <thead>
+              <tr><th scope="col">Motor</th><th scope="col">Gorivo</th><th scope="col">Zapremina</th><th scope="col">Snaga</th></tr>
+            </thead>
+            <tbody>
+{body}
+            </tbody>
+          </table>
+        </div>"""
+
+
+def gen_cards(gens, model_name):
+    cards = []
+    for g in gens:
+        # Novi format: (naziv, godine, karoserija, foto, [motori][, [redizajni]]) → foto + tabela motora
+        if len(g) >= 5 and isinstance(g[4], list):
+            title, years, body, photo, engines = g[:5]
+            facelifts = g[5] if len(g) > 5 else None
+            pic = (f'<img class="gen-photo" src="img/modeli/{photo}" alt="{title} modela {model_name}" loading="lazy">'
+                   if photo else "")
+            block_cls = "gen-block" if photo else "gen-block is-noimg"
+            fl = ""
+            if facelifts:
+                figs = "\n".join(
+                    f'            <figure><img src="img/modeli/{fp}" alt="{model_name} {cap}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
+                    for cap, fp in facelifts)
+                fl = ('          <p class="gen-facelifts-lead">Redizajni tokom proizvodnje:</p>\n'
+                      '          <div class="gen-facelifts">\n' + figs + '\n          </div>\n')
+            cards.append(
+                f'      <li class="{block_cls}">{pic}\n'
+                f'        <div class="gen-body">\n'
+                f'          <h3 class="h3">{title} · {years}</h3>\n'
+                f'          <p>{body}</p>\n'
+                f'{gen_engine_table(engines)}\n'
+                f'{fl}'
+                f'        </div></li>')
+        else:
+            # Stari format: (naziv, godine, karoserija, motori-proza[, foto])
+            title, years, body, engines = g[:4]
+            photo = g[4] if len(g) > 4 else None
+            pic = (f'<img class="gen-photo" src="img/modeli/{photo}" alt="{title} modela {model_name}" loading="lazy">'
+                   if photo else "")
+            cards.append(f'      <li>{pic}<h3 class="h3">{title} · {years}</h3><p>{body} {engines}</p></li>')
+    return "\n".join(cards)
 
 
 def service_cards(items):
@@ -551,13 +847,43 @@ def service_cards(items):
         f'      <li><h3 class="h3">{h}</h3><p>{p}</p></li>' for h, p in items)
 
 
+def cert_section(slug, m):
+    certs = AUTO_CERTS.get(slug)
+    if not certs:
+        return ""
+    cards = "\n".join(
+        f'      <a href="img/sertifikati/{fn}" data-lb="cert" data-caption="{cap}">'
+        f'<img src="img/sertifikati/mala/{fn}" alt="{cap}" loading="lazy"></a>'
+        for fn, cap in certs)
+    return f"""
+<section class="section section-paper">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Sertifikati za {m['name']}</h2>
+      <p>Mazda obuke i modelski treninzi koje su naši mehaničari prošli za ovaj model. Kliknite na sertifikat za punu veličinu.</p>
+    </div>
+    <div class="thumb-grid certs">
+{cards}
+    </div>
+  </div>
+</section>
+"""
+
+
 def model_page(slug, m):
     diagram = m.get("diagram")
     img_cls = "model-photo is-diagram" if diagram else "model-photo"
-    img_dir = "img/modeli/" if diagram else "img/galerija/"
-    img_alt = f"Dimenzije modela {m['name']}" if diagram else f"{m['name']} u servisu EAST Auto Servis"
+    img_dir = m.get("photo_dir") or ("img/modeli/" if diagram else "img/galerija/")
+    default_alt = f"Dimenzije modela {m['name']}" if diagram else f"{m['name']} u servisu EAST Auto Servis"
+    img_alt = m.get("photo_alt", default_alt)
     blueprint = (f'\n      <img class="model-blueprint" src="img/modeli/{m["blueprint"]}" '
                  f'alt="Tehnički crtež modela {m["name"]} sa merama" loading="lazy">' if m.get("blueprint") else "")
+    has_engine_tables = any(len(g) >= 5 and isinstance(g[4], list) for g in m['gens'])
+    gen_head = "Generacije i motori" if has_engine_tables else "Generacije koje servisiramo"
+    gen_sub = (f"Radimo sve generacije modela {m['name']} zastupljene na našem tržištu, sa fabričkim varijantama motora uz svaku."
+               if has_engine_tables
+               else f"Radimo sve generacije modela {m['name']} zastupljene na našem tržištu.")
+    gen_ul_cls = "gen-list" if has_engine_tables else "service-list"
     html = head(m["title"], m["desc"], "modeli.html") + page_head(m["name"], m["lead"]) + f"""
 <section class="section">
   <div class="wrap split">
@@ -574,12 +900,14 @@ def model_page(slug, m):
 <section class="section section-paper">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="h2">Generacije koje servisiramo</h2>
-      <p>Radimo sve generacije modela {m['name']} zastupljene na našem tržištu.</p>
+      <h2 class="h2">{gen_head}</h2>
+      <p>{gen_sub}</p>
     </div>
-    <ul class="service-list">
-{gen_cards(m['gens'])}
-    </ul>
+    <ul class="{gen_ul_cls}">
+{gen_cards(m['gens'], m['name'])}
+    </ul>{f'''
+    <p class="photo-credit">{m["engines_note"]}</p>''' if m.get("engines_note") else ""}{f'''
+    <p class="photo-credit">{m["photo_credit"]}</p>''' if m.get("photo_credit") else ""}
   </div>
 </section>
 
@@ -594,31 +922,115 @@ def model_page(slug, m):
     </ul>
   </div>
 </section>
-""" + CTA + foot()
+{cert_section(slug, m)}""" + CTA + foot(lightbox=bool(AUTO_CERTS.get(slug)))
     write(slug, html)
+
+
+# ---------------- SERTIFIKATI: obrada + raspoređivanje ----------------
+# Originali su u ../sertifikati/ (van projekta). Svaki je pročitan i ručno mapiran:
+#   "models"  -> strane modela na kojima se prikazuje (model-specifičan trening)
+#   "engine"  -> "diesel"/"petrol": dodaje se na SVE strane modela koje imaju taj motor
+#   "general" -> True: opšta obuka (elektrika/kočnice), samo na glavnoj strani Sertifikati
+# Glavna strana sertifikati.html prikazuje SVE (redosled = CERTS, hronološki). Slug = ime webp.
+try:
+    from PIL import Image as _CImage
+    _HAS_PIL = True
+except Exception:
+    _HAS_PIL = False
+
+CERT_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sertifikati")
+CERT_DIR = "img/sertifikati"
+CERT_THUMB = os.path.join(CERT_DIR, "mala")
+
+CERTS = [
+    {"src": "Mazda6-GG-MPV-LW.jpeg", "slug": "mazda6-gg-2002",
+     "cap": "Mazda 6 (GG) i MPV (LW) — modelski trening, 2002.", "models": ["mazda-6.html"]},
+    {"src": "Sertifikat_02.jpeg", "slug": "rx8-se-2004",
+     "cap": "RX-8 (SE) — modelski trening, 2004.", "models": []},
+    {"src": "Sertifikat_03.jpeg", "slug": "dizel-edc-2004",
+     "cap": "Elektronska dizel regulacija (EDC) — 2004.", "engine": "diesel"},
+    {"src": "Sertifikat_04.jpeg", "slug": "mazda5-cr-2005",
+     "cap": "Mazda 5 (CR) — modelski trening, 2005.", "models": []},
+    {"src": "Sertifikat_05.jpeg", "slug": "dizel-common-rail-dpf-2006",
+     "cap": "Common Rail dizel sa DPF — 2006.", "engine": "diesel"},
+    {"src": "Sertifikat_06.jpeg", "slug": "elektrika-1-2006",
+     "cap": "Elektrika 1 — 2006.", "general": True},
+    {"src": "Sertifikat_07.jpeg", "slug": "mx5-rc-2007",
+     "cap": "MX-5 (RC) — modelski trening, 2007.", "models": []},
+    {"src": "Sertifikat_08.jpeg", "slug": "mazda2-cx7-2007",
+     "cap": "Mazda 2 i CX-7 — modelski trening, 2007.", "models": ["mazda-2.html"]},
+    {"src": "Sertifikat_09.jpeg", "slug": "mazda6-gh-2008",
+     "cap": "Mazda 6 (GH) i Mazda 5 (CR) — modelski trening, 2008.", "models": ["mazda-6.html"]},
+    {"src": "Sertifikat_10.jpeg", "slug": "benzin-ubrizgavanje-2008",
+     "cap": "Elektronsko benzinsko ubrizgavanje — 2008.", "engine": "petrol"},
+    {"src": "Sertifikat_11.jpeg", "slug": "kocnice-abs-dsc-2008",
+     "cap": "Kočnice — ABS/DSC — 2008.", "general": True},
+    {"src": "Sertifikat_12.jpeg", "slug": "dizel-regulacija-2008",
+     "cap": "Elektronska dizel regulacija — 2008.", "engine": "diesel"},
+    {"src": "Sertifikat_13.jpeg", "slug": "mazda6-gh-22-dizel-2009",
+     "cap": "Mazda 6 (GH) 2.2 dizel motor — 2009.", "models": ["mazda-6.html"]},
+    {"src": "Sertifikat_14.jpeg", "slug": "dizel-management-2010",
+     "cap": "Dizel motor — upravljanje i dijagnostika — 2010.", "engine": "diesel"},
+    {"src": "Sertifikat_15.jpeg", "slug": "cx5-skyactiv-2012",
+     "cap": "CX-5 sa Skyactiv tehnologijom — 2012.", "models": ["cx-5.html"]},
+]
+
+
+def _convert_cert(src, slug):
+    path = os.path.join(CERT_SRC, src)
+    out_full = os.path.join(CERT_DIR, slug + ".webp")
+    out_thumb = os.path.join(CERT_THUMB, slug + ".webp")
+    if not (_HAS_PIL and os.path.exists(path)):
+        return
+    if os.path.exists(out_full) and os.path.getmtime(path) <= os.path.getmtime(out_full):
+        return
+    im = _CImage.open(path).convert("RGB")
+    w, h = im.size
+    fw = min(1100, w)
+    im.resize((fw, round(h * fw / w)), _CImage.LANCZOS).save(out_full, "WEBP", quality=85, method=6)
+    tw = 380
+    im.resize((tw, round(h * tw / w)), _CImage.LANCZOS).save(out_thumb, "WEBP", quality=82, method=6)
+
+
+def _model_engine_kinds(page):
+    kinds = set()
+    for g in MODELS.get(page, {}).get("gens", []):
+        if len(g) >= 5 and isinstance(g[4], list):
+            for eng in g[4]:
+                fuel = eng[1]
+                if "Dizel" in fuel:
+                    kinds.add("diesel")
+                if "Benzin" in fuel:
+                    kinds.add("petrol")
+    return kinds
+
+
+def build_certs():
+    os.makedirs(CERT_THUMB, exist_ok=True)
+    for c in CERTS:
+        _convert_cert(c["src"], c["slug"])
+    all_list = [(c["slug"] + ".webp", c["cap"]) for c in CERTS]
+    per_model = {}
+    for page in MODELS:
+        kinds = _model_engine_kinds(page)
+        model_specific = [(c["slug"] + ".webp", c["cap"]) for c in CERTS if page in c.get("models", [])]
+        engine_certs = [(c["slug"] + ".webp", c["cap"]) for c in CERTS if c.get("engine") in kinds]
+        combined = model_specific + engine_certs
+        if combined:
+            per_model[page] = combined
+    print(f"Sertifikati: {len(all_list)} ukupno; po modelu "
+          + ", ".join(f"{p}={len(v)}" for p, v in per_model.items()))
+    return per_model, all_list
+
+
+AUTO_CERTS, ALL_CERTS = build_certs()
 
 
 for _slug, _m in MODELS.items():
     model_page(_slug, _m)
 
-# ---------------- SERTIFIKATI ----------------
-certs = "\n".join(
-    f'      <a href="{IMG}sertifikati/Sertifikat_{i:02d}.JPG" data-lb="cert" data-caption="Mazda sertifikat {i} od 15">'
-    f'<img src="{IMG}sertifikati/mala/Sertifikat_{i:02d}.JPG" alt="Mazda sertifikat mehaničara, {i} od 15" loading="lazy"></a>'
-    for i in range(1, 16))
-sert = head("Sertifikati | EAST Auto Servis",
-            "Mehaničari EAST Auto Servisa imaju 15 međunarodnih Mazda sertifikata za servis i dijagnostiku.",
-            "sertifikati.html") + page_head("Sertifikati",
-            "Iskustvo iz radionice potvrđeno je sa 15 Mazda sertifikata. Kliknite na sertifikat da ga pogledate u punoj veličini.") + f"""
-<section class="section">
-  <div class="wrap">
-    <div class="thumb-grid certs">
-{certs}
-    </div>
-  </div>
-</section>
-""" + CTA + foot(lightbox=True)
-write("sertifikati.html", sert)
+# Samostalna strana „Sertifikati" je uklonjena — sertifikati se prikazuju
+# samo na stranama modela (cert_section, po modelu/tipu motora).
 
 # ---------------- GALERIJA ----------------
 filters = "".join(
