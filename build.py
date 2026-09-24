@@ -327,10 +327,10 @@ jsonld = f"""<script type="application/ld+json">
 </script>
 """
 
-teaser_imgs = ["Servis_mazde.jpg", "Servis_mx5.jpg", "Servis_mazda_6_03.jpg",
-               "Servis_mazda_dijagnostika_02.jpg", "Servis_cx5_i_cx7.jpg"]
+teaser_imgs = ["gmap-servis-02.jpg", "gmap-servis-01.jpg", "gmap-servis-03.jpg",
+               "gmap-servis-05.jpg", "gmap-servis-06.jpg"]
 teaser = "\n".join(
-    f'      <a href="galerija.html"><img src="{IMG}galerija/{"" if i == 0 else "mala/"}{f}" alt="Fotografija iz servisa" loading="lazy"></a>'
+    f'      <a href="galerija.html"><img src="img/galerija/{"" if i == 0 else "mala/"}{f}" alt="Fotografija iz servisa" loading="lazy"></a>'
     for i, f in enumerate(teaser_imgs))
 
 # ---------------- MAZDA SVET: vesti ----------------
@@ -509,8 +509,8 @@ news_cards = news_cards_html(NEWS[:3])
 
 index = head("EAST Auto Servis | Mazda servis Beograd",
              "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2000. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
-             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('{IMG}galerija/Servis_mazde.jpg')">
-  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="{IMG}galerija/Servis_mazde.jpg" aria-hidden="true">
+             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('img/hero-poster.jpg')">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
     <source src="video/hero.webm" type="video/webm">
     <source src="video/hero.mp4" type="video/mp4">
   </video>
@@ -1629,16 +1629,15 @@ filters = "".join(
 _HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def _gal_base(f):
-    # Slike koje postoje lokalno u repou servira relativno (rade na preview-u);
-    # ostale i dalje sa produkcije preko IMG.
-    return "img/" if os.path.exists(os.path.join(_HERE, "img", "galerija", f)) else IMG
+def _gal_local(f):
+    # Prikazujemo samo slike koje postoje lokalno u repou (bez hotlink-a sa eastservis.rs).
+    return os.path.exists(os.path.join(_HERE, "img", "galerija", f))
 
 
 gal = "\n".join(
-    f'      <a href="{_gal_base(f)}galerija/{f}" data-lb="gal" data-cat="{c}" data-caption="{cap}">'
-    f'<img src="{_gal_base(f)}galerija/mala/{f}" alt="{cap}" loading="lazy"></a>'
-    for f, c, cap in GALLERY)
+    f'      <a href="img/galerija/{f}" data-lb="gal" data-cat="{c}" data-caption="{cap}">'
+    f'<img src="img/galerija/mala/{f}" alt="{cap}" loading="lazy"></a>'
+    for f, c, cap in GALLERY if _gal_local(f))
 galerija = head("Galerija | EAST Auto Servis",
                 "Fotografije iz EAST Mazda servisa: radionica, dijagnostika i vozila na servisu.",
                 "galerija.html") + page_head("Galerija",
