@@ -327,6 +327,150 @@ teaser = "\n".join(
     f'      <a href="galerija.html"><img src="{IMG}galerija/{"" if i == 0 else "mala/"}{f}" alt="Fotografija iz servisa" loading="lazy"></a>'
     for i, f in enumerate(teaser_imgs))
 
+# ---------------- MAZDA SVET: vesti ----------------
+# (slug, naslov, datum, sažetak, slika u img/vesti/, pasusi, izvor)
+NEWS = [
+    {
+        "slug": "vest-mazda-elektrifikacija.html",
+        "title": "Mazda: još nije vreme za potpuno električnu ponudu",
+        "date_txt": "Septembar 2026.",
+        "img": "vest-ev-lineup.webp",
+        "alt": "Mazda paleta modela",
+        "photos": [
+            ("vest-ev-lineup.webp", "Mazda paleta modela"),
+            ("vest-ev-mx30.webp", "Mazda MX-30"),
+            ("vest-ev-cx90.webp", "Mazda CX-90"),
+            ("vest-ev-iconicsp.webp", "Mazda Iconic SP koncept"),
+        ],
+        "excerpt": "Mazda poručuje da motori sa unutrašnjim sagorevanjem ostaju važni i da ide „višestrukim rešenjima“ umesto naglog prelaska na struju.",
+        "body": [
+            "Pre samo nekoliko godina mnogi proizvođači su najavljivali da će do određene godine preći isključivo na električna vozila — uglavnom kao odgovor na sve strože propise. Ali kako je vreme prolazilo, postalo je jasno da svet još nije spreman da masovno „uključi u struju“ svoja vozila. Neke zemlje imaju infrastrukturu, ali globalna slika je sasvim drugačija.",
+            "Zato su mnogi pomerili rokove za uvođenje električnih modela, a neki su, uz velike troškove, privremeno odustali od tih planova. Sledećih nekoliko godina potpuno električna budućnost neće doći preko noći, pa su brojni proizvođači ciljeve preusmerili ka ugljeničnoj neutralnosti umesto obećanja da će za deceniju praviti samo električne automobile.",
+            "Moglo bi se reći da se Mazda ponosi svojom nezavisnošću. Od razlaza sa Fordom, proizvođač iz Hirošime napreduje sa zaista dobrim automobilima — mnogi se opisuju kao najbolji u klasi po užitku u vožnji, a kompanija prihvata i svoju ulogu autsajdera.",
+            "Mazda čvrsto veruje da motori sa unutrašnjim sagorevanjem imaju dug život pred sobom. Moric Osvald (Moritz Oswald), menadžer za planiranje proizvoda u Mazda Motor Europe, rekao je za britanski časopis Car da kompanija neće skoro penzionisati motore.",
+            "„Deo naše strategije je da želimo pravi motor za pravog kupca. Zato ćemo nastaviti da ulažemo u pristup višestrukih rešenja. Nećemo ukinuti motor sa sagorevanjem sutra“, rekao je Osvald. Dodao je: „Motori sa sagorevanjem su, globalno, i dalje izuzetno važni. Na tržištima poput SAD-a, oni će narednih godina sigurno biti pravi izbor. Udeo električnih vozila je tamo i dalje veoma nizak, čak i na Teslinom domaćem tržištu. I u Japanu vidimo da su motori sa sagorevanjem i dalje vrlo relevantni.“",
+            "Ipak, Mazdini pokušaji elektrifikacije nisu bili najuspešniji. MX-30 je bio ograničen malim dometom; verzija sa rotacionim „range-extenderom“ ublažila je taj nedostatak, ali model ipak nije postigao dobru prodaju. Plug-in hibridne verzije CX-90 i CX-70 naišle su na podeljene reakcije.",
+            "Mazda ne odustaje. Uz veru u motore sa sagorevanjem, potreban joj je hibridni sistem koji je zaista konkurentan, i na tome radi, potvrdio je Osvald. To ide u prilog najavi da će hibridni CX-5 biti „pravi“ hibrid, uz pouke iz ranijih pokušaja. Izgleda da će Mazda hibridizaciju koristiti da motore održi živim i relevantnim još godinama.",
+            "Kako je ovo Mazda, voli povremeno da ide uz vetar. Ima svoj način rada, što je jasno pokazala ponovljenim obećanjima da će vratiti rotacioni motor u nečemu sportskom. Osvald je nagovestio hibridizaciju kao način da se to ostvari — bolje nego kod MX-30 R-EV.",
+            "Rekao je da se Mazdi pridružio jer ju je njegov šef nazvao „buntovnikom sa razlogom“. Taj razlog je nastavak ponude širokog spektra pogona dok svet zaista ne bude spreman za struju. „Ali, naravno, moramo da pratimo razvoj. Jer od buntovnika sa razlogom do gubljenja konkurencije iz vida — granica je tanka“, dodao je.",
+            "Mazda ide i korak dalje: razvija sistem koji hvata CO2 iz izduvnih gasova. Još je u fazi prototipa, ali cilj je da se te emisije, uz pomoć zeolita, pretvore u korisne materijale poput plastike, veštačkih đubriva ili sintetičkih goriva — način da se izađe na kraj sa sve strožim propisima na putu ka ugljeničnoj neutralnosti.",
+        ],
+        "source": ("Autoblog / Yahoo Autos", "https://autos.yahoo.com/ev-and-future-tech/articles/mazda-explains-why-not-ready-134500987.html"),
+    },
+    {
+        "slug": "vest-cx5.html",
+        "title": "Nova generacija Mazde CX-5",
+        "date_txt": "Jul 2025.",
+        "img": "cx5-2026.webp",
+        "alt": "Mazda CX-5 nove generacije",
+        "excerpt": "Mazda je predstavila potpuno novu, treću generaciju CX-5. Hibridni SkyActiv-Z pogon stiže 2027.",
+        "body": [
+            "Mazda je predstavila potpuno novu, treću generaciju modela CX-5, svog najprodavanijeg vozila. Novi CX-5 je duži i prostraniji, sa osveženim enterijerom i novim multimedijalnim sistemom.",
+            "Na startu se nudi sa 2.5-litarskim SkyActiv-G benzinskim motorom od 187 KS, uz i-Activ pogon na sve točkove i šestostepeni automatski menjač.",
+            "Najveća novost stiže 2027. godine: potpuno novi hibridni SkyActiv-Z pogon, koji obećava nižu potrošnju uz prepoznatljiv Mazda užitak u vožnji.",
+            "Za vlasnike to znači da CX-5 ostaje praktičan i pouzdan SUV — a mi, kao i do sada, pratimo sve nove tehnologije ove marke i spremni smo da ih servisiramo.",
+        ],
+        "source": ("Mazda USA News", "https://news.mazdausa.com/2025-07-10-Mazda-Reveals-All-New-2026-CX-5"),
+    },
+    {
+        "slug": "vest-mazda-6e.html",
+        "title": "Mazda 6e: električna limuzina stigla u Evropu",
+        "date_txt": "Septembar 2025.",
+        "img": "mazda-6e.webp",
+        "alt": "Mazda 6e električna limuzina",
+        "excerpt": "Potpuno električni fastback 6e ulazi u evropsku ponudu; za 2027. najavljeni domet do 560 km i punjenje do 200 kW.",
+        "body": [
+            "Mazda je u Evropu uvela 6e, potpuno električnu limuzinu koja u ponudi nasleđuje benzinsku Mazdu 6. Reč je o elegantnom fastback modelu sa modernom elektronikom i prepoznatljivim Mazda dizajnom.",
+            "Za 2027. godinu najavljeno je osveženje: nova baterija od 78 kWh (LFP) sa dometom do 560 km po WLTP ciklusu i brzim punjenjem do 200 kW.",
+            "Elektromotor razvija 190 kW (258 KS), uz unapređene sisteme podrške vozaču, uključujući asistenciju u vožnji do 160 km/h.",
+            "Električna Mazda je nova tehnološka era za marku, a mi pratimo njen razvoj kako bismo i ovakva vozila mogli stručno da održavamo.",
+        ],
+        "source": ("autoevolution", "https://www.autoevolution.com/news/2027-mazda6e-launches-in-europe-mazda-brings-new-78-kwh-battery-pack-that-charges-at-200-kw-more-275655.html"),
+    },
+    {
+        "slug": "vest-6e-dizajn.html",
+        "title": "Mazda 6e — svetski dizajn godine 2026",
+        "date_txt": "April 2026.",
+        "img": "mazda-ez6.webp",
+        "alt": "Mazda 6e / EZ-6",
+        "excerpt": "Mazda 6e (u Kini EZ-6) osvojila je prestižnu nagradu World Car Design of the Year za 2026.",
+        "body": [
+            "Mazda 6e, u Kini poznata kao EZ-6, osvojila je prestižnu nagradu World Car Design of the Year za 2026. godinu.",
+            "Žiri je nagradio čist, elegantan dizajn koji nastavlja Mazdinu „Kodo“ filozofiju oblikovanja i u eri električnih automobila.",
+            "Nagrada potvrđuje da Mazda zadržava prepoznatljiv, sportski izraz — vozila koja izgledaju i voze drugačije od proseka.",
+            "Za ljubitelje marke to je još jedan dokaz da Mazda ostaje verna sebi, bez obzira na vrstu pogona.",
+        ],
+        "source": ("Mazda Newsroom", "https://newsroom.mazda.com/en/publicity/release/2026/202604/260402a.html"),
+    },
+]
+
+
+def _split_groups(lst, k):
+    """Podeli listu pasusa na k uzastopnih, približno jednakih grupa."""
+    k = max(1, k)
+    base, rem = divmod(len(lst), k)
+    out, idx = [], 0
+    for i in range(k):
+        size = base + (1 if i < rem else 0)
+        out.append(lst[idx:idx + size])
+        idx += size
+    return out
+
+
+def _news_row(f, a, paras, rev):
+    txt = "\n".join(f'          <p>{p}</p>' for p in paras)
+    cls = "news-row news-row--rev" if rev else "news-row"
+    return (f'      <div class="{cls}">\n'
+            f'        <figure class="news-figure"><img src="img/vesti/{f}" alt="{a}" loading="lazy"></figure>\n'
+            f'        <div class="news-text">\n{txt}\n        </div>\n'
+            f'      </div>')
+
+
+def news_page(n):
+    photos = n.get("photos") or [(n["img"], n["alt"])]
+    body = n["body"]
+    src_name, src_url = n["source"]
+    final_html = ""
+    if len(photos) >= 2:
+        # Naizmenično: slika levo/tekst desno, pa obrnuto…; poslednja slika je velika, na kraju.
+        side = photos[:-1]
+        groups = _split_groups(body, len(side))
+        rows = [_news_row(f, a, groups[i], rev=(i % 2 == 1))
+                for i, (f, a) in enumerate(side)]
+        blocks = "\n".join(rows)
+        ff, fa = photos[-1]
+        final_html = f'\n      <img class="news-final" src="img/vesti/{ff}" alt="{fa}" loading="lazy">'
+    else:
+        f, a = photos[0]
+        blocks = _news_row(f, a, body, rev=False)
+    html = head(n["title"] + " | EAST Auto Servis", n["excerpt"], "") + page_head(n["title"], n["date_txt"]) + f"""
+<section class="section">
+  <div class="wrap news-article">
+{blocks}{final_html}
+      <p class="news-source">Izvor: <a href="{src_url}" target="_blank" rel="noopener">{src_name}</a></p>
+      <p><a class="link" href="index.html#mazda-svet">&larr; Nazad na naslovnu</a></p>
+  </div>
+</section>
+""" + CTA + foot()
+    write(n["slug"], html)
+
+
+def news_cards_html(items):
+    return "\n".join(
+        f'''      <li class="news-card">
+        <a class="news-thumb" href="{n['slug']}"><img src="img/vesti/{n['img']}" alt="{n['alt']}" loading="lazy"></a>
+        <div class="news-card-body">
+          <span class="news-date">{n['date_txt']}</span>
+          <h3><a href="{n['slug']}">{n['title']}</a></h3>
+          <p>{n['excerpt']}</p>
+          <a class="link" href="{n['slug']}">Pročitajte više</a>
+        </div>
+      </li>''' for n in items)
+
+
+# Naslovna prikazuje 3 najnovije; sve ostaju na strani arhive.
+news_cards = news_cards_html(NEWS[:3])
+
 index = head("EAST Auto Servis | Mazda servis Beograd",
              "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2000. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
              "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('{IMG}galerija/Servis_mazde.jpg')">
@@ -421,7 +565,20 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="mazda-svet">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Mazda svet</h2>
+      <p>Najnovije vesti iz sveta Mazde.</p>
+    </div>
+    <ul class="news-grid">
+{news_cards}
+    </ul>
+    <p class="mt"><a class="link" href="arhiva.html">Arhiva vesti</a></p>
+  </div>
+</section>
+
+<section class="section section-paper">
   <div class="wrap">
     <div class="section-head">
       <h2 class="h2">Iz radionice</h2>
@@ -450,6 +607,25 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
 </section>
 """ + foot(lightbox=True)
 write("index.html", index)
+
+# Strane pojedinačnih vesti (Mazda svet)
+for _n in NEWS:
+    news_page(_n)
+
+# Arhiva svih vesti
+arhiva = head("Arhiva vesti | EAST Auto Servis",
+              "Sve vesti iz sveta Mazde na jednom mestu.", "") + page_head(
+              "Arhiva vesti", "Sve vesti iz sveta Mazde na jednom mestu.") + f"""
+<section class="section">
+  <div class="wrap">
+    <ul class="news-grid">
+{news_cards_html(NEWS)}
+    </ul>
+    <p class="mt"><a class="link" href="index.html#mazda-svet">&larr; Nazad na naslovnu</a></p>
+  </div>
+</section>
+""" + CTA + foot()
+write("arhiva.html", arhiva)
 
 # ---------------- SERVIS I DELOVI ----------------
 parts_html = "\n".join(
