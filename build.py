@@ -11,7 +11,7 @@ IMG = "https://eastservis.rs/img/"
 BASE_URL = "https://mrpaki.github.io/mazda"
 PHONE = "+381641446343"
 PHONE_TXT = "064 144 63 43"
-EMAIL = "office@eastservis.rs"
+EMAIL = "eastservis@yahoo.com"
 FB = "https://www.facebook.com/eastautoservis"
 IG = "https://www.instagram.com/east_mazda_servis/"
 MAP = ("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.421125364123!2d20.540623215535767"
@@ -132,7 +132,7 @@ def foot(lightbox=False):
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html"><img class="brand-mark" src="img/east-logo.svg" alt="EAST auto servis" width="128" height="51"><span class="brand-sub">Neovlašćeni Mazda servis Beograd</span></a>
-        <p>Specijalizovani servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
+        <p>Neovlašćeni servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
       </div>
       <div>
         <h2>Stranice</h2>
@@ -203,10 +203,10 @@ FILTERS = [("sve", "Sve"), ("radionica", "Radionica i dijagnostika"), ("mazda2",
 
 # (brend, sajt, logo u img/delovi/)
 PARTS = [
-    ("Motorna ulja", [("Total", "https://lubricants.totalenergies.com/", "header-logo-total.png"),
-                      ("Mobil", "https://www.mobil.com/", "mobil.png")]),
+    ("Motorna ulja", [("ENEOS", "https://eneos.technolub.rs/", "eneos.png")]),
     ("Kočioni sistemi i amortizeri", [("ATE", "https://www.ate-brakes.com/", "logo_ate.png"),
-                                      ("Brembo", "https://www.brembo.com/", "logo_brembo.gif"),
+                                      ("TRW", "https://www.trwparts.com/", "trw.svg"),
+                                      ("555", "http://www.sankei-555.com/", "555.svg"),
                                       ("Galfer", "https://www.galfer-aftermarket.com/", "logo_auto.png"),
                                       ("KYB", "https://www.kyb-europe.com/", "KYB_logo.jpg")]),
     ("Setovi kvačila", [("LuK", "https://www.schaeffler.com/", "LuK_logo.png"),
@@ -221,7 +221,8 @@ PARTS = [
                   ("NTN", "https://www.ntnglobal.com/", "NTN_logo.png"),
                   ("INA", "https://www.schaeffler.com/", "ina-auto-parts.jpg"),
                   ("BTA", "https://bta-bearings.com/", "Bta_logo.JPG")]),
-    ("Trap i vešanje", [("Sidem", "https://www.sidem.be/", "Sidem_logo.jpg"),
+    ("Trap i vešanje", [("555", "http://www.sankei-555.com/", "555.svg"),
+                        ("Sidem", "https://www.sidem.be/", "Sidem_logo.jpg"),
                         ("Delphi", "https://www.delphiautoparts.com/", "delphi-auto-parts.jpg"),
                         ("Lemförder (ZF)", "https://www.zf.com/", "lemforder_banner.jpg")]),
 ]
@@ -294,6 +295,8 @@ MODEL_PAGES = {
     "Mazda 5": "mazda-5.html",
     "Mazda 3 MPS": "mazda-3-mps.html",
     "Mazda 6 MPS": "mazda-6-mps.html",
+    "CX-7": "cx-7.html",
+    "BT-50": "bt-50.html",
 }
 
 
@@ -345,10 +348,11 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
       <div class="tach-unit">×1000 o/min</div>
     </div>
     <ul class="facts">
-      <li><strong>Od 2000.</strong><span>radimo samo Mazde</span></li>
-      <li><strong>1500+ klijenata</strong><span>vraća se redovno</span></li>
-      <li><strong>15 sertifikata</strong><span>Mazda obuka mehaničara</span></li>
+      <li><strong><span id="years-count">26</span> godina</strong><span>radimo samo Mazde</span></li>
+      <li><strong>2000+ klijenata</strong><span>koji se vraćaju redovno</span></li>
+      <li><strong>Najkvalitetniji delovi</strong><span>i komponente renomiranih proizvođača</span></li>
     </ul>
+    <script>(function(){{var e=document.getElementById('years-count');if(e){{e.textContent=new Date().getFullYear()-2000;}}}})();</script>
   </div>
 </section>
 
@@ -398,9 +402,9 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
   <div class="wrap">
     <div class="section-head">
       <h2 class="h2">Modeli koje servisiramo</h2>
-      <p>Od najnovijih SUV-ova do rotacionih RX modela. Starije Mazde radimo uz prethodni dogovor.</p>
+      <p>Od najnovijih SUV-ova do sportskih modela. Starije Mazde radimo uz prethodni dogovor.</p>
     </div>
-    {wall(["Mazda 2", "Mazda 3", "Mazda 5", "Mazda 6", "CX-3", "CX-30", "CX-5", "CX-60", "CX-7", "MX-30", "MX-5", "RX-7", "RX-8"])}
+    {wall(["Mazda 2", "Mazda 3", "Mazda 5", "Mazda 6", "CX-3", "CX-30", "CX-5", "CX-60", "CX-7", "MX-30", "MX-5"])}
     <p class="mt"><a class="link" href="modeli.html">Kompletan spisak modela</a></p>
   </div>
 </section>
@@ -519,9 +523,9 @@ write("servis.html", servis)
 
 # ---------------- MODELI ----------------
 modeli = head("Modeli koje servisiramo | EAST Auto Servis",
-              "Servisiramo Mazda vozila: Mazda 2, 3, 5, 6, CX-3, CX-30, CX-5, CX-60, CX-7, MX-30, MX-5, Wankel motore RX-7 i RX-8, a uz prethodni dogovor i starije modele 323, 626, 929 i Xedos.",
+              "Servisiramo Mazda vozila: Mazda 2, 3, 5, 6, CX-3, CX-30, CX-5, CX-60, CX-7, MX-30, MX-5, a uz prethodni dogovor i starije modele 323, 626, 929 i Xedos.",
               "modeli.html") + page_head("Modeli koje servisiramo",
-              "Od današnjih hibrida i SUV-ova do Wankel motora. Starije Mazde radimo uz prethodni dogovor.") + f"""
+              "Od današnjih hibrida i SUV-ova do sportskih modela. Starije Mazde radimo uz prethodni dogovor.") + f"""
 <section class="section">
   <div class="wrap">
     <div class="model-group">
@@ -530,15 +534,15 @@ modeli = head("Modeli koje servisiramo | EAST Auto Servis",
     </div>
     <div class="model-group">
       <div><h2 class="h2">Prethodne generacije</h2><p>Modeli koji se više ne prodaju, a i dalje su česti na ulicama.</p></div>
-      {wall(["Mazda 5", "CX-7", "Mazda 3 MPS", "Mazda 6 MPS"])}
+      {wall(["Mazda 5", "CX-7"])}
     </div>
     <div class="model-group">
-      <div><h2 class="h2">Wankel motori</h2><p>Rotacioni motori traže posebno znanje, od kompresije i dihtovanja rotora do podmazivanja. Mi ga imamo.</p></div>
-      {wall(["RX-7", "RX-8"])}
+      <div><h2 class="h2">MPS modeli</h2><p>Turbo sportske verzije (Mazda Performance Series) traže posebno znanje i pažnju pri servisu. Mi ga imamo.</p></div>
+      {wall(["Mazda 3 MPS", "Mazda 6 MPS"])}
     </div>
     <div class="model-group">
       <div><h2 class="h2">Stariji modeli</h2><p>Vozila starija od 2010. radimo uz prethodni dogovor. Pozovite pre dolaska, pa ćemo rado pogledati i vašeg „dedu“.</p><p><a class="link" href="tel:{PHONE}">Pozovite {PHONE_TXT}</a></p></div>
-      {wall(["121", "323", "323F", "626", "929", "Xedos 6", "Xedos 9", "MX-3", "MX-6", "Premacy", "MPV", "Demio"])}
+      {wall(["121", "323", "323F", "626", "929", "BT-50", "Xedos 6", "Xedos 9", "MX-3", "MX-6", "Premacy", "MPV", "Demio"])}
     </div>
   </div>
 </section>
@@ -1011,6 +1015,83 @@ MODELS = {
              "Proveravamo amortizere, spone i ležajeve, kao i veće diskove i pločice, jer se kod MPS-a brže troše u dinamičnoj vožnji."),
             ("Hlađenje, elektrika i dijagnostika",
              "Kontrolišemo sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+        ],
+    },
+    "cx-7.html": {
+        "name": "Mazda CX-7",
+        "title": "Servis za Mazdu CX-7 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu CX-7 (ER) u Beogradu. 2.3 DISI Turbo benzin i 2.2 MZR-CD dizel, pogon na sve točkove (AWD), DPF i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu CX-7, srednji SUV sa turbo benzincem i dizelom, uz pažnju na specifičnosti turbo pogona i AWD sistema.",
+        "photo": "cx7-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda CX-7 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda CX-7 je prvi Mazdin srednji SUV, sagrađen na Ford C1 platformi (deljena sa Focusom i Mazdom 3), sa naglaskom na dinamiku vožnje. '
+                  'Servisiramo je uz pažnju na turbo motor sa direktnim ubrizgavanjem i sistem pogona na sve točkove.</p>'
+                  '<p class="muted">Radimo 2.3 DISI Turbo benzin i 2.2 MZR-CD dizel, sistem punjenja i hlađenja, AWD prenos i DPF. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("Jedina generacija (ER)", "2006–2012", "Srednji SUV/krosover na Ford C1 platformi. Redizajn 2009. donosi novu petougaonu masku, osvežene branike i unutrašnjost.",
+             "cx7-er.webp", [
+                ("2.3 MZR DISI Turbo (AWD)", "Benzin", "2.261 cm³", "260 KS"),
+                ("2.5 MZR", "Benzin", "2.488 cm³", "163 KS"),
+                ("2.2 MZR-CD", "Dizel", "2.184 cm³", "173 KS"),
+             ], [
+                ("Redizajn 2009", "cx7-er-2009.webp"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora. 2.3 DISI Turbo dolazi sa stalnim pogonom na sve točkove (AWD).",
+        "photo_credit": "Fotografije generacija: Wikimedia Commons.",
+        "service": [
+            ("2.3 DISI Turbo i punjenje",
+             "Kod turbo benzinca proveravamo turbinu, interkuler i cevi punjenja, kao i visokopritisnu pumpu i ubrizgavanje kod direktnog ubrizgavanja (DISI); lanac razvoda je česta tačka na ovom motoru."),
+            ("2.2 MZR-CD dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("AWD prenos i trap",
+             "Proveravamo prednji i zadnji diferencijal, kardan i spojnicu pogona na sve točkove, kao i amortizere, spone i ležajeve koji nose masu SUV-a."),
+            ("Kočnice, hlađenje i elektrika",
+             "Kontrolišemo diskove i pločice, sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+        ],
+    },
+    "bt-50.html": {
+        "name": "Mazda BT-50",
+        "title": "Servis za Mazdu BT-50 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde BT-50 (UN, UP/UR, TF) u Beogradu. MZR-CD i MZ-CD dizel motori, pogon 4x4, DPF i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu BT-50, pikap građen na Ford i Isuzu platformama, sa dizel motorima i pogonom na sve točkove.",
+        "photo": "bt-50-blueprint.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda BT-50 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda BT-50 je pikap namenjen radu i terenu, sa čvrstom šasijom, dizel motorima i pogonom na sve točkove. '
+                  'Servisiramo je uz pažnju na specifičnosti pogona 4x4 i opterećenja koja nosi radno vozilo.</p>'
+                  '<p class="muted">Kroz radionicu su prošle sve generacije BT-50, od modela na Ford platformi do najnovije na Isuzu osnovi. '
+                  'Radimo dizel motore, DPF i sistem ubrizgavanja, reduktor i diferencijale, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (UN)", "2006–2011", "Pikap sa jednostrukom, produženom i dvostrukom kabinom; deli platformu sa Ford Rangerom.",
+             "bt-50-un.webp", [
+                ("2.5 MZR-CD", "Dizel", "2.499 cm³", "143 KS"),
+                ("3.0 MZR-CD", "Dizel", "2.953 cm³", "156 KS"),
+             ]),
+            ("2. generacija (UP/UR)", "2011–2020", "Pikap na Ford T6 platformi; jednostruka, produžena (Freestyle) i dvostruka kabina.",
+             "bt-50-up.webp", [
+                ("2.2 MZ-CD", "Dizel", "2.198 cm³", "150 KS"),
+                ("3.2 MZ-CD", "Dizel", "3.198 cm³", "200 KS"),
+             ]),
+            ("3. generacija (TF)", "2020–danas", "Pikap na Isuzu D-Max platformi; jednostruka, produžena i dvostruka kabina.",
+             "bt-50-tf.webp", [
+                ("1.9 dizel", "Dizel", "1.898 cm³", "150 KS"),
+                ("3.0 dizel", "Dizel", "2.999 cm³", "190 KS"),
+             ]),
+        ],
+        "engines_note": "EU/globalna ponuda motora. Snaga je okvirna, po verziji motora. Treća generacija se ne prodaje zvanično u Evropi.",
+        "photo_credit": "Fotografije generacija: Wikimedia Commons.",
+        "service": [
+            ("Dizel motor, ubrizgavanje i DPF",
+             "Kod dizela pratimo sistem ubrizgavanja (common-rail), regeneraciju i stanje DPF filtera i EGR ventila, česte tačke kod vožnje na kratkim relacijama i pod opterećenjem."),
+            ("Pogon 4x4 i reduktor",
+             "Proveravamo reduktor (transfer case), prednji i zadnji diferencijal, kardan i sistem uključivanja pogona na sve točkove, jer su najviše opterećeni na terenu i pri vuči prikolice."),
+            ("Trap, gibnjevi i kočnice",
+             "Kod radnog pikapa proveravamo zadnje gibnjeve, amortizere, spone i ležajeve, kao i diskove, doboše i pločice koje se pod teretom brže troše."),
+            ("Kvačilo, hlađenje i elektrika",
+             "Kontrolišemo kvačilo, sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
         ],
     },
 }
