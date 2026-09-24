@@ -186,7 +186,7 @@ GALLERY = [
     ("Servis_mazda_dijagnostika_09.jpg", "radionica", "Dijagnostika u radionici"),
     ("Servis_mazda_dijagnostika_10.jpg", "radionica", "Dijagnostika u radionici"),
     ("Servis_mx5.jpg", "mx5", "Mazda MX-5 na servisu"),
-    ("Servis_mazda_2_01.jpg", "mazda2", "Mazda 2"),
+    ("Servis_mazda_2_01.webp", "mazda2", "Mazda 2"),
     ("Servis_mazda_2_02_.jpg", "mazda2", "Mazda 2"),
     ("Servis_mazda_2_03.jpg", "mazda2", "Mazda 2"),
     ("Servis_mazda_2_04.jpg", "mazda2", "Mazda 2"),
@@ -197,15 +197,20 @@ GALLERY = [
 ] + [(f"Servis_mazda_6_{i:02d}.jpg", "mazda6", "Mazda 6") for i in range(1, 11)] + [
     ("Servis_cx5_i_cx7.jpg", "cx", "Mazda CX-5 i CX-7"),
     ("Servis_cx7.jpg", "cx", "Mazda CX-7"),
-    ("gmap-servis-01.jpg", "radionica", "Mazda u radionici"),
-    ("gmap-servis-02.jpg", "cx", "Mazda CX-5 — pregled motora"),
-    ("gmap-servis-03.jpg", "radionica", "Motorni prostor Mazde"),
-    ("gmap-servis-04.jpg", "radionica", "Zamena motornog ulja"),
-    ("gmap-servis-05.jpg", "radionica", "Turbina i delovi motora"),
-    ("gmap-servis-06.jpg", "radionica", "Servis motora"),
+    ("gmap-servis-01.webp", "radionica", "Mazda u radionici"),
+    ("gmap-servis-02.webp", "cx", "Mazda CX-5 — pregled motora"),
+    ("gmap-servis-03.webp", "radionica", "Motorni prostor Mazde"),
+    ("gmap-servis-04.webp", "radionica", "Zamena motornog ulja"),
+    ("gmap-servis-05.webp", "radionica", "Turbina i delovi motora"),
+    ("gmap-servis-06.webp", "radionica", "Servis motora"),
 ]
 FILTERS = [("sve", "Sve"), ("radionica", "Radionica i dijagnostika"), ("mazda2", "Mazda 2"),
            ("mazda3", "Mazda 3"), ("mazda6", "Mazda 6"), ("cx", "CX modeli"), ("mx5", "MX-5")]
+
+# Video snimci u galeriji: (fajl bez ekstenzije u video/, poster u img/video/, opis)
+VIDEOS = [
+    ("mazda3-eneos", "mazda3-eneos.webp", "Mazda 3 SkyActiv 2.0 — redovan servis i Eneos 0w20 PRIME"),
+]
 
 # (brend, sajt, logo u img/delovi/)
 PARTS = [
@@ -214,23 +219,23 @@ PARTS = [
                                       ("TRW", "https://www.trwparts.com/", "trw.svg"),
                                       ("555", "http://www.sankei-555.com/", "555.svg"),
                                       ("Galfer", "https://www.galfer-aftermarket.com/", "logo_auto.png"),
-                                      ("KYB", "https://www.kyb-europe.com/", "KYB_logo.jpg")]),
+                                      ("KYB", "https://www.kyb-europe.com/", "KYB_logo.webp")]),
     ("Setovi kvačila", [("LuK", "https://www.schaeffler.com/", "LuK_logo.png"),
-                        ("Sachs", "https://www.zf.com/", "Sachs.jpg")]),
-    ("Zupčenje", [("Gates PowerGrip", "https://www.gates.com/", "PowerGrip.jpg"),
+                        ("Sachs", "https://www.zf.com/", "Sachs.webp")]),
+    ("Zupčenje", [("Gates PowerGrip", "https://www.gates.com/", "PowerGrip.webp"),
                   ("SKF", "https://www.skf.com/", "Skf_logo.png"),
-                  ("Blue Print", "https://www.blue-print.com/", "logo-blue-print.jpg"),
+                  ("Blue Print", "https://www.blue-print.com/", "logo-blue-print.webp"),
                   ("Dayco", "https://www.dayco.com/", "dayco.png")]),
     ("Elektronika i paljenje", [("Denso", "https://www.denso.com/", "denso.png"),
-                                ("NGK", "https://www.ngk.com/", "NGK.jpg")]),
+                                ("NGK", "https://www.ngk.com/", "NGK.webp")]),
     ("Ležajevi", [("SKF", "https://www.skf.com/", "Skf_logo.png"),
                   ("NTN", "https://www.ntnglobal.com/", "NTN_logo.png"),
-                  ("INA", "https://www.schaeffler.com/", "ina-auto-parts.jpg"),
-                  ("BTA", "https://bta-bearings.com/", "Bta_logo.JPG")]),
+                  ("INA", "https://www.schaeffler.com/", "ina-auto-parts.webp"),
+                  ("BTA", "https://bta-bearings.com/", "Bta_logo.webp")]),
     ("Trap i vešanje", [("555", "http://www.sankei-555.com/", "555.svg"),
-                        ("Sidem", "https://www.sidem.be/", "Sidem_logo.jpg"),
-                        ("Delphi", "https://www.delphiautoparts.com/", "delphi-auto-parts.jpg"),
-                        ("Lemförder (ZF)", "https://www.zf.com/", "lemforder_banner.jpg")]),
+                        ("Sidem", "https://www.sidem.be/", "Sidem_logo.webp"),
+                        ("Delphi", "https://www.delphiautoparts.com/", "delphi-auto-parts.webp"),
+                        ("Lemförder (ZF)", "https://www.zf.com/", "lemforder_banner.webp")]),
 ]
 
 
@@ -327,8 +332,8 @@ jsonld = f"""<script type="application/ld+json">
 </script>
 """
 
-teaser_imgs = ["gmap-servis-02.jpg", "gmap-servis-01.jpg", "gmap-servis-03.jpg",
-               "gmap-servis-05.jpg", "gmap-servis-06.jpg"]
+teaser_imgs = ["gmap-servis-02.webp", "gmap-servis-01.webp", "gmap-servis-03.webp",
+               "gmap-servis-05.webp", "gmap-servis-06.webp"]
 teaser = "\n".join(
     f'      <a href="galerija.html"><img src="img/galerija/{"" if i == 0 else "mala/"}{f}" alt="Fotografija iz servisa" loading="lazy"></a>'
     for i, f in enumerate(teaser_imgs))
@@ -509,8 +514,8 @@ news_cards = news_cards_html(NEWS[:3])
 
 index = head("EAST Auto Servis | Mazda servis Beograd",
              "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2000. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
-             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('img/hero-poster.jpg')">
-  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('img/hero-poster.webp')">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.webp" aria-hidden="true">
     <source src="video/hero.webm" type="video/webm">
     <source src="video/hero.mp4" type="video/mp4">
   </video>
@@ -1638,8 +1643,16 @@ gal = "\n".join(
     f'      <a href="img/galerija/{f}" data-lb="gal" data-cat="{c}" data-caption="{cap}">'
     f'<img src="img/galerija/mala/{f}" alt="{cap}" loading="lazy"></a>'
     for f, c, cap in GALLERY if _gal_local(f))
+videos_html = "\n".join(
+    f'''      <figure class="video-card">
+        <video controls preload="none" playsinline poster="img/video/{poster}">
+          <source src="video/{src}.webm" type="video/webm">
+          <source src="video/{src}.mp4" type="video/mp4">
+        </video>
+        <figcaption>{cap}</figcaption>
+      </figure>''' for src, poster, cap in VIDEOS)
 galerija = head("Galerija | EAST Auto Servis",
-                "Fotografije iz EAST Mazda servisa: radionica, dijagnostika i vozila na servisu.",
+                "Fotografije i video iz EAST Mazda servisa: radionica, dijagnostika i vozila na servisu.",
                 "galerija.html") + page_head("Galerija",
                 "Radionica, dijagnostika i Mazde koje su prošle kroz naše ruke.") + f"""
 <section class="section">
@@ -1648,6 +1661,18 @@ galerija = head("Galerija | EAST Auto Servis",
     <p class="count" aria-live="polite"></p>
     <div class="thumb-grid">
 {gal}
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Video</h2>
+      <p>Snimci iz našeg servisa.</p>
+    </div>
+    <div class="video-grid">
+{videos_html}
     </div>
   </div>
 </section>
