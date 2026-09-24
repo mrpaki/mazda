@@ -52,7 +52,10 @@ def head(title, desc, current, extra=""):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sr_RS">
+<meta property="og:url" content="{BASE_URL}/{current}">
 <meta property="og:image" content="{BASE_URL}/img/og-image.jpg">
+<meta property="og:image:secure_url" content="{BASE_URL}/img/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="EAST Auto Servis — Neovlašćeni Mazda servis Beograd">
