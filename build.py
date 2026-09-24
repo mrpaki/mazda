@@ -331,6 +331,28 @@ teaser = "\n".join(
 # (slug, naslov, datum, sažetak, slika u img/vesti/, pasusi, izvor)
 NEWS = [
     {
+        "slug": "vest-cx5-iihs.html",
+        "title": "Nova Mazda CX-5 osvojila najviše IIHS priznanje za bezbednost",
+        "date_txt": "Jul 2026.",
+        "img": "vest-cx5-safetest.webp",
+        "alt": "Mazda CX-5 na IIHS kraš testu",
+        "photos": [
+            ("vest-cx5-safetest.webp", "Mazda CX-5 na IIHS kraš testu"),
+            ("vest-cx5-iihs-1.webp", "Mazda CX-5 — bezbednost"),
+            ("cx5-2026.webp", "Mazda CX-5 nove generacije"),
+        ],
+        "excerpt": "Potpuno nova CX-5 dobila je IIHS TOP SAFETY PICK+ nagradu; Mazda treću godinu zaredom predvodi industriju po bezbednosti.",
+        "body": [
+            "Mazda je saopštila da je potpuno nova CX-5 u američkoj specifikaciji dobila nagradu TOP SAFETY PICK+ od američkog Instituta za bezbednost saobraćaja na putevima (IIHS). To je treća godina zaredom, od 2024, da Mazda predvodi industriju po broju priznanja iz najviše IIHS kategorije.",
+            "Vozilo je razvijeno po konceptu „New Generation Emotional Daily Comfort“, sa ciljem da pruži užitak u vožnji i u svakodnevnim situacijama, uz poseban naglasak na bezbednost i osećaj sigurnosti.",
+            "CX-5 je dobila najviše ocene za izbegavanje sudara i za otpornost na sudar, sa odličnim rezultatima u sprečavanju čeonog sudara (u scenarijima vozilo–vozilo i vozilo–pešak) i u zaštiti putnika u više tipova sudara.",
+            "Čak devet Mazdinih modela osvojilo je IIHS TOP SAFETY PICK+ nagrade za 2026. godinu. Kompanija je time dostigla i svoju stotu (100.) IIHS nagradu za bezbednost od 2008, računajući zajedno priznanja TOP SAFETY PICK+ i TOP SAFETY PICK.",
+            "Potpuno nova CX-5 dobila je i najviših pet zvezdica za bezbednost od Euro NCAP u Evropi, kao i od ANCAP u Australiji i na Novom Zelandu.",
+            "Mazda se obavezuje da će unapređivati bezbednosne tehnologije i uvoditi ih kao serijsku opremu. U skladu sa filozofijom usmerenom na čoveka, Mazda cilja na nula smrtnih slučajeva u novim vozilima do 2040. godine, kroz automobilske tehnologije i bezbednu mobilnost za sve.",
+        ],
+        "source": ("Mazda Newsroom", "https://newsroom.mazda.com/en/publicity/release/2026/202607/260730a.html"),
+    },
+    {
         "slug": "vest-mazda-elektrifikacija.html",
         "title": "Mazda: još nije vreme za potpuno električnu ponudu",
         "date_txt": "Septembar 2026.",
