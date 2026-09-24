@@ -334,6 +334,7 @@ NEWS = [
         "slug": "vest-cx5-iihs.html",
         "title": "Nova Mazda CX-5 osvojila najviše IIHS priznanje za bezbednost",
         "date_txt": "Jul 2026.",
+        "date": "2026-07-30",
         "img": "vest-cx5-safetest.webp",
         "alt": "Mazda CX-5 na IIHS kraš testu",
         "photos": [
@@ -356,6 +357,7 @@ NEWS = [
         "slug": "vest-mazda-elektrifikacija.html",
         "title": "Mazda: još nije vreme za potpuno električnu ponudu",
         "date_txt": "Septembar 2026.",
+        "date": "2026-09-24",
         "img": "vest-ev-lineup.webp",
         "alt": "Mazda paleta modela",
         "photos": [
@@ -383,6 +385,7 @@ NEWS = [
         "slug": "vest-cx5.html",
         "title": "Nova generacija Mazde CX-5",
         "date_txt": "Jul 2025.",
+        "date": "2025-07-10",
         "img": "cx5-2026.webp",
         "alt": "Mazda CX-5 nove generacije",
         "excerpt": "Mazda je predstavila potpuno novu, treću generaciju CX-5. Hibridni SkyActiv-Z pogon stiže 2027.",
@@ -398,6 +401,7 @@ NEWS = [
         "slug": "vest-mazda-6e.html",
         "title": "Mazda 6e: električna limuzina stigla u Evropu",
         "date_txt": "Septembar 2025.",
+        "date": "2025-09-01",
         "img": "mazda-6e.webp",
         "alt": "Mazda 6e električna limuzina",
         "excerpt": "Potpuno električni fastback 6e ulazi u evropsku ponudu; za 2027. najavljeni domet do 560 km i punjenje do 200 kW.",
@@ -413,6 +417,7 @@ NEWS = [
         "slug": "vest-6e-dizajn.html",
         "title": "Mazda 6e — svetski dizajn godine 2026",
         "date_txt": "April 2026.",
+        "date": "2026-04-02",
         "img": "mazda-ez6.webp",
         "alt": "Mazda 6e / EZ-6",
         "excerpt": "Mazda 6e (u Kini EZ-6) osvojila je prestižnu nagradu World Car Design of the Year za 2026.",
@@ -425,6 +430,9 @@ NEWS = [
         "source": ("Mazda Newsroom", "https://newsroom.mazda.com/en/publicity/release/2026/202604/260402a.html"),
     },
 ]
+
+# Sortiraj vesti po datumu vesti (ISO), od najnovije ka najstarijoj.
+NEWS.sort(key=lambda n: n["date"], reverse=True)
 
 
 def _split_groups(lst, k):
