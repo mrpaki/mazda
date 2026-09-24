@@ -62,7 +62,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .brand{display:flex;flex-direction:column;text-decoration:none;line-height:1;margin-right:auto}
 .brand-name{font-stretch:125%;font-weight:850;font-size:1.6rem;letter-spacing:.02em}
 .brand-jp{font-stretch:normal;font-weight:700;font-size:.8em;letter-spacing:0;margin-left:.4em;opacity:.92;vertical-align:.06em}
-.brand-sub{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.3rem}
+.brand-mark{height:44px;width:auto;display:block;align-self:flex-start}
+.footer-brand .brand-mark{height:52px}
+.brand-sub{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.4rem}
+@media (max-width:600px){.brand-mark{height:38px}}
 .nav ul{display:flex;gap:1.6rem}
 .nav a{display:block;padding:.4rem 0;font-size:.95rem;text-decoration:none;color:rgba(255,255,255,.78)}
 .nav a:hover{color:var(--white)}
@@ -209,6 +212,21 @@ ul,ol{margin:0;padding:0;list-style:none}
 .team-ph svg{width:30%;max-width:72px;opacity:.6}
 .team .h3{margin-bottom:.2rem}
 .team p{color:var(--steel);font-size:.97rem}
+.team-photos{position:relative;width:100%;aspect-ratio:4/5;margin-bottom:1rem;border-radius:var(--radius);overflow:hidden;background:var(--white)}
+.team-photos .tf-slide{position:absolute;inset:0;display:block;opacity:0;pointer-events:none;cursor:zoom-in;transition:opacity .35s ease}
+.team-photos .tf-slide.is-active{opacity:1;pointer-events:auto}
+.team-photos .tf-slide img{width:100%;height:100%;margin:0;border-radius:0;aspect-ratio:auto;display:block}
+.team-photos .tf-base{object-fit:cover}
+.team-photos .tf-cert{object-fit:contain;background:var(--white)}
+.tf-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:rgba(15,20,26,.5);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .2s,background .2s}
+.team-photos:hover .tf-nav,.tf-nav:focus-visible{opacity:1}
+.tf-nav:hover{background:rgba(15,20,26,.78)}
+.tf-nav svg{width:18px;height:18px}
+.tf-prev{left:8px}.tf-next{right:8px}
+.tf-dots{position:absolute;left:0;right:0;bottom:9px;z-index:2;display:flex;justify-content:center;gap:7px}
+.tf-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;box-shadow:0 0 2px rgba(0,0,0,.4)}
+.tf-dots button.is-active{background:#fff}
+@media (hover:none){.tf-nav{opacity:1}}
 @media (max-width:900px){.team{grid-template-columns:1fr 1fr}}
 
 /* ---------- Zaglavlje unutrašnjih strana ---------- */

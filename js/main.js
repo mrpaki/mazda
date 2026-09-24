@@ -104,6 +104,23 @@
     });
   }
 
+  /* Servisni tim — foto pager (lik / sertifikat) */
+  document.querySelectorAll(".team-photos[data-pager]").forEach(function (p) {
+    var slides = p.querySelectorAll(".tf-slide");
+    var dots = p.querySelectorAll(".tf-dots button");
+    if (slides.length < 2) return;
+    var i = 0;
+    var show = function (n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle("is-active", k === i); });
+    };
+    var prev = p.querySelector(".tf-prev"), next = p.querySelector(".tf-next");
+    if (prev) prev.addEventListener("click", function () { show(i - 1); });
+    if (next) next.addEventListener("click", function () { show(i + 1); });
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); }); });
+  });
+
   /* Lightbox */
   var lb = document.getElementById("lightbox");
   if (lb && typeof lb.showModal === "function") {

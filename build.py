@@ -55,7 +55,7 @@ def head(title, desc, current, extra=""):
 <meta property="og:image" content="{BASE_URL}/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mazda CX-5 na dizalici u servisu EAST Auto Servis">
+<meta property="og:image:alt" content="EAST Auto Servis — Neovlašćeni Mazda servis Beograd">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{BASE_URL}/img/og-image.jpg">
 <meta name="theme-color" content="#18202C">
@@ -70,8 +70,8 @@ def head(title, desc, current, extra=""):
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="EAST Auto Servis, naslovna">
-      <span class="brand-name">EAST<span class="brand-jp" lang="ja">ひがし</span></span>
-      <span class="brand-sub">Mazda servis Beograd</span>
+      <img class="brand-mark" src="img/east-logo.svg" alt="EAST auto servis" width="110" height="44">
+      <span class="brand-sub">Neovlašćeni Mazda servis Beograd</span>
     </a>
     <nav class="nav" id="nav" aria-label="Glavni meni">
       <ul>
@@ -128,7 +128,7 @@ def foot(lightbox=False):
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="brand-name">EAST<span class="brand-jp" lang="ja">ひがし</span></span><span class="brand-sub">Mazda servis Beograd</span></a>
+        <a class="brand" href="index.html"><img class="brand-mark" src="img/east-logo.svg" alt="EAST auto servis" width="128" height="51"><span class="brand-sub">Neovlašćeni Mazda servis Beograd</span></a>
         <p>Specijalizovani servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
       </div>
       <div>
@@ -229,20 +229,51 @@ def write(name, html):
         f.write(html)
 
 
-# Servisni tim: (fotografija ili None, ime, uloga). Fotografija npr. "img/tim/marko.jpg", format 4:5.
+# Servisni tim: (fotografija ili None, ime, uloga), format 4:5.
+# Fotografija: ime webp fajla u img/tim/ (npr. "marko.webp"),
+# ili par ("lik.webp", "sertifikat.webp") koji se naizmenično smenjuje crossfade-om.
+# Izvorne slike i konverzija u webp definisani su u TEAM_PHOTOS / build_team_photos().
 TEAM = [
-    (None, "Ime Prezime", "Vlasnik i šef servisa"),
-    (None, "Ime Prezime", "Automehaničar"),
-    (None, "Ime Prezime", "Automehaničar"),
-    (None, "Ime Prezime", "Dijagnostika i elektrika"),
+    (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa"),
+    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika"),
+    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika"),
+    ((None, "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika"),
 ]
 PLACEHOLDER = '<div class="team-ph" role="img" aria-label="Mesto za fotografiju"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Fotografija</span></div>'
-def team_photo(ph, name):
-    return PLACEHOLDER if not ph else '<img src="%s" alt="%s" loading="lazy">' % (ph, name)
+_CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>'
+_CHEV_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>'
+def team_photo(ph, name, role=""):
+    if not ph:
+        return PLACEHOLDER
+    if isinstance(ph, (list, tuple)):
+        base, cert = ph
+        cap_cert = "ECAP sertifikat — %s" % name
+        # Samo sertifikat (fotografija lika se dodaje naknadno) — bez pager kontrola.
+        if not base:
+            group = "tim-" + cert.rsplit(".", 1)[0].replace("-ecap", "")
+            return ('<div class="team-photos">'
+                    '<a class="tf-slide is-active" href="img/tim/%s" data-lb="%s" data-caption="%s">'
+                    '<img class="tf-cert" src="img/tim/%s" alt="%s" loading="lazy"></a>'
+                    '</div>' % (cert, group, cap_cert, cert, cap_cert))
+        group = "tim-" + base.rsplit(".", 1)[0]
+        cap_person = ("%s — %s" % (name, role)) if role else name
+        return ('<div class="team-photos" data-pager>'
+                '<a class="tf-slide is-active" href="img/tim/%s" data-lb="%s" data-caption="%s">'
+                '<img class="tf-base" src="img/tim/%s" alt="%s" loading="lazy"></a>'
+                '<a class="tf-slide" href="img/tim/%s" data-lb="%s" data-caption="%s">'
+                '<img class="tf-cert" src="img/tim/%s" alt="%s" loading="lazy"></a>'
+                '<button class="tf-nav tf-prev" type="button" aria-label="Prethodna fotografija">%s</button>'
+                '<button class="tf-nav tf-next" type="button" aria-label="Sledeća fotografija">%s</button>'
+                '<div class="tf-dots"><button class="is-active" type="button" aria-label="Fotografija"></button>'
+                '<button type="button" aria-label="Sertifikat"></button></div>'
+                '</div>' % (base, group, cap_person, base, cap_person,
+                            cert, group, cap_cert, cert, cap_cert,
+                            _CHEV_L, _CHEV_R))
+    return '<img src="img/tim/%s" alt="%s" loading="lazy">' % (ph, name)
 
 
 team_html = "\n".join(
-    '      <li>%s<h3 class="h3">%s</h3><p>%s</p></li>' % (team_photo(ph, n), n, r)
+    '      <li>%s<h3 class="h3">%s</h3><p>%s</p></li>' % (team_photo(ph, n, r), n, r)
     for ph, n, r in TEAM)
 
 # ---------------- MODELI: linkovanje ----------------
@@ -255,6 +286,11 @@ MODEL_PAGES = {
     "CX-3": "cx-3.html",
     "CX-30": "cx-30.html",
     "CX-5": "cx-5.html",
+    "CX-60": "cx-60.html",
+    "MX-5": "mx-5.html",
+    "Mazda 5": "mazda-5.html",
+    "Mazda 3 MPS": "mazda-3-mps.html",
+    "Mazda 6 MPS": "mazda-6-mps.html",
 }
 
 
@@ -405,7 +441,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
     <div class="map"><iframe src="{MAP}" title="Lokacija servisa na mapi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
 </section>
-""" + foot()
+""" + foot(lightbox=True)
 write("index.html", index)
 
 # ---------------- SERVIS I DELOVI ----------------
@@ -782,6 +818,198 @@ MODELS = {
              "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i sistema asistencije vozaču."),
         ],
     },
+    "cx-60.html": {
+        "name": "CX-60",
+        "title": "Servis za Mazdu CX-60 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu CX-60 (KH) u Beogradu. Redni šestocilindar 3.3 Skyactiv-D dizel, 2.5 PHEV plug-in hibrid, i-Activ AWD i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu CX-60, veliki krosover sa rednim šestocilindričnim dizelom i plug-in hibridom.",
+        "photo": "cx60-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Mazda CX-60 (skica modela)",
+        "intro": ('<p class="lead">Mazda CX-60 je Mazdin veliki, premium krosover na potpuno novoj platformi sa uzdužno postavljenim motorom i pogonom na zadnje (ili sve) točkove. '
+                  'Nov je model, ali smo spremni za njegovo održavanje savremenom Mazda opremom.</p>'
+                  '<p class="muted">Radimo redni šestocilindrični 3.3 Skyactiv-D dizel sa blagom hibridnom podrškom i 2.5 plug-in hibrid (PHEV), uključujući i-Activ AWD. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (KH)", "2022–danas", "Veliki krosover (SUV) na uzdužnoj platformi, pogon na zadnje ili sve točkove (i-Activ AWD).",
+             "cx60-front.webp", [
+                ("3.3 e-Skyactiv D", "Dizel (MHEV)", "3.283 cm³", "200–254 KS"),
+                ("2.5 e-Skyactiv PHEV", "Benzin (PHEV)", "2.488 cm³", "328 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora. Dizel je redni šestocilindar sa blagom hibridnom podrškom; PHEV je plug-in hibrid.",
+        "photo_credit": "Fotografije: Wikimedia Commons — Alexander Migl (CC BY-SA 4.0).",
+        "service": [
+            ("Redni-6 Skyactiv-D dizel i DPF",
+             "Kod novog rednog šestocilindra pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, uz proveru blagog hibridnog sistema (48V)."),
+            ("PHEV plug-in hibrid",
+             "Kod plug-in hibrida proveravamo visokonaponsku bateriju, punjač i rad elektromotora, uz redovan servis benzinskog dela."),
+            ("Trap, kočnice i AWD",
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, kao i i-Activ AWD sistem sa pogonom na zadnje točkove i kardan."),
+            ("Elektrika i klima",
+             "Kontrolišemo elektriku, punjenje klime i multimediju, uz proveru brojnih sistema asistencije vozaču."),
+        ],
+    },
+    "mx-5.html": {
+        "name": "MX-5",
+        "title": "Servis za Mazdu MX-5 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde MX-5 (NA, NB, NC, ND) u Beogradu. Benzinski motori, meki i sklopivi tvrdi krov (RF) i pregled pre kupovine.",
+        "lead": "Servisiramo sve generacije Mazde MX-5, najprodavanijeg roadstera na svetu, od NA do današnje ND.",
+        "photo": "mx5-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda MX-5 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda MX-5 (Miata) je lagani zadnjepogonski roadster i najprodavaniji dvosed u istoriji. '
+                  'Kroz našu radionicu prošle su sve četiri generacije, od kultne NA do današnje ND.</p>'
+                  '<p class="muted">Radimo benzinske motore svih generacija, meki krov i sklopivi tvrdi krov (RF), kao i specifičnosti zadnjepogonskog trapa. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (NA)", "1989–1997", "Roadster sa mekim krovom i farovima na preklop.",
+             "mx5-na.webp", [
+                ("1.6", "Benzin", "1.597 cm³", "90–115 KS"),
+                ("1.8", "Benzin", "1.839 cm³", "131 KS"),
+             ]),
+            ("2. generacija (NB)", "1998–2005", "Roadster sa mekim krovom, bez preklopnih farova.",
+             "mx5-nb.webp", [
+                ("1.6", "Benzin", "1.597 cm³", "110 KS"),
+                ("1.8", "Benzin", "1.839 cm³", "140–146 KS"),
+             ]),
+            ("3. generacija (NC)", "2005–2015", "Roadster sa mekim krovom i sklopivim tvrdim krovom (RC).",
+             "mx5-nc.webp", [
+                ("1.8", "Benzin", "1.798 cm³", "126 KS"),
+                ("2.0", "Benzin", "1.999 cm³", "160 KS"),
+             ]),
+            ("4. generacija (ND)", "2015–danas", "Roadster sa mekim krovom i sklopivim tvrdim krovom (RF).",
+             "mx5-nd.webp", [
+                ("1.5 Skyactiv-G", "Benzin", "1.496 cm³", "131 KS"),
+                ("2.0 Skyactiv-G", "Benzin", "1.998 cm³", "160–184 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora. MX-5 je isključivo benzinac.",
+        "photo_credit": ("Fotografije generacija: Wikimedia Commons — OSX (javno vlasništvo), "
+                         "M 93 (CC BY-SA 3.0), te Elise240SX i Alexander-93 (CC BY-SA 4.0)."),
+        "service": [
+            ("Benzinci i lanac razvoda",
+             "Kod starijih motora proveravamo zupčasti kaiš/lanac razvoda, bobine i svećice, a kod Skyactiv-G rad ubrizgavanja, jer neravnomeran rad počinje odatle."),
+            ("Meki i tvrdi krov (RF)",
+             "Proveravamo zaptivke i mehanizam mekog krova, a kod RF i NC RC električni/hidraulični mehanizam sklopivog tvrdog krova."),
+            ("Zadnjepogonski trap i kočnice",
+             "MX-5 ima zadnji pogon i sportski trap; proveravamo amortizere, spone, ležajeve, diferencijal i kardan, kao i diskove i pločice."),
+            ("Elektrika i klima",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije kod novijih generacija."),
+        ],
+    },
+    "mazda-5.html": {
+        "name": "Mazda 5",
+        "title": "Servis za Mazdu 5 (Premacy) | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za sve generacije Mazde 5 / Premacy (CP, CR, CW) u Beogradu. MZR benzinci i MZR-CD dizeli, klizna zadnja vrata i pregled pre kupovine.",
+        "lead": "Servisiramo sve generacije Mazde 5 (i prve, poznate kao Premacy), porodičnog MPV-a sa kliznim zadnjim vratima.",
+        "photo": "mazda5-dimenzije.webp",
+        "diagram": True,
+        "photo_alt": "Dimenzije i proporcije modela Mazda 5 (tehnički crtež)",
+        "intro": ('<p class="lead">Mazda 5 je kompaktni porodični MPV sa sedam sedišta i praktičnim kliznim zadnjim vratima. '
+                  'Prva generacija se kod nas prodavala kao Premacy, a kasnije kao Mazda 5 — sve tri su prolazile kroz našu radionicu.</p>'
+                  '<p class="muted">Radimo MZR benzince i MZR-CD dizele, uključujući mehanizam kliznih vrata i specifičnosti porodičnih vozila. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (CP) — Premacy", "1999–2005", "Kompaktni MPV; kod nas se prodavao kao Mazda Premacy.",
+             "mazda5-cp.webp", [
+                ("1.8", "Benzin", "1.839 cm³", "100–114 KS"),
+                ("2.0", "Benzin", "1.991 cm³", "131 KS"),
+                ("2.0 DiTD", "Dizel", "1.998 cm³", "90–100 KS"),
+             ]),
+            ("2. generacija (CR)", "2005–2010", "MPV sa kliznim zadnjim vratima; od ove generacije ime Mazda 5.",
+             "mazda5-cr.webp", [
+                ("1.8 MZR", "Benzin", "1.798 cm³", "116 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "145–150 KS"),
+                ("2.0 MZR-CD", "Dizel", "1.998 cm³", "110–143 KS"),
+             ]),
+            ("3. generacija (CW)", "2010–2018", "MPV sa kliznim zadnjim vratima i Kodo dizajnom.",
+             "mazda5-cw.webp", [
+                ("1.8 MZR", "Benzin", "1.798 cm³", "115 KS"),
+                ("2.0 MZR", "Benzin", "1.999 cm³", "150 KS"),
+                ("1.6 MZ-CD", "Dizel", "1.560 cm³", "115 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. Snaga je okvirna, po verziji motora.",
+        "photo_credit": ("Fotografije generacija: Wikimedia Commons — Vauxford (CC BY-SA 4.0), "
+                         "Mr.choppers (CC BY-SA 3.0) i IFCAR (javno vlasništvo)."),
+        "service": [
+            ("MZR benzinci i lanac razvoda",
+             "Kod benzinaca proveravamo lanac razvoda, bobine i svećice, jer neravnomeran rad motora najčešće počinje odatle."),
+            ("MZR-CD dizel i DPF",
+             "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
+            ("Klizna vrata i karoserija",
+             "Proveravamo mehanizam i vođice kliznih zadnjih vrata, brave i zaptivke, česta tačka održavanja kod porodičnih MPV vozila."),
+            ("Trap, kočnice i elektrika",
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, kao i alternator, akumulator i punjenje klime."),
+        ],
+    },
+    "mazda-3-mps.html": {
+        "name": "Mazda 3 MPS",
+        "title": "Servis za Mazdu 3 MPS (Mazdaspeed3) | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu 3 MPS / Mazdaspeed3 (BK, BL) u Beogradu. 2.3 DISI Turbo motor, kvačilo, hlađenje i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu 3 MPS, sportsku verziju sa 2.3 DISI Turbo motorom od 260 KS.",
+        "photo": "mazda3-mps-hero.webp",
+        "diagram": True,
+        "photo_alt": "Mazda 3 MPS (Mazdaspeed3) — ilustracija",
+        "intro": ('<p class="lead">Mazda 3 MPS (u SAD Mazdaspeed3) je vrhunska sportska verzija Mazde 3 sa turbo motorom, pojačanim trapom i kočnicama. '
+                  'Servisiramo obe generacije, uz pažnju na specifičnosti turbo pogona.</p>'
+                  '<p class="muted">Radimo 2.3 DISI Turbo motor sa direktnim ubrizgavanjem, sistem punjenja i hlađenja, kvačilo i pojačane komponente. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (BK)", "2007–2009", "Hečbek s pet vrata; sportska MPS verzija Mazde 3.",
+             "mazda3-mps-bk.webp", [
+                ("2.3 DISI Turbo", "Benzin", "2.261 cm³", "260 KS"),
+             ]),
+            ("2. generacija (BL)", "2009–2013", "Hečbek s pet vrata; sportska MPS verzija Mazde 3.",
+             "mazda3-mps-bl.webp", [
+                ("2.3 DISI Turbo", "Benzin", "2.261 cm³", "260 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. MPS je isključivo benzinac sa 2.3 DISI Turbo motorom.",
+        "photo_credit": "Fotografije generacija: Wikimedia Commons — M 93 (CC BY-SA 3.0) i javno vlasništvo (Alwayzamd).",
+        "service": [
+            ("2.3 DISI Turbo i punjenje",
+             "Kod turbo motora proveravamo turbinu, interkuler i cevi punjenja, kao i visokopritisnu pumpu i ubrizgavanje kod direktnog ubrizgavanja (DISI)."),
+            ("Kvačilo i hlađenje",
+             "MPS jače opterećuje kvačilo i sistem hlađenja; proveravamo kvačilo, hladnjak, termostat i stanje rashladne tečnosti, jer su to česte tačke kod sportske vožnje."),
+            ("Pojačan trap i kočnice",
+             "Proveravamo amortizere, spone i ležajeve, kao i veće diskove i pločice, jer se kod MPS-a brže troše u dinamičnoj vožnji."),
+            ("Elektrika i dijagnostika",
+             "Kontrolišemo alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora i eventualnih izmena na softveru."),
+        ],
+    },
+    "mazda-6-mps.html": {
+        "name": "Mazda 6 MPS",
+        "title": "Servis za Mazdu 6 MPS | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i popravke za Mazdu 6 MPS (GG) u Beogradu. 2.3 DISI Turbo motor od 260 KS, pogon na sve točkove (AWD), kvačilo i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu 6 MPS, sportsku limuzinu sa 2.3 DISI Turbo motorom i pogonom na sve točkove.",
+        "photo": "mazda6-mps-hero.webp",
+        "diagram": True,
+        "photo_alt": "Mazda 6 MPS — ilustracija",
+        "intro": ('<p class="lead">Mazda 6 MPS je retka, sportska verzija Mazde 6 prve generacije, sa turbo motorom i stalnim pogonom na sve točkove (AWD). '
+                  'Servisiramo je uz pažnju na specifičnosti turbo pogona i AWD sistema.</p>'
+                  '<p class="muted">Radimo 2.3 DISI Turbo motor sa direktnim ubrizgavanjem, sistem punjenja i hlađenja, kvačilo i AWD prenos. '
+                  'Redovan servis, dijagnostiku i popravke pratimo pisanim izveštajem o stanju vozila posle svake intervencije.</p>'),
+        "gens": [
+            ("1. generacija (GG)", "2005–2007", "Sportska limuzina; MPS verzija Mazde 6 sa pogonom na sve točkove.",
+             "mazda6-mps-gg.webp", [
+                ("2.3 DISI Turbo (AWD)", "Benzin", "2.261 cm³", "260 KS"),
+             ]),
+        ],
+        "engines_note": "EU/RS ponuda motora. MPS je isključivo benzinac sa 2.3 DISI Turbo motorom i AWD pogonom.",
+        "photo_credit": "Fotografija: autoprostor.rs / Mazda.",
+        "service": [
+            ("2.3 DISI Turbo i punjenje",
+             "Kod turbo motora proveravamo turbinu, interkuler i cevi punjenja, kao i visokopritisnu pumpu i ubrizgavanje kod direktnog ubrizgavanja (DISI)."),
+            ("AWD prenos i kvačilo",
+             "MPS ima stalni pogon na sve točkove; proveravamo prednji i zadnji diferencijal, kardan i kvačilo, koje je jače opterećeno u dinamičnoj vožnji."),
+            ("Pojačan trap i kočnice",
+             "Proveravamo amortizere, spone i ležajeve, kao i veće diskove i pločice, jer se kod MPS-a brže troše u dinamičnoj vožnji."),
+            ("Hlađenje, elektrika i dijagnostika",
+             "Kontrolišemo sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+        ],
+    },
 }
 
 
@@ -950,17 +1178,17 @@ CERTS = [
     {"src": "Sertifikat_03.jpeg", "slug": "dizel-edc-2004",
      "cap": "Elektronska dizel regulacija (EDC) — 2004.", "engine": "diesel"},
     {"src": "Sertifikat_04.jpeg", "slug": "mazda5-cr-2005",
-     "cap": "Mazda 5 (CR) — modelski trening, 2005.", "models": []},
+     "cap": "Mazda 5 (CR) — modelski trening, 2005.", "models": ["mazda-5.html"]},
     {"src": "Sertifikat_05.jpeg", "slug": "dizel-common-rail-dpf-2006",
      "cap": "Common Rail dizel sa DPF — 2006.", "engine": "diesel"},
     {"src": "Sertifikat_06.jpeg", "slug": "elektrika-1-2006",
      "cap": "Elektrika 1 — 2006.", "general": True},
     {"src": "Sertifikat_07.jpeg", "slug": "mx5-rc-2007",
-     "cap": "MX-5 (RC) — modelski trening, 2007.", "models": []},
+     "cap": "MX-5 (RC) — modelski trening, 2007.", "models": ["mx-5.html"]},
     {"src": "Sertifikat_08.jpeg", "slug": "mazda2-cx7-2007",
      "cap": "Mazda 2 i CX-7 — modelski trening, 2007.", "models": ["mazda-2.html"]},
     {"src": "Sertifikat_09.jpeg", "slug": "mazda6-gh-2008",
-     "cap": "Mazda 6 (GH) i Mazda 5 (CR) — modelski trening, 2008.", "models": ["mazda-6.html"]},
+     "cap": "Mazda 6 (GH) i Mazda 5 (CR) — modelski trening, 2008.", "models": ["mazda-6.html", "mazda-5.html"]},
     {"src": "Sertifikat_10.jpeg", "slug": "benzin-ubrizgavanje-2008",
      "cap": "Elektronsko benzinsko ubrizgavanje — 2008.", "engine": "petrol"},
     {"src": "Sertifikat_11.jpeg", "slug": "kocnice-abs-dsc-2008",
@@ -990,6 +1218,70 @@ def _convert_cert(src, slug):
     im.resize((fw, round(h * fw / w)), _CImage.LANCZOS).save(out_full, "WEBP", quality=85, method=6)
     tw = 380
     im.resize((tw, round(h * tw / w)), _CImage.LANCZOS).save(out_thumb, "WEBP", quality=82, method=6)
+
+
+# ---------------- SERVISNI TIM: foto -> webp ----------------
+TEAM_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "insta-foto")
+TEAM_DIR = "img/tim"
+# (izvorni fajl u insta-foto/, izlazni webp u img/tim/, zoom, fokus po visini 0..1)
+# zoom > 1 iseca centar da lik izgleda bliže (npr. da se uklopi u kadar drugih foto).
+TEAM_PHOTOS = [
+    ("Borko.jpeg", "borko.webp", 1.0, 0.5),
+    ("ecap-borko.jpg", "borko-ecap.webp", 1.0, 0.5),
+    ("Joca2.jpeg", "joca.webp", 1.18, 0.4),
+    ("ecap-joca.jpg", "joca-ecap.webp", 1.0, 0.5),
+    ("Goran2.jpeg", "goran.webp", 1.12, 0.4),
+    ("ecap-goran.jpg", "goran-ecap.webp", 1.0, 0.5),
+    ("ecap-kum.jpg", "zoran-ecap.webp", 1.0, 0.5),
+]
+
+
+def build_team_photos():
+    if not _HAS_PIL:
+        return
+    os.makedirs(TEAM_DIR, exist_ok=True)
+    for src, out, zoom, focus_y in TEAM_PHOTOS:
+        path = os.path.join(TEAM_SRC, src)
+        dst = os.path.join(TEAM_DIR, out)
+        if not os.path.exists(path):
+            continue
+        if os.path.exists(dst) and os.path.getmtime(path) <= os.path.getmtime(dst):
+            continue
+        im = _CImage.open(path).convert("RGB")
+        w, h = im.size
+        if zoom and zoom > 1.0:
+            cw, ch = w / zoom, h / zoom
+            left = max(0, min(w - cw, w / 2 - cw / 2))
+            top = max(0, min(h - ch, h * focus_y - ch / 2))
+            im = im.crop((round(left), round(top), round(left + cw), round(top + ch)))
+            w, h = im.size
+        m = max(w, h)
+        if m > 1100:
+            im = im.resize((round(w * 1100 / m), round(h * 1100 / m)), _CImage.LANCZOS)
+        im.save(dst, "WEBP", quality=85, method=6)
+    print(f"Servisni tim: {len(TEAM_PHOTOS)} fotografija u {TEAM_DIR}/")
+
+
+# ---------------- OG IMAGE: logo na 1200x630 kartici ----------------
+OG_LOGO_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logo", "east-logo.png")
+OG_OUT = "img/og-image.jpg"
+
+
+def build_og_image():
+    if not (_HAS_PIL and os.path.exists(OG_LOGO_SRC)):
+        return
+    if os.path.exists(OG_OUT) and os.path.getmtime(OG_LOGO_SRC) <= os.path.getmtime(OG_OUT):
+        return
+    logo = _CImage.open(OG_LOGO_SRC).convert("RGB")
+    bg = logo.getpixel((2, 2))  # ink boja iz ugla logoa — bešavna podloga
+    W, H = 1200, 630
+    tw = 1000
+    th = round(logo.height * tw / logo.width)
+    logo = logo.resize((tw, th), _CImage.LANCZOS)
+    canvas = _CImage.new("RGB", (W, H), bg)
+    canvas.paste(logo, ((W - tw) // 2, (H - th) // 2))
+    canvas.save(OG_OUT, "JPEG", quality=88)
+    print(f"OG slika: {OG_OUT} ({W}x{H})")
 
 
 def _model_engine_kinds(page):
@@ -1024,6 +1316,8 @@ def build_certs():
 
 
 AUTO_CERTS, ALL_CERTS = build_certs()
+build_team_photos()
+build_og_image()
 
 
 for _slug, _m in MODELS.items():
