@@ -309,6 +309,19 @@ ul,ol{margin:0;padding:0;list-style:none}
 .values p{color:rgba(255,255,255,.72)}
 @media (max-width:860px){.values{grid-template-columns:1fr}}
 .photo-wide{border-radius:var(--radius);width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper)}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:700;color:var(--red);margin:0}
+.about-key .eyebrow{color:#FF5147}
+.about-key .h2{margin-top:.5rem;max-width:22ch}
+.about-key .lead{margin-top:1rem;max-width:70ch;color:rgba(255,255,255,.86)}
+.about-top{align-items:center}
+.about-srce{display:block;width:100%;border-radius:20px}
+.about-prose h2{margin-top:2.75rem;font-size:clamp(1.3rem,2.3vw,1.7rem);display:flex;align-items:center;gap:.6em}
+.about-prose h2:first-child{margin-top:0}
+.about-prose h2::before{content:"";flex:0 0 auto;width:2.5em;height:1em;background:url('../img/east-logo-badge.svg') center/contain no-repeat}
+.about-prose p{margin-top:1rem}
+.about-prose ul{margin:1rem 0 0;padding-left:1.2rem}
+.about-prose li{margin-top:.4rem}
+.about-prose li::marker{color:var(--red)}
 .model-intro h2{font-stretch:125%;font-weight:800;font-size:clamp(1.35rem,3vw,1.85rem);line-height:1.1}
 .model-photo{display:block;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);background:var(--paper);margin-top:1.25rem}
 .model-photo.is-diagram{max-width:360px;aspect-ratio:auto;height:auto;object-fit:contain;background:none}

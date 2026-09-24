@@ -11,3 +11,6 @@ __pycache__/
 # Privremeni fajlovi
 *.tmp
 *.log
+
+# Radni izvori (ne deploy)
+logo-komponente/
