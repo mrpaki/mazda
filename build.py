@@ -197,6 +197,12 @@ GALLERY = [
 ] + [(f"Servis_mazda_6_{i:02d}.jpg", "mazda6", "Mazda 6") for i in range(1, 11)] + [
     ("Servis_cx5_i_cx7.jpg", "cx", "Mazda CX-5 i CX-7"),
     ("Servis_cx7.jpg", "cx", "Mazda CX-7"),
+    ("gmap-servis-01.jpg", "radionica", "Mazda u radionici"),
+    ("gmap-servis-02.jpg", "cx", "Mazda CX-5 — pregled motora"),
+    ("gmap-servis-03.jpg", "radionica", "Motorni prostor Mazde"),
+    ("gmap-servis-04.jpg", "radionica", "Zamena motornog ulja"),
+    ("gmap-servis-05.jpg", "radionica", "Turbina i delovi motora"),
+    ("gmap-servis-06.jpg", "radionica", "Servis motora"),
 ]
 FILTERS = [("sve", "Sve"), ("radionica", "Radionica i dijagnostika"), ("mazda2", "Mazda 2"),
            ("mazda3", "Mazda 3"), ("mazda6", "Mazda 6"), ("cx", "CX modeli"), ("mx5", "MX-5")]
@@ -1620,9 +1626,18 @@ for _slug, _m in MODELS.items():
 filters = "".join(
     f'<button type="button" data-filter="{k}" aria-pressed="{"true" if k == "sve" else "false"}">{n}</button>'
     for k, n in FILTERS)
+_HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _gal_base(f):
+    # Slike koje postoje lokalno u repou servira relativno (rade na preview-u);
+    # ostale i dalje sa produkcije preko IMG.
+    return "img/" if os.path.exists(os.path.join(_HERE, "img", "galerija", f)) else IMG
+
+
 gal = "\n".join(
-    f'      <a href="{IMG}galerija/{f}" data-lb="gal" data-cat="{c}" data-caption="{cap}">'
-    f'<img src="{IMG}galerija/mala/{f}" alt="{cap}" loading="lazy"></a>'
+    f'      <a href="{_gal_base(f)}galerija/{f}" data-lb="gal" data-cat="{c}" data-caption="{cap}">'
+    f'<img src="{_gal_base(f)}galerija/mala/{f}" alt="{cap}" loading="lazy"></a>'
     for f, c, cap in GALLERY)
 galerija = head("Galerija | EAST Auto Servis",
                 "Fotografije iz EAST Mazda servisa: radionica, dijagnostika i vozila na servisu.",
