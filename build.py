@@ -1436,9 +1436,9 @@ write("galerija.html", galerija)
 
 # ---------------- O NAMA ----------------
 onama = head("O nama | EAST Auto Servis",
-             "EAST Auto Servis je otvoren 2000. godine kao specijalizovani Mazda servis u Beogradu. Sertifikovani mehaničari i više od 1500 stalnih klijenata.",
+             "EAST Auto Servis je samostalni Mazda servis u Beogradu, otvoren 2012. Iza njega je iskustvo od 2000. u ovlašćenom Mazda servisu Profil International. Sertifikovani mehaničari i više od 2000 stalnih klijenata.",
              "o-nama.html") + page_head("O nama",
-             "Otvorili smo servis 2000. sa jednom idejom: da radimo samo Mazde i da ih radimo kako treba.") + f"""
+             "Samostalni EAST servis otvorili smo 2012, a Mazde radimo od 2000. — iz ovlašćenog Mazda servisa Profil International u Beogradu.") + f"""
 <section class="section">
   <div class="wrap split">
     <div>
@@ -1446,7 +1446,7 @@ onama = head("O nama | EAST Auto Servis",
     </div>
     <div class="measure">
       <p class="lead">EAST Auto Servis je specijalizovan za vozila marke Mazda. Naši mehaničari imaju višegodišnje iskustvo i međunarodne Mazda sertifikate.</p>
-      <p class="muted">Stalno ulaganje u opremu i obuku omogućilo nam je da danas imamo više od 1500 klijenata koji nam se vraćaju. Kod nas možete kompletno održavati svoje vozilo ili ceo vozni park: od automehanike i dijagnostike do popravki.</p>
+      <p class="muted">Stalno ulaganje u opremu i obuku omogućilo nam je da danas imamo više od 2000 klijenata koji nam se vraćaju. Kod nas možete kompletno održavati svoje vozilo ili ceo vozni park: od automehanike i dijagnostike do popravki.</p>
       <img class="photo-wide mt" src="{IMG}galerija/Servis_mazda_dijagnostika_01.jpg" alt="Mazda na dijagnostici u radionici" loading="lazy">
     </div>
   </div>
@@ -1456,9 +1456,9 @@ onama = head("O nama | EAST Auto Servis",
   <div class="wrap">
     <div class="section-head"><h2 class="h2">Kako smo rasli</h2></div>
     <ol class="timeline">
-      <li><span class="year">2000</span><div><h3 class="h3">Otvaranje servisa</h3><p>Počinjemo kao servis specijalizovan isključivo za Mazda vozila.</p></div></li>
-      <li><span class="year">2012</span><div><h3 class="h3">Proširenje radionice</h3><p>Servis dobija više radnih mesta, svako kompletno opremljeno potrebnim alatom.</p></div></li>
-      <li><span class="year">Danas</span><div><h3 class="h3">Više od 1500 stalnih klijenata</h3><p>Petnaest Mazda sertifikata, savremena dijagnostika i klijenti koji nam poveravaju i svoje vozne parkove.</p></div></li>
+      <li><span class="year">2000</span><div><h3 class="h3">Iskustvo u ovlašćenom servisu</h3><p>Rad u ovlašćenom Mazda servisu Profil International u Beogradu.</p></div></li>
+      <li><span class="year">2012</span><div><h3 class="h3">Otvaranje samostalnog servisa</h3><p>Servis dobija više radnih mesta, kompletno opremljenih potrebnim alatom.</p></div></li>
+      <li><span class="year">Danas</span><div><h3 class="h3">Više od 2000 stalnih klijenata</h3><p>Tim od četiri iskusna mehaničara, na dva potpuno opremljena servisna mesta, savremena dijagnostika.</p></div></li>
     </ol>
   </div>
 </section>
