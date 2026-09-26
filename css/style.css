@@ -401,6 +401,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .social a{display:inline-flex;color:inherit;transition:color .15s,transform .15s}
 .social a:hover,.social a:focus-visible{color:var(--red);transform:translateY(-1px)}
 .social svg{width:1.5rem;height:1.5rem;display:block}
+.contact-apps{display:inline-flex;flex-wrap:wrap;gap:.5rem .7rem;align-items:center}
+.contact-apps a{display:inline-flex;align-items:center;gap:.4rem;color:inherit;font-size:.95rem;transition:color .15s,transform .15s}
+.contact-apps a:hover,.contact-apps a:focus-visible{transform:translateY(-1px)}
+.contact-apps svg{width:1.35rem;height:1.35rem;display:block;flex:none}
+.contact-apps .app-wa:hover,.contact-apps .app-wa:focus-visible{color:#25D366}
+.contact-apps .app-viber:hover,.contact-apps .app-viber:focus-visible{color:#7360F2}
 @media (max-width:760px){.footer-grid{grid-template-columns:1fr}}
 
 /* Potpis izrade: auto u footeru odlazi na klik i otkriva tekst */
