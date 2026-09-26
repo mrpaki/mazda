@@ -255,10 +255,10 @@ def write(name, html):
 # ili par ("lik.webp", "sertifikat.webp") koji se naizmenično smenjuje crossfade-om.
 # Izvorne slike i konverzija u webp definisani su u TEAM_PHOTOS / build_team_photos().
 TEAM = [
-    (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa, automehaničar, dijagnostika, elektrika", "2000–2013. Profil International; od 2012. East Auto Servis"),
-    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled „Sunce”; od 2019. East Auto Servis"),
-    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; od 2013. East Auto Servis"),
-    ((None, "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "1997–2016. Ovlašćeni Volvo servis „Dragan”; od 2016. East Auto Servis"),
+    (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa, automehaničar, dijagnostika, elektrika", "2000–2013. Profil International; 2012 – East Auto Servis"),
+    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled „Sunce”; 2019 – East Auto Servis"),
+    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; 2013 – East Auto Servis"),
+    ((None, "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "1997–2016. Ovlašćeni Volvo servis „Dragan”; 2016 – East Auto Servis"),
 ]
 PLACEHOLDER = '<div class="team-ph" role="img" aria-label="Mesto za fotografiju"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Fotografija</span></div>'
 _CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>'
@@ -296,7 +296,7 @@ def team_photo(ph, name, role=""):
 team_html = "\n".join(
     '      <li>%s<h3 class="h3">%s</h3><p>%s</p>%s</li>' % (
         team_photo(ph, n, r), n, r,
-        ('<p class="team-note">%s</p>' % sub) if sub else "")
+        ('<p class="team-note">%s</p>' % "<br>".join(s.strip() for s in sub.split(";"))) if sub else "")
     for ph, n, r, sub in TEAM)
 
 # ---------------- MODELI: linkovanje ----------------
