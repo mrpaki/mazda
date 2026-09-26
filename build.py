@@ -728,7 +728,7 @@ servis = head("Servis i delovi | EAST Auto Servis",
       <p>Ako vaš kvar nije na spisku, pozovite nas. Verovatno smo ga već rešavali.</p>
     </div>
     <ul class="jobs">
-      <li>Zamena ulja</li><li>Mali servis</li><li>Veliki servis</li><li>Zupčasti kaiš i lanac</li><li>Kočnice</li><li>Kvačilo</li><li>Plivajući zamajac</li><li>Dizne</li><li>Turbina</li><li>Trap i vešanje</li><li>Amortizeri</li><li>Ležajevi</li><li>Elektrika</li><li>Klima uređaj</li>
+      <li>Zamena ulja</li><li>Mali servis</li><li>Veliki servis</li><li>Zupčasti kaiš i lanac</li><li>Kočnice</li><li>Kvačilo</li><li>Plivajući zamajac</li><li>Dizne</li><li>Turbina</li><li>Trap i vešanje</li><li>Amortizeri</li><li>Ležajevi</li><li>Elektrika</li>
     </ul>
   </div>
 </section>
@@ -830,8 +830,8 @@ MODELS = {
              "Na Skyactiv benzincima pratimo rad ubrizgavanja i po potrebi čistimo usisni trakt i lambda sonde."),
             ("Kočnice i zadnja osovina",
              "Gradska vožnja najviše troši kočnice; proveravamo diskove, pločice i ležajeve zadnje grede."),
-            ("Klima i elektrika",
-             "Proveravamo punjenje klime, alternator i akumulator, česte tačke kod manjih gradskih automobila."),
+            ("Elektrika",
+             "Proveravamo alternator i akumulator, česte tačke kod manjih gradskih automobila."),
         ],
     },
     "mazda-3.html": {
@@ -888,8 +888,8 @@ MODELS = {
              "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
             ("Trap i kočnice",
              "Proveravamo amortizere, spone i ležajeve, kao i diskove i pločice, jer se na Mazdi 3 najviše troše u svakodnevnoj vožnji."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora kod novijih generacija."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije i senzora kod novijih generacija."),
         ],
     },
     "mazda-6.html": {
@@ -941,8 +941,8 @@ MODELS = {
              "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod autoputa i gradske vožnje na kratkim relacijama."),
             ("Trap i kočnice",
              "Kod limuzine i karavana proveravamo amortizere, spone i ležajeve, kao i diskove i pločice, jer veći auto više opterećuje trap."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora kod novijih generacija."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije i senzora kod novijih generacija."),
         ],
     },
     "cx-3.html": {
@@ -976,8 +976,8 @@ MODELS = {
              "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
             ("Trap, kočnice i AWD",
              "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i senzora asistencije."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije i senzora asistencije."),
         ],
     },
     "cx-30.html": {
@@ -1009,8 +1009,8 @@ MODELS = {
              "Kod dizela pratimo regeneraciju i stanje DPF filtera, EGR ventil i sistem ubrizgavanja, česte tačke kod gradske vožnje na kratkim relacijama."),
             ("Trap, kočnice i AWD",
              "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i sistema asistencije vozaču."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije i sistema asistencije vozaču."),
         ],
     },
     "cx-5.html": {
@@ -1047,8 +1047,8 @@ MODELS = {
              "Kod benzinaca proveravamo lanac razvoda, rad ubrizgavanja i po potrebi čistimo usisni trakt i EGR, jer neravnomeran rad najčešće počinje odatle."),
             ("Trap, kočnice i AWD",
              "Proveravamo amortizere, spone i ležajeve, diskove i pločice, a kod i-Activ AWD verzija i stanje zadnjeg diferencijala i kardana."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije i sistema asistencije vozaču."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije i sistema asistencije vozaču."),
         ],
     },
     "cx-60.html": {
@@ -1079,8 +1079,8 @@ MODELS = {
              "Kod plug-in hibrida proveravamo visokonaponsku bateriju, punjač i rad elektromotora, uz redovan servis benzinskog dela."),
             ("Trap, kočnice i AWD",
              "Proveravamo amortizere, spone i ležajeve, diskove i pločice, kao i i-Activ AWD sistem sa pogonom na zadnje točkove i kardan."),
-            ("Elektrika i klima",
-             "Kontrolišemo elektriku, punjenje klime i multimediju, uz proveru brojnih sistema asistencije vozaču."),
+            ("Elektrika",
+             "Kontrolišemo elektriku i multimediju, uz proveru brojnih sistema asistencije vozaču."),
         ],
     },
     "mx-5.html": {
@@ -1127,8 +1127,8 @@ MODELS = {
              "Proveravamo zaptivke i mehanizam mekog krova, a kod RF i NC RC električni/hidraulični mehanizam sklopivog tvrdog krova."),
             ("Zadnjepogonski trap i kočnice",
              "MX-5 ima zadnji pogon i sportski trap; proveravamo amortizere, spone, ležajeve, diferencijal i kardan, kao i diskove i pločice."),
-            ("Elektrika i klima",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz proveru multimedije kod novijih generacija."),
+            ("Elektrika",
+             "Kontrolišemo alternator i akumulator, uz proveru multimedije kod novijih generacija."),
         ],
     },
     "mazda-5.html": {
@@ -1174,7 +1174,7 @@ MODELS = {
             ("Klizna vrata i karoserija",
              "Proveravamo mehanizam i vođice kliznih zadnjih vrata, brave i zaptivke, česta tačka održavanja kod porodičnih MPV vozila."),
             ("Trap, kočnice i elektrika",
-             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, kao i alternator, akumulator i punjenje klime."),
+             "Proveravamo amortizere, spone i ležajeve, diskove i pločice, kao i alternator i akumulator."),
         ],
     },
     "mazda-3-mps.html": {
@@ -1209,7 +1209,7 @@ MODELS = {
             ("Pojačan trap i kočnice",
              "Proveravamo amortizere, spone i ležajeve, kao i veće diskove i pločice, jer se kod MPS-a brže troše u dinamičnoj vožnji."),
             ("Elektrika i dijagnostika",
-             "Kontrolišemo alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora i eventualnih izmena na softveru."),
+             "Kontrolišemo alternator i akumulator, uz kompjutersku dijagnostiku motora i eventualnih izmena na softveru."),
         ],
     },
     "mazda-6-mps.html": {
@@ -1240,7 +1240,7 @@ MODELS = {
             ("Pojačan trap i kočnice",
              "Proveravamo amortizere, spone i ležajeve, kao i veće diskove i pločice, jer se kod MPS-a brže troše u dinamičnoj vožnji."),
             ("Hlađenje, elektrika i dijagnostika",
-             "Kontrolišemo sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+             "Kontrolišemo sistem hlađenja, alternator i akumulator, uz kompjutersku dijagnostiku motora."),
         ],
     },
     "cx-7.html": {
@@ -1275,7 +1275,7 @@ MODELS = {
             ("AWD prenos i trap",
              "Proveravamo prednji i zadnji diferencijal, kardan i spojnicu pogona na sve točkove, kao i amortizere, spone i ležajeve koji nose masu SUV-a."),
             ("Kočnice, hlađenje i elektrika",
-             "Kontrolišemo diskove i pločice, sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+             "Kontrolišemo diskove i pločice, sistem hlađenja, alternator i akumulator, uz kompjutersku dijagnostiku motora."),
         ],
     },
     "bt-50.html": {
@@ -1317,7 +1317,7 @@ MODELS = {
             ("Trap, gibnjevi i kočnice",
              "Kod radnog pikapa proveravamo zadnje gibnjeve, amortizere, spone i ležajeve, kao i diskove, doboše i pločice koje se pod teretom brže troše."),
             ("Kvačilo, hlađenje i elektrika",
-             "Kontrolišemo kvačilo, sistem hlađenja, alternator, akumulator i punjenje klime, uz kompjutersku dijagnostiku motora."),
+             "Kontrolišemo kvačilo, sistem hlađenja, alternator i akumulator, uz kompjutersku dijagnostiku motora."),
         ],
     },
 }
@@ -1725,7 +1725,7 @@ onama = head("O nama | EAST Auto Servis",
     <p>Mazda razvija sopstvene tehnologije koje traže posebno znanje: SKYACTIV benzinske i dizel motore, specifične sisteme ubrizgavanja i izduvnih gasova, sisteme za uštedu goriva i savremenu elektroniku. Iskustvo sa desetinama istih modela pomaže nam da prepoznamo tipične simptome, znamo slabe tačke pojedinih generacija i predvidimo šta će vozilu uskoro trebati. Tako vozilo brže napušta radionicu, a vi izbegavate kvarove koji se mogu sprečiti na vreme.</p>
 
     <h2 class="h2">Ulaganje u opremu i obuku</h2>
-    <p>Automobili se menjaju iz godine u godinu, pa se menjamo i mi. Stalno ulažemo u opremu i obuku jer savremeno vozilo ne može pravilno da se servisira bez odgovarajućih alata, softvera i znanja. Redovno nabavljamo novu dijagnostičku i radioničku opremu i pratimo tehničke novosti. Naši mehaničari se kontinuirano usavršavaju u ECAP obučnom centru kako bi bili spremni i za najnovije modele.</p>
+    <p>Automobili se menjaju iz godine u godinu, pa se menjamo i mi. Stalno ulažemo u opremu i obuku jer savremeno vozilo ne može pravilno da se servisira bez odgovarajućih alata, softvera i znanja. Redovno nabavljamo novu dijagnostičku i radioničku opremu i pratimo tehničke novosti. Naši mehaničari se kontinuirano usavršavaju u <a href="https://ecap.co.rs/" target="_blank" rel="noopener">ECAP</a> obučnom centru kako bi bili spremni i za najnovije modele.</p>
     <p>Ovo ulaganje nije samo u opremu. To je ulaganje u vaše poverenje, jer precizna dijagnostika i pravi alat znače manje nagađanja, manje nepotrebno zamenjenih delova i niže troškove za vas.</p>
 
     <h2 class="h2">Više od 2000 klijenata koji nam se vraćaju</h2>
