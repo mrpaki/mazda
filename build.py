@@ -255,10 +255,10 @@ def write(name, html):
 # ili par ("lik.webp", "sertifikat.webp") koji se naizmenično smenjuje crossfade-om.
 # Izvorne slike i konverzija u webp definisani su u TEAM_PHOTOS / build_team_photos().
 TEAM = [
-    (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa"),
-    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika"),
-    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika"),
-    ((None, "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika"),
+    (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa, automehaničar, dijagnostika, elektrika", "2000–2013. Profil International; od 2012. East Auto Servis"),
+    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled „Sunce”; od 2019. East Auto Servis"),
+    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; od 2013. East Auto Servis"),
+    ((None, "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "1997–2016. Ovlašćeni Volvo servis „Dragan”; od 2016. East Auto Servis"),
 ]
 PLACEHOLDER = '<div class="team-ph" role="img" aria-label="Mesto za fotografiju"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Fotografija</span></div>'
 _CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>'
@@ -294,8 +294,10 @@ def team_photo(ph, name, role=""):
 
 
 team_html = "\n".join(
-    '      <li>%s<h3 class="h3">%s</h3><p>%s</p></li>' % (team_photo(ph, n, r), n, r)
-    for ph, n, r in TEAM)
+    '      <li>%s<h3 class="h3">%s</h3><p>%s</p>%s</li>' % (
+        team_photo(ph, n, r), n, r,
+        ('<p class="team-note">%s</p>' % sub) if sub else "")
+    for ph, n, r, sub in TEAM)
 
 # ---------------- MODELI: linkovanje ----------------
 # Naziv modela -> fajl pojedinačne strane. Kada model dobije stranu, dodati ga
@@ -528,7 +530,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
   <button class="hero-sound" type="button" aria-pressed="false" aria-label="Uključi zvuk motora">{ICON_SOUND}<span class="hero-sound-txt">Zvuk</span></button>
   <div class="wrap hero-content">
     <h1>Servis za vašu Mazdu.</h1>
-    <p class="lead">Specijalizovani Mazda servis u Beogradu od 2000. Redovno održavanje, dijagnostika Mazda opremom i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
+    <p class="lead">Neovlašćeni Mazda servis u Beogradu od 2012. Redovno održavanje, dijagnostika i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
     <div class="hero-actions">
       <a class="btn btn-red" href="kontakt.html">{ICON_CAL}Zakažite servis</a>
       <a class="btn btn-ghost" href="tel:{PHONE}">{ICON_PHONE}{PHONE_TXT}</a>
@@ -539,7 +541,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
       <div class="tach-unit">×1000 o/min</div>
     </div>
     <ul class="facts">
-      <li><strong><span id="years-count">26</span> godina</strong><span>radimo samo Mazde</span></li>
+      <li><strong><span id="years-count">26</span> godina</strong><span>radimo samo Mazda vozila</span></li>
       <li><strong>2000+ klijenata</strong><span>koji se vraćaju redovno</span></li>
       <li><strong>Najkvalitetniji delovi</strong><span>i komponente renomiranih proizvođača</span></li>
     </ul>
@@ -552,7 +554,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
     <h2 class="h2">Jedna marka, dvadeset šest godina iskustva.</h2>
     <div class="measure">
       <p class="lead">Mazdu znamo do poslednjeg šrafa. Od Mazde 2 do najnovijih CX modela, radimo na njima svakog dana.</p>
-      <p class="muted">Naši mehaničari imaju međunarodne Mazda sertifikate, a radionica je od 2012. proširena na više potpuno opremljenih radnih mesta. Održavamo pojedinačna vozila i vozne parkove.</p>
+      <p class="muted">Naši mehaničari imaju višedecenijsko iskustvo u radu sa Mazdinim vozilima u ovlašćenom servisu, a od 2012. godine otvaramo samostalni neovlašćeni Mazda servis. Održavamo pojedinačna vozila i vozne parkove.</p>
       <p><a class="link" href="o-nama.html">Više o servisu</a></p>
     </div>
   </div>
@@ -566,7 +568,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
     </div>
     <ul class="service-list">
       <li><h3 class="h3">Redovan servis</h3><p>Mali i veliki servis po Mazda intervalima: ulje, filteri, svećice, tečnosti i provera svih sklopova.</p><a class="link" href="servis.html#redovan">Detalji</a></li>
-      <li><h3 class="h3">Kompjuterska dijagnostika</h3><p>Specijalizovana dijagnostika za Mazda vozila. Dobijate izveštaj sa očitanim parametrima i greškama.</p><a class="link" href="servis.html#dijagnostika">Detalji</a></li>
+      <li><h3 class="h3">Kompjuterska dijagnostika</h3><p>Namenska originalna Mazda dijagnostika sa Mazdinim on-line softverom.</p><a class="link" href="servis.html#dijagnostika">Detalji</a></li>
       <li><h3 class="h3">Pregled pre kupovine</h3><p>Kupujete polovnu Mazdu? Proveravamo motor, pogon, trap, kočnice i elektriku pre nego što platite.</p><a class="link" href="servis.html#pregled">Detalji</a></li>
       <li><h3 class="h3">Generalni remont motora</h3><p>Kompletan remont sa proverom svih pomoćnih agregata. Na urađen remont dajemo garanciju.</p><a class="link" href="servis.html#remont">Detalji</a></li>
     </ul>
