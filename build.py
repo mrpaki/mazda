@@ -528,8 +528,8 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
     <source src="video/hero.mp4" type="video/mp4">
   </video>
   <button class="hero-sound" type="button" aria-pressed="false" aria-label="Uključi zvuk motora">{ICON_SOUND}<span class="hero-sound-txt">Zvuk</span></button>
-  <div class="hero-tagline"><p>Vaš pametan izbor za sve Vaše Mazde. Servis za vangarantno održavanje Mazda vozila.</p></div>
   <div class="wrap hero-content">
+    <p class="hero-tagline">Vaš pametan izbor za sve Vaše Mazde. Servis za vangarantno održavanje Mazda vozila.</p>
     <h1>Servis za vašu Mazdu.</h1>
     <p class="lead">Neovlašćeni Mazda servis u Beogradu od 2012. Redovno održavanje, dijagnostika i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
     <div class="hero-actions">

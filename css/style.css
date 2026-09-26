@@ -93,9 +93,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero-content{padding-block:7rem 3rem;width:100%}
 .hero h1{font-size:clamp(2.9rem,8.2vw,6.8rem);font-stretch:125%;font-weight:850;line-height:.9;letter-spacing:-.02em;max-width:11ch}
 .hero .lead{margin-top:1.6rem;color:rgba(255,255,255,.86)}
-.hero-tagline{position:absolute;top:0;left:0;right:0;z-index:1;padding:1.1rem clamp(1.2rem,4vw,3.5rem);text-align:center;background:linear-gradient(180deg,rgba(20,27,38,.92) 0%,rgba(20,27,38,.6) 62%,rgba(20,27,38,0) 100%)}
-.hero-tagline p{margin:0 auto;font-style:italic;font-size:clamp(1rem,1.7vw,1.25rem);line-height:1.35;color:#fff;white-space:nowrap}
-@media (max-width:720px){.hero-tagline p{white-space:normal}}
+.hero-tagline{margin:0 0 1.1rem;max-width:34ch;font-style:italic;font-size:clamp(1rem,1.7vw,1.25rem);line-height:1.35;color:rgba(255,255,255,.9)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
 
 /* Obrtomer — jedini "potpisni" element sajta */
