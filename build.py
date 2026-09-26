@@ -522,15 +522,13 @@ news_cards = news_cards_html(NEWS[:3])
 
 index = head("EAST Auto Servis | Mazda servis Beograd",
              "Neovlašćeni Mazda servis na Slanačkom putu u Beogradu od 2012. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
-             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="tagline-band">
-  <p>Vaš pametan izbor za sve Vaše Mazde. Servis za vangarantno održavanje Mazda vozila.</p>
-</section>
-<section class="hero" style="background-image:url('img/hero-poster.webp')">
+             "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('img/hero-poster.webp')">
   <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.webp" aria-hidden="true">
     <source src="video/hero.webm" type="video/webm">
     <source src="video/hero.mp4" type="video/mp4">
   </video>
   <button class="hero-sound" type="button" aria-pressed="false" aria-label="Uključi zvuk motora">{ICON_SOUND}<span class="hero-sound-txt">Zvuk</span></button>
+  <div class="hero-tagline"><p>Vaš pametan izbor za sve Vaše Mazde. Servis za vangarantno održavanje Mazda vozila.</p></div>
   <div class="wrap hero-content">
     <h1>Servis za vašu Mazdu.</h1>
     <p class="lead">Neovlašćeni Mazda servis u Beogradu od 2012. Redovno održavanje, dijagnostika i remont motora, uz pisani izveštaj o stanju vozila posle svake intervencije.</p>
