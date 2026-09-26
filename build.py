@@ -138,7 +138,7 @@ def foot(lightbox=False):
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html"><img class="brand-mark" src="img/east-logo.svg" alt="EAST auto servis" width="128" height="51"><span class="brand-sub">Neovlašćeni Mazda servis Beograd</span></a>
-        <p>Neovlašćeni servis za Mazda vozila od 2000. godine. Redovno održavanje, dijagnostika i remont.</p>
+        <p>Neovlašćeni servis za Mazda vozila od 2012. godine. Redovno održavanje, dijagnostika i remont.</p>
       </div>
       <div>
         <h2>Stranice</h2>
@@ -152,7 +152,7 @@ def foot(lightbox=False):
           <li><a href="tel:{PHONE}">{PHONE_TXT}</a></li>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li><a href="{MAP_LINK}" target="_blank" rel="noopener">Slanački put 123a<br>Višnjička Banja, Beograd</a></li>
-          <li>Pon–pet 08–17 h</li>
+          <li>Pon–pet 09–17 h</li>
           <li>{SOCIAL}</li>
         </ul>
       </div>
@@ -332,9 +332,9 @@ def wall(models):
 jsonld = f"""<script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"AutoRepair","name":"EAST Auto Servis","url":"https://eastservis.rs",
 "telephone":"{PHONE}","email":"{EMAIL}","foundingDate":"2000",
-"description":"Specijalizovani servis za Mazda vozila u Beogradu.",
+"description":"Neovlašćeni Mazda servis u Beogradu od 2012.",
 "address":{{"@type":"PostalAddress","streetAddress":"Slanački put 123a","addressLocality":"Beograd","addressRegion":"Višnjička Banja","addressCountry":"RS"}},
-"openingHoursSpecification":[{{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}}],
+"openingHoursSpecification":[{{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}}],
 "geo":{{"@type":"GeoCoordinates","latitude":44.81298,"longitude":20.54062}},
 "sameAs":["{FB}"]}}
 </script>
@@ -521,7 +521,7 @@ def news_cards_html(items):
 news_cards = news_cards_html(NEWS[:3])
 
 index = head("EAST Auto Servis | Mazda servis Beograd",
-             "Specijalizovani Mazda servis na Slanačkom putu u Beogradu od 2000. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
+             "Neovlašćeni Mazda servis na Slanačkom putu u Beogradu od 2012. Redovan servis, kompjuterska dijagnostika, remont motora i pregled vozila pre kupovine.",
              "index.html", jsonld + '<script src="js/hero-rev.js" defer></script>\n') + f"""<section class="hero" style="background-image:url('img/hero-poster.webp')">
   <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.webp" aria-hidden="true">
     <source src="video/hero.webm" type="video/webm">
@@ -646,7 +646,7 @@ index = head("EAST Auto Servis | Mazda servis Beograd",
       <a class="big-phone" href="tel:{PHONE}">{PHONE_TXT}</a>
       <dl class="contact-lines">
         <div><dt>Mejl</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
-        <div><dt>Radno vreme</dt><dd>Ponedeljak–petak 08–17 h, vikendom ne radimo</dd></div>
+        <div><dt>Radno vreme</dt><dd>Ponedeljak–petak 09–17 h, vikendom ne radimo</dd></div>
         <div><dt>Adresa</dt><dd><a href="{MAP_LINK}" target="_blank" rel="noopener">{ADDRESS}</a></dd></div>
       </dl>
       <a class="btn btn-red" href="kontakt.html">{ICON_CAL}Pošaljite upit za termin</a>
@@ -699,7 +699,7 @@ servis = head("Servis i delovi | EAST Auto Servis",
     <article class="service-detail" id="dijagnostika">
       <h2 class="h2">Kompjuterska dijagnostika</h2>
       <div class="measure">
-        <p>Koristimo dijagnostičku opremu specijalizovanu za Mazda vozila. Dobijate izveštaj sa očitanim parametrima i greškama, uz objašnjenje šta koja greška znači i šta je potrebno uraditi.</p>
+        <p>Koristimo namensku dijagnostičku opremu za Mazda vozila. Dobijate izveštaj sa očitanim parametrima i greškama, uz objašnjenje šta koja greška znači i šta je potrebno uraditi.</p>
         <ul><li>Očitavanje i brisanje grešaka</li><li>Praćenje parametara motora u radu</li><li>Provera elektronike i senzora</li></ul>
       </div>
     </article>
@@ -1689,14 +1689,14 @@ write("galerija.html", galerija)
 
 # ---------------- O NAMA ----------------
 onama = head("O nama | EAST Auto Servis",
-             "EAST Auto Servis je neovlašćeni, samostalni Mazda servis u Beogradu, otvoren 2010. Iza njega je iskustvo od 2000. u ovlašćenom Mazda servisu Profil International. Sertifikovani mehaničari i više od 2000 stalnih klijenata.",
+             "EAST Auto Servis je neovlašćeni, samostalni Mazda servis u Beogradu, otvoren 2012. Iza njega je iskustvo od 2000. u ovlašćenom Mazda servisu Profil International. Sertifikovani mehaničari i više od 2000 stalnih klijenata.",
              "o-nama.html") + page_head("O nama",
-             "Samostalni EAST servis otvorili smo 2010, a Mazde radimo od 2000. — iz ovlašćenog Mazda servisa Profil International u Beogradu.") + f"""
+             "Samostalni EAST servis otvorili smo 2012, a Mazde radimo od 2000. — u ovlašćenom Mazda servisu Profil International u Beogradu.") + f"""
 <section class="section section-ink about-key">
   <div class="wrap">
     <p class="eyebrow">Ključna informacija</p>
     <h2 class="h2">Neovlašćeni Mazda servis</h2>
-    <p class="lead">Ne radimo pod ovlašćenjem Mazde. U Srbiji nezavisne radionice ne mogu da dobiju zvanično ovlašćenje proizvođača, kakvo postoji na primer u Austriji ili Nemačkoj — zato smo neovlašćeni servis. Mi smo nezavisni specijalisti za jednu marku, sa znanjem, opremom i pristupom na nivou ovlašćenog servisa.</p>
+    <p class="lead">Ne radimo pod ovlašćenjem Mazde. U Srbiji nezavisne radionice ne mogu da dobiju zvanično ovlašćenje proizvođača (po njihovim standardima), kakvo postoji na primer u EU — zato smo još uvek neovlašćeni servis. Mi smo usko vezani za jedan brend — Mazda, sa znanjem i višedecenijskim iskustvom, opremom i pristupom na nivou Mazdinih servisa.</p>
   </div>
 </section>
 
@@ -1707,7 +1707,7 @@ onama = head("O nama | EAST Auto Servis",
     </div>
     <div class="measure">
       <h2 class="h2">Ko smo mi</h2>
-      <p class="lead">EAST Auto Servis je specijalizovan za vozila marke Mazda. Naši mehaničari imaju višegodišnje iskustvo i međunarodne Mazda sertifikate.</p>
+      <p class="lead">EAST Auto Servis je servis za vozila marke Mazda. Naši mehaničari imaju višedecenijsko iskustvo u servisiranju Mazda vozila.</p>
       <p class="muted">Stalno ulaganje u opremu i obuku omogućilo nam je da danas imamo više od 2000 klijenata koji nam se vraćaju. Kod nas možete kompletno održavati svoje vozilo ili ceo vozni park: od automehanike i dijagnostike do popravki.</p>
     </div>
   </div>
@@ -1715,16 +1715,16 @@ onama = head("O nama | EAST Auto Servis",
 
 <section class="section">
   <div class="wrap about-prose">
-    <h2 class="h2">Specijalizovani za Mazda vozila</h2>
-    <p>EAST Auto Servis je neovlašćeni Mazda servis sa 26 godina iskustva u radu na vozilima ove marke. Kao samostalan servis radimo od 2010. godine. Nismo ovlašćeni servis, već nezavisna radionica koja je svoje znanje, opremu i iskustvo usmerila na jednu marku. U Srbiji nezavisne radionice ne mogu da dobiju zvanično ovlašćenje proizvođača, kakvo postoji na primer u Austriji ili Nemačkoj — zato smo neovlašćeni servis, ali sa znanjem, opremom i pristupom na nivou ovlašćenog. Poznajemo Mazda vozila do detalja i vlasnicima nudimo stručan servis, jasnu komunikaciju i pošten odnos, bez nepotrebnih troškova.</p>
-    <p>Verujemo da je specijalizacija najbolji put do kvaliteta. Servis koji radi sve marke mora da poznaje stotine različitih sistema. Mi se bavimo jednim proizvođačem i zato tačno znamo gde da pogledamo, šta da proverimo i kako da problem rešimo iz prvog pokušaja.</p>
+    <h2 class="h2">Servis za Mazda vozila</h2>
+    <p>EAST Auto Servis je neovlašćeni Mazda servis sa 26 godina iskustva u radu na vozilima ove marke. Kao samostalan servis radimo od 2012. godine. Nismo ovlašćeni servis, već neovlašćena radionica koja je svoje znanje, opremu i iskustvo usmerila na jednu marku. U Srbiji nezavisne radionice ne mogu da dobiju zvanično ovlašćenje proizvođača (bez poštovanja standarda proizvođača), kakvo postoji u zemljama EU — zato smo neovlašćeni servis, ali sa znanjem, opremom i pristupom na profesionalnom nivou. Poznajemo Mazda vozila do detalja i vlasnicima nudimo stručan servis, jasnu komunikaciju i pošten odnos, bez nepotrebnih troškova.</p>
+    <p>Verujemo da je rad na jednom brendu i stalno usavršavanje najbolji put do kvaliteta. Mi se bavimo jednim proizvođačem i zato tačno znamo gde da pogledamo, šta da proverimo i kako da problem rešimo iz prvog pokušaja.</p>
 
-    <h2 class="h2">Iskustvo i međunarodni Mazda sertifikati</h2>
+    <h2 class="h2">Iskustvo iz ovlašćenog servisa i Mazdinih obuka</h2>
     <p>Naši mehaničari imaju 26 godina iskustva u radu na Mazda vozilima i poseduju međunarodne Mazda sertifikate. To znači da su prošli obuku po standardima proizvođača i da tehnička rešenja ove marke poznaju iz prve ruke, a ne iz opštih priručnika.</p>
     <p>Mazda razvija sopstvene tehnologije koje traže posebno znanje: SKYACTIV benzinske i dizel motore, specifične sisteme ubrizgavanja i izduvnih gasova, sisteme za uštedu goriva i savremenu elektroniku. Iskustvo sa desetinama istih modela pomaže nam da prepoznamo tipične simptome, znamo slabe tačke pojedinih generacija i predvidimo šta će vozilu uskoro trebati. Tako vozilo brže napušta radionicu, a vi izbegavate kvarove koji se mogu sprečiti na vreme.</p>
 
     <h2 class="h2">Ulaganje u opremu i obuku</h2>
-    <p>Automobili se menjaju iz godine u godinu, pa se menjamo i mi. Stalno ulažemo u opremu i obuku jer savremeno vozilo ne može pravilno da se servisira bez odgovarajućih alata, softvera i znanja. Redovno nabavljamo novu dijagnostičku i radioničku opremu i pratimo tehničke novosti. Naši mehaničari se kontinuirano usavršavaju kako bi bili spremni i za najnovije modele.</p>
+    <p>Automobili se menjaju iz godine u godinu, pa se menjamo i mi. Stalno ulažemo u opremu i obuku jer savremeno vozilo ne može pravilno da se servisira bez odgovarajućih alata, softvera i znanja. Redovno nabavljamo novu dijagnostičku i radioničku opremu i pratimo tehničke novosti. Naši mehaničari se kontinuirano usavršavaju u ECAP obučnom centru kako bi bili spremni i za najnovije modele.</p>
     <p>Ovo ulaganje nije samo u opremu. To je ulaganje u vaše poverenje, jer precizna dijagnostika i pravi alat znače manje nagađanja, manje nepotrebno zamenjenih delova i niže troškove za vas.</p>
 
     <h2 class="h2">Više od 2000 klijenata koji nam se vraćaju</h2>
@@ -1755,12 +1755,12 @@ onama = head("O nama | EAST Auto Servis",
     <p>Osim vozila fizičkih lica, održavamo i vozne parkove firmi koje koriste Mazda vozila. Za kompaniju je svaki dan kada vozilo stoji u radionici izgubljen dan. Zato nudimo organizovano održavanje koje smanjuje zastoje i olakšava planiranje.</p>
     <p>Za vozne parkove pratimo servisne intervale svakog vozila, planiramo termine unapred i sve obavljene radove beležimo u elektronskoj servisnoj knjižici. Tako imate jasan pregled stanja celog voznog parka i troškova održavanja. Jedan partner za sva vozila znači jednostavniju komunikaciju, dosledan kvalitet i manje administracije.</p>
 
-    <h2 class="h2">Zašto nezavisni specijalizovani servis</h2>
+    <h2 class="h2">Zašto nezavisni neovlašćeni servis?</h2>
     <p>Mnogi vlasnici Mazda vozila, naročito kada garantni rok istekne, traže servis koji nudi stručnost na nivou proizvođača, ali uz lični pristup i razumnije troškove. Upravo tu je EAST Auto Servis.</p>
     <p>Kod nas dobijate:</p>
     <ul>
-      <li><strong>specijalizovano znanje</strong> o jednoj marki i 26 godina iskustva sa Mazda vozilima</li>
-      <li><strong>sertifikovane mehaničare</strong> sa međunarodnim Mazda sertifikatima</li>
+      <li><strong>specijalizovano znanje</strong> o jednoj marki i 26 godina iskustva i znanja sa Mazda vozilima</li>
+      <li><strong>obučene mehaničare</strong> za rad na Mazda vozilima</li>
       <li><strong>savremenu opremu</strong> za dijagnostiku i popravke, koju stalno unapređujemo</li>
       <li><strong>transparentnost</strong>, jer uvek znate šta se radi na vašem vozilu i zašto</li>
       <li><strong>e-knjižicu</strong>, u kojoj je kompletna servisna istorija vašeg vozila uvek dostupna</li>
@@ -1777,9 +1777,8 @@ onama = head("O nama | EAST Auto Servis",
   <div class="wrap">
     <div class="section-head"><h2 class="h2">Kako smo rasli</h2></div>
     <ol class="timeline">
-      <li><span class="year">2000</span><div><h3 class="h3">Iskustvo u ovlašćenom servisu</h3><p>Rad u ovlašćenom Mazda servisu Profil International u Beogradu.</p></div></li>
-      <li><span class="year">2010</span><div><h3 class="h3">Otvaranje samostalnog servisa</h3><p>EAST postaje nezavisna radionica specijalizovana isključivo za Mazda vozila.</p></div></li>
-      <li><span class="year">2012</span><div><h3 class="h3">Proširenje radionice</h3><p>Servis dobija dva servisna mesta, opremljena najsavremenijom opremom.</p></div></li>
+      <li><span class="year">2000–2013</span><div><h3 class="h3">Iskustvo u ovlašćenom servisu</h3><p>Rad u ovlašćenom Mazda servisu Profil International u Beogradu.</p></div></li>
+      <li><span class="year">2012</span><div><h3 class="h3">Otvaranje samostalnog servisa</h3><p>EAST postaje neovlašćena radionica za servisiranje isključivo Mazda vozila.</p></div></li>
       <li><span class="year">Danas</span><div><h3 class="h3">Više od 2000 stalnih klijenata</h3><p>Tim od četiri iskusna mehaničara i savremena dijagnostika.</p></div></li>
     </ol>
   </div>
@@ -1800,7 +1799,7 @@ write("o-nama.html", onama)
 
 # ---------------- KONTAKT ----------------
 kontakt = head("Kontakt i zakazivanje | EAST Auto Servis",
-               "Zakažite servis za vašu Mazdu. Slanački put 123a, Višnjička Banja, Beograd. Telefon 064 144 63 43, radimo radnim danima 08–17 h.",
+               "Zakažite servis za vašu Mazdu. Slanački put 123a, Višnjička Banja, Beograd. Telefon 064 144 63 43, radimo radnim danima 09–17 h.",
                "kontakt.html") + page_head("Kontakt i zakazivanje",
                "Najbrže je da nas pozovete. Ako vam je lakše, pošaljite upit i javićemo vam se sa slobodnim terminom.") + f"""
 <section class="section">
@@ -1828,7 +1827,7 @@ kontakt = head("Kontakt i zakazivanje | EAST Auto Servis",
         <div class="info-block"><h2>Telefon</h2><a class="phone" href="tel:{PHONE}">{PHONE_TXT}</a></div>
         <div class="info-block"><h2>Mejl</h2><a href="mailto:{EMAIL}">{EMAIL}</a></div>
         <div class="info-block"><h2>Radno vreme</h2>
-          <dl class="hours"><dt>Ponedeljak–petak</dt><dd>08–17 h</dd><dt>Subota i nedelja</dt><dd>Ne radimo</dd></dl></div>
+          <dl class="hours"><dt>Ponedeljak–petak</dt><dd>09–17 h</dd><dt>Subota i nedelja</dt><dd>Ne radimo</dd></dl></div>
         <div class="info-block"><h2>Adresa</h2><a href="{MAP_LINK}" target="_blank" rel="noopener">Slanački put 123a<br>Višnjička Banja, Beograd</a></div>
         <div class="info-block"><h2>Društvene mreže</h2>{SOCIAL}</div>
       </aside>
