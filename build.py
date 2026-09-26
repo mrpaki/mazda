@@ -1832,6 +1832,7 @@ kontakt = head("Kontakt i zakazivanje | EAST Auto Servis",
 
       <aside>
         <div class="info-block"><h2>Telefon</h2><a class="phone" href="tel:{PHONE}">{PHONE_TXT}</a></div>
+        <div class="info-block"><h2>WhatsApp i Viber</h2>{CONTACT_APPS}</div>
         <div class="info-block"><h2>Mejl</h2><a href="mailto:{EMAIL}">{EMAIL}</a></div>
         <div class="info-block"><h2>Radno vreme</h2>
           <dl class="hours"><dt>Ponedeljak–petak</dt><dd>09–17 h</dd><dt>Subota i nedelja</dt><dd>Ne radimo</dd></dl></div>
