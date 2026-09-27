@@ -322,6 +322,7 @@ MODEL_PAGES = {
     "CX-30": "cx-30.html",
     "CX-5": "cx-5.html",
     "CX-60": "cx-60.html",
+    "MX-30": "mx-30.html",
     "MX-5": "mx-5.html",
     "Mazda 5": "mazda-5.html",
     "Mazda 3 MPS": "mazda-3-mps.html",
@@ -1143,6 +1144,41 @@ MODELS = {
              "Kontrolišemo alternator i akumulator, uz proveru multimedije kod novijih generacija."),
         ],
     },
+    "mx-30.html": {
+        "name": "Mazda MX-30",
+        "title": "Servis za Mazdu MX-30 | EAST Auto Servis",
+        "desc": "Servis, dijagnostika i održavanje Mazde MX-30 (DR) u Beogradu — potpuno električna e-Skyactiv EV verzija i R-EV sa rotacionim range-extenderom. Visokonaponska baterija, punjenje i pregled pre kupovine.",
+        "lead": "Servisiramo Mazdu MX-30 — prvi Mazdin serijski električni model, u potpuno električnoj (EV) i rotary range-extender (R-EV) izvedbi.",
+        "photo": "mx30-dr.webp",
+        "photo_dir": "img/modeli/",
+        "photo_alt": "Mazda MX-30 (DR) — prednji izgled",
+        "intro": ('<p class="lead">Mazda MX-30 (DR) je subkompaktni krosover i prvo serijsko električno vozilo marke Mazda. '
+                  'Prepoznatljiv je po Freestyle vratima — zadnjim vratima sa suprotnim šarkama, u stilu RX-8.</p>'
+                  '<p class="muted">Dolazi kao potpuno električni e-Skyactiv (EV) i, od 2023, kao R-EV sa rotacionim range-extenderom koji dopunjava bateriju. '
+                  'Pratimo razvoj električnih Mazdi da bismo i ovakva vozila mogli stručno da održavamo — uz pisani izveštaj o stanju posle svake intervencije.</p>'),
+        "gens": [
+            ("Generacija DR", "2020–danas", "Subkompaktni krosover sa Freestyle vratima (zadnja vrata sa suprotnim šarkama). "
+             "MacPherson vešanje napred, torziona greda pozadi.",
+             "mx30-dr.webp", [
+                ("e-Skyactiv (EV)", "Elektro", "baterija 35,5 kWh", "105 kW (143 KS)"),
+                ("e-Skyactiv R-EV", "Rotary PHEV", "830 cm³ Wankel", "125 kW (170 KS)"),
+             ]),
+        ],
+        "engines_note": ("EU/RS ponuda. MX-30 se prodaje kao potpuno električni (e-Skyactiv EV) i kao R-EV sa rotacionim "
+                         "range-extenderom — 830 cm³ jednorotorni Wankel koji radi kao generator (55 kW / 75 KS) i dopunjava "
+                         "bateriju. Blagi hibrid 2.0 e-Skyactiv-G (MHEV) nudi se samo na pojedinim tržištima van Evrope."),
+        "photo_credit": "Fotografija: Wikimedia Commons — Tokumeigakarinoaoshima (CC BY-SA 4.0).",
+        "service": [
+            ("Visokonaponski sistem i baterija",
+             "MX-30 ima visokonaponsku litijum-jonsku bateriju od 35,5 kWh. Dijagnostiku i radove na visokom naponu izvodimo uz propisane mere bezbednosti i odgovarajuću opremu."),
+            ("Punjenje (AC/DC)",
+             "Proveravamo port i elektroniku punjenja — AC do 6,6 kW i DC brzo punjenje do 40 kW — kao i stanje ćelija i realan domet baterije."),
+            ("Rotary range-extender (R-EV)",
+             "R-EV koristi 830 cm³ jednorotorni Wankel kao generator struje. Pratimo rad rotacionog motora, ulje i sistem punjenja koji dopunjava bateriju."),
+            ("Trap, kočnice i 12V elektrika",
+             "Regenerativno kočenje štedi pločice, ali proveravamo diskove, trap i ležajeve, kao i 12V akumulator i instalaciju koja napaja standardne sisteme."),
+        ],
+    },
     "mazda-5.html": {
         "name": "Mazda 5",
         "title": "Servis za Mazdu 5 (Premacy) | EAST Auto Servis",
@@ -1338,7 +1374,9 @@ MODELS = {
 def gen_engine_table(engines):
     rows = []
     for motor, fuel, disp, power in engines:
-        fuel_cls = "is-diesel" if "Dizel" in fuel else "is-petrol"
+        fuel_cls = ("is-diesel" if "Dizel" in fuel
+                    else "is-petrol" if "Benzin" in fuel
+                    else "is-electric")
         rows.append(
             f'            <tr><td class="etbl-motor">{motor}</td>'
             f'<td><span class="etbl-fuel {fuel_cls}">{fuel}</span></td>'

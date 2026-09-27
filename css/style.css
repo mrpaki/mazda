@@ -171,6 +171,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .etbl-fuel{display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.76rem;font-weight:700;line-height:1;white-space:nowrap}
 .etbl-fuel.is-petrol{background:rgba(163,22,42,.1);color:var(--red-dark)}
 .etbl-fuel.is-diesel{background:rgba(24,32,44,.1);color:var(--ink)}
+.etbl-fuel.is-electric{background:rgba(15,118,110,.12);color:#0f766e}
 @media (max-width:600px){.etbl th,.etbl td{padding:.6rem .7rem}}
 
 /* Koraci servisa — stvarna sekvenca, zato numerisano */
