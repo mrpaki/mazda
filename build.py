@@ -185,43 +185,49 @@ def foot(lightbox=False):
 
 
 # ---------------- Podaci ----------------
+# Izvorne .jpeg fotografije su u insta-foto/borko-foto/; build_gallery_photos()
+# ih konvertuje u webp (puna + mala/) sa istim imenom. GALLERY je jedini spisak.
 GALLERY = [
-    ("Servis_mazde.jpg", "radionica", "Mazda CX-7, Mazda 5 i Mazda 6 u radionici"),
-    ("Servis_mazda_dijagnostika_01.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_02.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_03.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_04.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_05.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_06.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_07.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_08.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_09.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mazda_dijagnostika_10.jpg", "radionica", "Dijagnostika u radionici"),
-    ("Servis_mx5.jpg", "mx5", "Mazda MX-5 na servisu"),
-    ("Servis_mazda_2_01.webp", "mazda2", "Mazda 2"),
-    ("Servis_mazda_2_02_.jpg", "mazda2", "Mazda 2"),
-    ("Servis_mazda_2_03.jpg", "mazda2", "Mazda 2"),
-    ("Servis_mazda_2_04.jpg", "mazda2", "Mazda 2"),
-    ("Servis_mazda_2_05.jpg", "mazda2", "Mazda 2"),
-    ("Servis_mazda_3_01.jpg", "mazda3", "Mazda 3"),
-    ("Servis_mazda_3_02.jpg", "mazda3", "Mazda 3"),
-    ("Servis_mazda_6.jpg", "mazda6", "Mazda 6"),
-] + [(f"Servis_mazda_6_{i:02d}.jpg", "mazda6", "Mazda 6") for i in range(1, 11)] + [
-    ("Servis_cx5_i_cx7.jpg", "cx", "Mazda CX-5 i CX-7"),
-    ("Servis_cx7.jpg", "cx", "Mazda CX-7"),
-    ("gmap-servis-01.webp", "radionica", "Mazda u radionici"),
-    ("gmap-servis-02.webp", "cx", "Mazda CX-5 — pregled motora"),
-    ("gmap-servis-03.webp", "radionica", "Motorni prostor Mazde"),
-    ("gmap-servis-04.webp", "radionica", "Zamena motornog ulja"),
-    ("gmap-servis-05.webp", "radionica", "Turbina i delovi motora"),
-    ("gmap-servis-06.webp", "radionica", "Servis motora"),
+    ("mazda3-dve-generacije-kolaz.webp", "mazda3", "Mazda 3 — dve generacije"),
+    ("mazda3-dve-generacije-napred.webp", "mazda3", "Mazda 3 — dve generacije, prednji deo"),
+    ("mazda3-dve-generacije-pozadi.webp", "mazda3", "Mazda 3 — dve generacije, zadnji deo"),
+    ("mazda3-redovan-servis.webp", "mazda3", "Mazda 3 — redovan servis"),
+    ("mazda3-mali-servis.webp", "mazda3", "Mazda 3 — mali servis"),
+    ("mazda3-zamena-diskova.webp", "mazda3", "Mazda 3 — zamena kočionih diskova"),
+    ("mazda3-zamena.webp", "mazda3", "Mazda 3 — zamena delova"),
+    ("mazda-3-izduvna-grana.webp", "mazda3", "Mazda 3 — izduvna grana"),
+    ("mazda6-remont-motora.webp", "mazda6", "Mazda 6 — remont motora"),
+    ("mazda6-remont-klipova.webp", "mazda6", "Mazda 6 — remont klipova"),
+    ("mazda6-ciscenje-dizni.webp", "mazda6", "Mazda 6 — čišćenje dizni"),
+    ("mazda6-karter.webp", "mazda6", "Mazda 6 — karter motora"),
+    ("mazda6-izduvna-grana.webp", "mazda6", "Mazda 6 — izduvna grana"),
+    ("mazda6-dijagnostika.webp", "mazda6", "Mazda 6 — dijagnostika"),
+    ("mazda6-dijagnostika-01.webp", "mazda6", "Mazda 6 — dijagnostika"),
+    ("mazda-cx5-remont-motora.webp", "cx", "Mazda CX-5 — remont motora"),
+    ("mazda-cx5-redovan-servis-i-odrzavanje.webp", "cx", "Mazda CX-5 — redovan servis i održavanje"),
+    ("mazda-cx5-mali-servis.webp", "cx", "Mazda CX-5 — mali servis"),
+    ("mazda-cx5-filter.webp", "cx", "Mazda CX-5 — zamena filtera"),
+    ("mazda-cx5-izduvna-grana-01.webp", "cx", "Mazda CX-5 — izduvna grana"),
+    ("mazda-cx5-zamena-trapa.webp", "cx", "Mazda CX-5 — zamena trapa"),
+    ("mazda-cx3.webp", "cx", "Mazda CX-3"),
+    ("mazda-mx5.webp", "mx5", "Mazda MX-5"),
+    ("mazda-mx5-redovan-servis.webp", "mx5", "Mazda MX-5 — redovan servis"),
+    ("mazda-mx5-remont-motora.webp", "mx5", "Mazda MX-5 — remont motora"),
+    ("mazda-mx5-trap.webp", "mx5", "Mazda MX-5 — trap"),
+    ("ecap-obuka.webp", "radionica", "ECAP obuka — stručno usavršavanje"),
+    ("mazda-neki-deo.webp", "radionica", "Detalj sa servisa"),
 ]
-FILTERS = [("sve", "Sve"), ("radionica", "Radionica i dijagnostika"), ("mazda2", "Mazda 2"),
+FILTERS = [("sve", "Sve"), ("radionica", "Radionica i dijagnostika"),
            ("mazda3", "Mazda 3"), ("mazda6", "Mazda 6"), ("cx", "CX modeli"), ("mx5", "MX-5")]
 
 # Video snimci u galeriji: (fajl bez ekstenzije u video/, poster u img/video/, opis)
 VIDEOS = [
     ("mazda3-eneos", "mazda3-eneos.webp", "Mazda 3 SkyActiv 2.0 — redovan servis i Eneos 0w20 PRIME"),
+    ("mazda-cx5-veliki-servis", "mazda-cx5-veliki-servis.webp", "Mazda CX-5 — veliki servis"),
+    ("mazda3-mali-servis", "mazda3-mali-servis.webp", "Mazda 3 — mali servis"),
+    ("mazda-mx5-redovan-servis", "mazda-mx5-redovan-servis.webp", "Mazda MX-5 — redovan servis"),
+    ("mazda-cx5-usisna-grana-pre", "mazda-cx5-usisna-grana-pre.webp", "Mazda CX-5 — usisna grana pre čišćenja"),
+    ("mazda-cx5-usisna-grana-posle", "mazda-cx5-usisna-grana-posle.webp", "Mazda CX-5 — usisna grana posle čišćenja"),
 ]
 
 # (brend, sajt, logo u img/delovi/)
@@ -1631,8 +1637,45 @@ def build_certs():
     return per_model, all_list
 
 
+# ---------------- GALERIJA: izvorne .jpeg -> webp (puna + mala/) ----------------
+GALLERY_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "insta-foto", "borko-foto")
+GALLERY_DIR = "img/galerija"
+GALLERY_THUMB = os.path.join(GALLERY_DIR, "mala")
+
+
+def build_gallery_photos():
+    if not _HAS_PIL:
+        return
+    os.makedirs(GALLERY_THUMB, exist_ok=True)
+    n = 0
+    for f, _c, _cap in GALLERY:
+        base = f.rsplit(".", 1)[0]
+        src = None
+        for ext in (".jpeg", ".jpg", ".png", ".webp"):
+            p = os.path.join(GALLERY_SRC, base + ext)
+            if os.path.exists(p):
+                src = p
+                break
+        if not src:
+            continue
+        out_full = os.path.join(GALLERY_DIR, f)
+        out_thumb = os.path.join(GALLERY_THUMB, f)
+        if os.path.exists(out_full) and os.path.getmtime(src) <= os.path.getmtime(out_full):
+            n += 1
+            continue
+        im = _CImage.open(src).convert("RGB")
+        w, h = im.size
+        fw = min(1400, w)
+        im.resize((fw, round(h * fw / w)), _CImage.LANCZOS).save(out_full, "WEBP", quality=82, method=6)
+        tw = min(520, w)
+        im.resize((tw, round(h * tw / w)), _CImage.LANCZOS).save(out_thumb, "WEBP", quality=80, method=6)
+        n += 1
+    print(f"Galerija: {n} fotografija u {GALLERY_DIR}/")
+
+
 AUTO_CERTS, ALL_CERTS = build_certs()
 build_team_photos()
+build_gallery_photos()
 build_og_image()
 
 
