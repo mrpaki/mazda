@@ -352,8 +352,8 @@ jsonld = f"""<script type="application/ld+json">
 </script>
 """
 
-teaser_imgs = ["gmap-servis-02.webp", "gmap-servis-01.webp", "gmap-servis-03.webp",
-               "gmap-servis-05.webp", "gmap-servis-06.webp"]
+teaser_imgs = ["mazda6-remont-motora.webp", "mazda-cx5-remont-motora.webp", "mazda3-redovan-servis.webp",
+               "mazda6-ciscenje-dizni.webp", "mazda-mx5.webp"]
 teaser = "\n".join(
     f'      <a href="galerija.html"><img src="img/galerija/{"" if i == 0 else "mala/"}{f}" alt="Fotografija iz servisa" loading="lazy"></a>'
     for i, f in enumerate(teaser_imgs))
