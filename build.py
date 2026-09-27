@@ -1152,6 +1152,7 @@ MODELS = {
         "photo": "mx30-dr.webp",
         "photo_dir": "img/modeli/",
         "photo_alt": "Mazda MX-30 (DR) — prednji izgled",
+        "blueprint": "mx30-blueprint.webp",
         "intro": ('<p class="lead">Mazda MX-30 (DR) je subkompaktni krosover i prvo serijsko električno vozilo marke Mazda. '
                   'Prepoznatljiv je po Freestyle vratima — zadnjim vratima sa suprotnim šarkama, u stilu RX-8.</p>'
                   '<p class="muted">Dolazi kao potpuno električni e-Skyactiv (EV) i, od 2023, kao R-EV sa rotacionim range-extenderom koji dopunjava bateriju. '
