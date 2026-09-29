@@ -403,7 +403,10 @@ NEWS = [
             "Nova Mazda CX-5 AWD HEV donosi mnogo dobrog — sjajan dizajn, meku vožnju i odlične vozne karakteristike. Ali M Hybrid pogon i mala baterija mogli su bolje. Ako želite elegantan i zabavan krosover za svaki dan, CX-5 je pravi izbor; onima kojima je štedljivost na prvom mestu, Mazda ipak zadaje domaći zadatak.",
             "Napomena za naše tržište: opisana hibridna (HEV) verzija za sada nije u zvaničnoj ponudi u Srbiji. Kod nas je trenutno dostupna Mazda CX-5 AWD u Centre-Line paketu, sa 2.5L e-SKYACTIV G 141 benzinskim motorom (141 KS / 104 kW) i 6-stepenim automatskim menjačem, po ceni od oko 40.290 €.",
         ],
-        "source": ("autoindustriya.com, Marcus De Guzman", "https://www.autoindustriya.com/authors/marcus-de-guzman"),
+        "source": [
+            ("autoindustriya.com", "https://www.autoindustriya.com/features/2026-mazda-cx-5-awd-hev-is-this-japan-made-cuv-hybrid-enough.html"),
+            ("Marcus De Guzman", "https://www.autoindustriya.com/authors/marcus-de-guzman"),
+        ],
     },
     {
         "slug": "vest-cx5-iihs.html",
@@ -534,7 +537,10 @@ def _news_row(f, a, paras, rev):
 def news_page(n):
     photos = n.get("photos") or [(n["img"], n["alt"])]
     body = n["body"]
-    src_name, src_url = n["source"]
+    src = n["source"]
+    src_links = src if src and isinstance(src[0], (list, tuple)) else [src]
+    src_html = ", ".join(
+        f'<a href="{u}" target="_blank" rel="noopener">{nm}</a>' for nm, u in src_links)
     endgallery = n.get("endgallery")
     final_html = ""
     if endgallery:
@@ -563,7 +569,7 @@ def news_page(n):
 <section class="section">
   <div class="wrap news-article">
 {blocks}{final_html}
-      <p class="news-source">Izvor: <a href="{src_url}" target="_blank" rel="noopener">{src_name}</a></p>
+      <p class="news-source">Izvor: {src_html}</p>
       <p><a class="link" href="index.html#mazda-svet">&larr; Nazad na naslovnu</a></p>
   </div>
 </section>
