@@ -341,8 +341,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .news-text p:first-child{margin-top:0}
 .news-row--rev .news-figure{order:2}
 .news-final{display:block;width:100%;max-width:920px;margin:3rem auto 0;border-radius:var(--radius)}
+.news-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);margin-top:3rem}
+.news-gallery .news-figure img{height:100%;object-fit:cover}
 .news-source{font-size:.9rem;color:var(--steel);margin-top:1.75rem}
-@media (max-width:860px){.news-row{grid-template-columns:1fr}.news-row--rev .news-figure{order:0}}
+@media (max-width:860px){.news-row{grid-template-columns:1fr}.news-row--rev .news-figure{order:0}.news-gallery{grid-template-columns:1fr}}
 .about-top{align-items:center}
 .about-srce{display:block;width:100%;border-radius:20px}
 .about-prose h2{margin-top:2.75rem;font-size:clamp(1.3rem,2.3vw,1.7rem);display:flex;align-items:center;gap:.6em}

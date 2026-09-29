@@ -362,6 +362,49 @@ teaser = "\n".join(
 # (slug, naslov, datum, sažetak, slika u img/vesti/, pasusi, izvor)
 NEWS = [
     {
+        "slug": "vest-cx5-hev-test.html",
+        "title": "Nova Mazda CX-5 AWD HEV — da li je dovoljno hibrid?",
+        "date_txt": "Septembar 2026.",
+        "date": "2026-09-29",
+        "img": "vest-cx5hev-main.webp",
+        "alt": "Nova Mazda CX-5 AWD HEV na testu",
+        "photos": [
+            ("vest-cx5hev-main.webp", "Nova Mazda CX-5 AWD HEV na testu"),
+            ("vest-cx5hev-1.webp", "Mazda CX-5 AWD HEV — prednji deo u vožnji"),
+            ("vest-cx5hev-2.webp", "Mazda CX-5 — LED zadnja svetla i oznaka CX-5 AWD"),
+            ("vest-cx5hev-int1.webp", "Mazda CX-5 — kokpit sa digitalnim instrumentima i velikim ekranom"),
+            ("vest-cx5hev-int2.webp", "Mazda CX-5 — ventilirana prednja sedišta u koži"),
+            ("vest-cx5hev-int4.webp", "Mazda CX-5 — volan i multimedijalni ekran (Apple CarPlay)"),
+            ("vest-cx5hev-int3.webp", "Mazda CX-5 — zadnja klupa"),
+        ],
+        "endgallery": [
+            ("vest-cx5hev-front.webp", "Mazda CX-5 AWD HEV — prednji deo u vožnji"),
+            ("vest-cx5hev-4.webp", "Mazda CX-5 AWD HEV na otvorenom putu"),
+            ("vest-cx5hev-engine.webp", "Mazda CX-5 — 2.5-litarski SkyActiv motor"),
+        ],
+        "excerpt": "Treća generacija CX-5 stigla je kao hibrid (HEV). Oduševljava dizajnom, upravljivošću i udobnošću, ali blagi 24V sistem ostavlja želju za više snage i štedljivosti.",
+        "body": [
+            "Oznaka „Made in Japan“ i danas nosi veliku težinu. Bilo da je reč o tehnološkom gadžetu, ukusnoj grickalici ili novom automobilu, gotovo svaki proizvod iz Japana kupcima deluje privlačnije. Za marke poput Mazde to je važan adut: iako BT-50 i Mazda2 dolaze iz Tajlanda, gotovo svi ostali modeli — od Mazde3 do CX-8, CX-30, CX-60, CX-90 i MX-5 — proizvode se u Japanu.",
+            "Iz Japana stiže i potpuno nova Mazda CX-5, sada u trećoj generaciji. Predstavljena ranije ove godine, CX-5 po prvi put nosi oznaku hibridnog vozila (HEV), zahvaljujući elektrifikovanom SkyActiv pogonu. Uz to dobija redizajniran enterijer, dopadljiviji eksterijer i osveženu opremu. Ali u vremenu kada tržište preplavljuju jeftiniji kineski krosoveri — da li japanski SUV poput CX-5 još može da privuče kupce, i da li je Mazda dobro pogodila hibrid?",
+            "Da je ovo izbor lepote, nova CX-5 bi ga osvojila. Iako oko dizajna nismo bili sigurni dok smo ga gledali samo na fotografijama, utisak se potpuno promenio uživo. Mazda je mogla da preteruje i radikalno promeni izgled, ali je pokazala umerenost i zadržala prepoznatljiv, elegantan izraz. Posebno privlače pažnju vitka LED zadnja svetla u obliku slova L — skinite oznake i neko bi zadnji deo lako pomešao sa BMW-om.",
+            "I prednji deo je pogođen: nove LED farove i dnevna svetla daju CX-5 smeliji izgled, uz već prepoznatljivu Mazda masku koja odlično stoji ovom modelu. Pošto je reč o verziji Premium Plus, tu su i 19-inčni alu-točkovi u crnom sjaju sa gumama dimenzije 225/55.",
+            "Mazda nije predizajnirala CX-5 — i to je za pohvalu. Kompanija zna svoje snage kada je oblikovanje u pitanju i oslonila se na najbolje iz svog „Kodo“ dizajnerskog jezika, ostajući samouverena bez velikih rezova koji bi mogli da otuđe vernu publiku.",
+            "Nećemo okolišati oko onoga ispod haube: poželeli smo da CX-5 HEV ima više „vatre“. Pouzdani 2.5-litarski SkyActiv redni četvorocilindraš lepo je uparen sa osveženim šestostepenim automatikom sa paletama, a tu je i Sport režim koji koristi 181 KS i 242 Nm elektrifikovanog motora. Problem je što CX-5 koristi tek 24V sistem sa malim elektromotorom i baterijom (M Hybrid), pa može da uskladišti samo malu količinu energije i dodatne snage.",
+            "Dok najbliži rivali već nude snažne a štedljive hibridne sisteme (Kia Sportage Turbo Hybrid, Nissan X-Trail e-Power, Toyota RAV4 HEV), pa i plug-in hibride sa električnim dometom (BYD Sealion 6, Chery Tiggo rEV, Geely EX5 EM-i), CX-5 AWD HEV po elektrifikaciji, snazi i potrošnji zaostaje.",
+            "Mazda, međutim, veruje da štedljivost nije jedino merilo dobrog krosovera i računa na dokazane vozne karakteristike, glatku isporuku snage i zabavu za volanom. Iako ima „samo“ 242 Nm, CX-5 HEV lepo vuče kada uhvati zalet, naročito kada dostigne vrhunac obrtnog momenta na 4000 o/min. Prebacite menjač u manuelni režim i uz palete zaista možete da se poigrate atmosferskim SkyActiv motorom.",
+            "Neko će zameriti što CX-5 i dalje ima šestostepeni automatik dok drugi koriste menjače sa osam ili deset stepeni. Ali baš tu vidimo prednost: šestostepeni ređe „lovi“ stepene prenosa, a u punom manuelnom režimu lako pratite u kojoj ste brzini. Ono što motoru nedostaje u snazi, menjač nadoknađuje odzivom — na trenutke podseti na MX-5.",
+            "Najveće iznenađenje bilo je ponašanje na putu. Nismo očekivali mnogo agilnosti od krosovera, ali su nas serpentine podsetile na jednu od ključnih Mazdinih filozofija — Jinba Ittai, jedinstvo vozača i vozila.",
+            "Iako nije MX-5, upravljivost nove CX-5 je fino podešena. Čak i sa tri putnika i prtljagom, iznenadilo nas je koliko je zabavno ubaciti je u krivine pri većim brzinama. AWD pogon je obezbedio da gume (Toyo Proxes Sport) daju maksimalno prijanjanje bez cike. Sve to omogućava i komunikativan volan: iako je elektro-servo (EPS), Mazda je uspela da vozaču vrati osećaj — uvek znate šta prednji točkovi rade.",
+            "Uz tako dobru upravljivost očekivali biste tvrdu vožnju — ali je zapravo obrnuto. Amortizeri i vešanje odlično upijaju neravnine i izoluju kabinu od spoljašnjih smetnji. Za kupce koji žele zabavan a praktičan SUV, nova CX-5 hoda tanku liniju između udobnog porodičnog automobila i užitka u vožnji.",
+            "U kabini iznenađuje izostanak rotacionog točkića za multimediju — Mazda se prilagodila i uvela veliki ekran osetljiv na dodir, iako tradicionalno voli fizičke komande. Ekran je ergonomičan, sa lako pamtljivim prečicama i menijima; treba malo navikavanja, ali brzo „uđe u ruku“.",
+            "Kao vozilo iz Japana, CX-5 ne razočarava kvalitetom izrade. Koža na volanu je prijatna na dodir, ventilirana prednja sedišta udobna, a svaki deo kabine deluje solidno. Posebno se ističe izolacija buke i vibracija (NVH), a uz serijski Bose sistem sa 12 zvučnika kabina pruža ozbiljnu zvučnu scenu.",
+            "Ima i zamerki. Dugmad na volanu za multimediju, režime vožnje i asistencije mogla su biti bolja — podsećaju na haptičke tastere koje je Volkswagen koristio na kratkovekom Tharuu. Takođe, da bi zadnja klupa dobila više prostora za noge, skraćen je jastuk sedišta, pa viši putnici osećaju manji oslonac za butine.",
+            "Da li je onda dovoljno hibrid? Tokom testa prosek je bio oko 14 km/l u mešovitoj vožnji — do 16 km/l na otvorenom putu, ali samo oko 8 km/l u gradu. U poređenju sa rivalima to je žedan hibrid: konkurentski HEV modeli lako postižu 15 km/l i više u gradu, a preko 25 km/l na putu.",
+            "Nova Mazda CX-5 AWD HEV Premium Plus (u Filipinima cena oko 2,495 miliona PHP) donosi mnogo dobrog — sjajan dizajn, meku vožnju i odlične vozne karakteristike. Ali M Hybrid pogon i mala baterija mogli su bolje. Ako želite elegantan i zabavan krosover za svaki dan, CX-5 je pravi izbor; onima kojima je štedljivost na prvom mestu, Mazda ipak zadaje domaći zadatak.",
+        ],
+        "source": ("autoindustriya.com, Marcus De Guzman", "https://www.autoindustriya.com/authors/marcus-de-guzman"),
+    },
+    {
         "slug": "vest-cx5-iihs.html",
         "title": "Nova Mazda CX-5 osvojila najviše IIHS priznanje za bezbednost",
         "date_txt": "Jul 2026.",
@@ -491,8 +534,19 @@ def news_page(n):
     photos = n.get("photos") or [(n["img"], n["alt"])]
     body = n["body"]
     src_name, src_url = n["source"]
+    endgallery = n.get("endgallery")
     final_html = ""
-    if len(photos) >= 2:
+    if endgallery:
+        # Svaka slika iz „photos“ dobija svoj red teksta; na kraju ide galerija fotografija.
+        groups = _split_groups(body, len(photos))
+        rows = [_news_row(f, a, groups[i], rev=(i % 2 == 1))
+                for i, (f, a) in enumerate(photos)]
+        blocks = "\n".join(rows)
+        cells = "\n".join(
+            f'        <figure class="news-figure"><img src="img/vesti/{f}" alt="{a}" loading="lazy"></figure>'
+            for f, a in endgallery)
+        final_html = f'\n      <div class="news-gallery">\n{cells}\n      </div>'
+    elif len(photos) >= 2:
         # Naizmenično: slika levo/tekst desno, pa obrnuto…; poslednja slika je velika, na kraju.
         side = photos[:-1]
         groups = _split_groups(body, len(side))
