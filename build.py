@@ -750,6 +750,29 @@ arhiva = head("Arhiva vesti | EAST Auto Servis",
 """ + CTA + foot()
 write("arhiva.html", arhiva)
 
+# ---------------- 404 ----------------
+# GitHub Pages servira 404.html za bilo koju (i duboku) nepostojeću putanju,
+# pa preko <base> pravimo sve relativne linkove/asete apsolutnim; noindex da se ne indeksira.
+_404_extra = f'<base href="{BASE_URL}/">\n<meta name="robots" content="noindex">\n'
+notfound = head("Stranica nije pronađena (404) | EAST Auto Servis",
+                "Tražena stranica ne postoji ili je premeštena. Vratite se na naslovnu ili nas pozovite.",
+                "404.html", extra=_404_extra) + f"""
+<section class="page-head">
+  <div class="wrap">
+    <p class="lead" style="font-size:clamp(3.5rem,12vw,7rem);font-weight:800;line-height:1;color:var(--red);margin:0">404</p>
+    <h1 class="h1">Stranica nije pronađena</h1>
+    <p class="lead">Stranica koju tražite ne postoji, premeštena je ili je link netačan. Proverite adresu ili krenite sa jedne od ovih strana:</p>
+    <div class="actions">
+      <a class="btn btn-red" href="index.html">Na naslovnu</a>
+      <a class="btn btn-line" href="modeli.html">Mazda modeli</a>
+      <a class="btn btn-line" href="servis.html">Servis i delovi</a>
+      <a class="btn btn-line" href="kontakt.html">Kontakt</a>
+    </div>
+  </div>
+</section>
+""" + CTA + foot()
+write("404.html", notfound)
+
 # ---------------- SERVIS I DELOVI ----------------
 parts_html = "\n".join(
     f'      <div><dt>{cat}</dt><dd>' + "".join(
