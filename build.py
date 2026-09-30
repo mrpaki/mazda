@@ -268,9 +268,9 @@ def write(name, html):
 # Izvorne slike i konverzija u webp definisani su u TEAM_PHOTOS / build_team_photos().
 TEAM = [
     (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa, automehaničar, dijagnostika, elektrika", "2000–2013. Profil International; 2012 – East Auto Servis"),
-    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled „Sunce”; 2019 – East Auto Servis"),
+    (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled; 2019 – East Auto Servis"),
     (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; 2013 – East Auto Servis"),
-    (("zoran.webp", "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "1997–2016. Ovlašćeni Volvo servis „Dragan”; 2016 – East Auto Servis"),
+    (("zoran.webp", "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "2000–2016. Ovlašćeni Volvo servis „Dragan”; 2016 – East Auto Servis"),
 ]
 PLACEHOLDER = '<div class="team-ph" role="img" aria-label="Mesto za fotografiju"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Fotografija</span></div>'
 _CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>'
