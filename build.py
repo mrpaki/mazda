@@ -264,44 +264,59 @@ def write(name, html):
 
 # Servisni tim: (fotografija ili None, ime, uloga), format 4:5.
 # Fotografija: ime webp fajla u img/tim/ (npr. "marko.webp"),
-# ili par ("lik.webp", "sertifikat.webp") koji se naizmenično smenjuje crossfade-om.
+# ili niz ("lik.webp", "sertifikat1.webp", ...) koji se smenjuje pager-om (crossfade).
+# Svaki sertifikat može biti i par ("fajl.webp", "Natpis") za sopstveni natpis u
+# lightboxu; obična niska dobija podrazumevani natpis „ECAP sertifikat — Ime”.
 # Izvorne slike i konverzija u webp definisani su u TEAM_PHOTOS / build_team_photos().
 TEAM = [
     (("borko.webp", "borko-ecap.webp"), "Borko Dimitrijević", "Vlasnik i šef servisa, automehaničar, dijagnostika, elektrika", "2000–2013. Profil International; 2012 – East Auto Servis"),
     (("joca.webp", "joca-ecap.webp"), "Jovan Dodić", "Automehaničar, dijagnostika, elektrika", "2012–2019. Tehnički pregled; 2019 – East Auto Servis"),
-    (("goran.webp", "goran-ecap.webp"), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; 2013 – East Auto Servis"),
+    (("goran.webp", "goran-ecap.webp", ("goran-masters.webp", "Mazda Masters — Goran Kukulj")), "Goran Kukulj", "Automehaničar, dijagnostika, elektrika", "1997–2005. Samostalni autoservis; 2005–2013. Profil International; 2013 – East Auto Servis"),
     (("zoran.webp", "zoran-ecap.webp"), "Zoran Pavlović", "Automehaničar, dijagnostika, elektrika", "2000–2016. Ovlašćeni Volvo servis „Dragan”; 2016 – East Auto Servis"),
 ]
 PLACEHOLDER = '<div class="team-ph" role="img" aria-label="Mesto za fotografiju"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Fotografija</span></div>'
 _CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>'
 _CHEV_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>'
+def _cert_slide(item, name):
+    # item: "fajl.webp" -> podrazumevani ECAP natpis; ili ("fajl.webp", "Natpis") -> svoj natpis.
+    if isinstance(item, (list, tuple)):
+        fn, cap = item
+    else:
+        fn, cap = item, "ECAP sertifikat — %s" % name
+    return fn, cap
+
+
 def team_photo(ph, name, role=""):
     if not ph:
         return PLACEHOLDER
     if isinstance(ph, (list, tuple)):
-        base, cert = ph
-        cap_cert = "ECAP sertifikat — %s" % name
+        base, certs = ph[0], list(ph[1:])
         # Samo sertifikat (fotografija lika se dodaje naknadno) — bez pager kontrola.
         if not base:
-            group = "tim-" + cert.rsplit(".", 1)[0].replace("-ecap", "")
+            fn, cap = _cert_slide(certs[0], name)
+            group = "tim-" + fn.rsplit(".", 1)[0].replace("-ecap", "")
             return ('<div class="team-photos">'
                     '<a class="tf-slide is-active" href="img/tim/%s" data-lb="%s" data-caption="%s">'
                     '<img class="tf-cert" src="img/tim/%s" alt="%s" loading="lazy"></a>'
-                    '</div>' % (cert, group, cap_cert, cert, cap_cert))
+                    '</div>' % (fn, group, cap, fn, cap))
         group = "tim-" + base.rsplit(".", 1)[0]
         cap_person = ("%s — %s" % (name, role)) if role else name
+        slides = ['<a class="tf-slide is-active" href="img/tim/%s" data-lb="%s" data-caption="%s">'
+                  '<img class="tf-base" src="img/tim/%s" alt="%s" loading="lazy"></a>'
+                  % (base, group, cap_person, base, cap_person)]
+        dots = ['<button class="is-active" type="button" aria-label="Fotografija"></button>']
+        for item in certs:
+            fn, cap = _cert_slide(item, name)
+            slides.append('<a class="tf-slide" href="img/tim/%s" data-lb="%s" data-caption="%s">'
+                          '<img class="tf-cert" src="img/tim/%s" alt="%s" loading="lazy"></a>'
+                          % (fn, group, cap, fn, cap))
+            dots.append('<button type="button" aria-label="Sertifikat"></button>')
         return ('<div class="team-photos" data-pager>'
-                '<a class="tf-slide is-active" href="img/tim/%s" data-lb="%s" data-caption="%s">'
-                '<img class="tf-base" src="img/tim/%s" alt="%s" loading="lazy"></a>'
-                '<a class="tf-slide" href="img/tim/%s" data-lb="%s" data-caption="%s">'
-                '<img class="tf-cert" src="img/tim/%s" alt="%s" loading="lazy"></a>'
-                '<button class="tf-nav tf-prev" type="button" aria-label="Prethodna fotografija">%s</button>'
-                '<button class="tf-nav tf-next" type="button" aria-label="Sledeća fotografija">%s</button>'
-                '<div class="tf-dots"><button class="is-active" type="button" aria-label="Fotografija"></button>'
-                '<button type="button" aria-label="Sertifikat"></button></div>'
-                '</div>' % (base, group, cap_person, base, cap_person,
-                            cert, group, cap_cert, cert, cap_cert,
-                            _CHEV_L, _CHEV_R))
+                + "".join(slides)
+                + '<button class="tf-nav tf-prev" type="button" aria-label="Prethodna fotografija">%s</button>'
+                  '<button class="tf-nav tf-next" type="button" aria-label="Sledeća fotografija">%s</button>'
+                  '<div class="tf-dots">%s</div>'
+                  '</div>' % (_CHEV_L, _CHEV_R, "".join(dots)))
     return '<img src="img/tim/%s" alt="%s" loading="lazy">' % (ph, name)
 
 
@@ -1566,8 +1581,9 @@ def model_page(slug, m):
 # Originali su u ../sertifikati/ (van projekta). Svaki je pročitan i ručno mapiran:
 #   "models"  -> strane modela na kojima se prikazuje (model-specifičan trening)
 #   "engine"  -> "diesel"/"petrol": dodaje se na SVE strane modela koje imaju taj motor
-#   "general" -> True: opšta obuka (elektrika/kočnice), samo na glavnoj strani Sertifikati
-# Glavna strana sertifikati.html prikazuje SVE (redosled = CERTS, hronološki). Slug = ime webp.
+#   "all"     -> True: opšta tehnička obuka koja važi za sve — prikazuje se na SVIM stranama modela
+#   "general" -> True: opšta obuka (elektrika/kočnice), samo na glavnoj strani Sertifikati (uklonjena)
+# Slug = ime webp fajla.
 try:
     from PIL import Image as _CImage
     _HAS_PIL = True
@@ -1609,6 +1625,19 @@ CERTS = [
      "cap": "Dizel motor — upravljanje i dijagnostika — 2010.", "engine": "diesel"},
     {"src": "Sertifikat_15.jpeg", "slug": "cx5-skyactiv-2012",
      "cap": "CX-5 sa Skyactiv tehnologijom — 2012.", "models": ["cx-5.html"]},
+    # Goran Kukulj — opšta Mazda tehnička obuka (važi za sve modele) + dizel
+    {"src": "Goran/goran-sertifikat01.jpg", "slug": "mazda-tehnika-osnove-1-2009",
+     "cap": "Mazda tehnika — osnove 1 (Grundlagen 1) — 2009.", "all": True},
+    {"src": "Goran/goran-sertifikat02.jpg", "slug": "mazda-tehnika-osnove-2-2009",
+     "cap": "Mazda tehnika — osnove 2 (Grundlagen 2) — 2009.", "all": True},
+    {"src": "Goran/goran-sertifikat03.jpg", "slug": "senzori-aktuatori-databus-2010",
+     "cap": "Senzori, aktuatori i data-bus sistemi — 2010.", "all": True},
+    {"src": "Goran/goran-sertifikat04.jpg", "slug": "metodicka-dijagnostika-mmds-2010",
+     "cap": "Metodička dijagnostika vozila (M-MDS) — 2010.", "all": True},
+    {"src": "Goran/goran-sertifikat05.jpg", "slug": "dizel-management-dijagnoza-2010",
+     "cap": "Upravljanje i dijagnostika dizel motora — 2010.", "engine": "diesel"},
+    {"src": "Goran/goran-sertifikat06.jpg", "slug": "mazda-masters-technician-2011",
+     "cap": "Mazda Masters — Technician nivo — 2011.", "all": True},
 ]
 
 
@@ -1633,6 +1662,8 @@ TEAM_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "insta
 TEAM_DIR = "img/tim"
 # (izvorni fajl u insta-foto/, izlazni webp u img/tim/, zoom, fokus po visini 0..1)
 # zoom > 1 iseca centar da lik izgleda bliže (npr. da se uklopi u kadar drugih foto).
+# src: ime fajla u insta-foto/, ili putanja sa „/” relativna prema roditeljskom
+# folderu projekta (npr. „sertifikati/Goran/…”).
 TEAM_PHOTOS = [
     ("Borko.jpeg", "borko.webp", 1.0, 0.5),
     ("ecap-borko.jpg", "borko-ecap.webp", 1.0, 0.5),
@@ -1640,9 +1671,11 @@ TEAM_PHOTOS = [
     ("ecap-joca.jpg", "joca-ecap.webp", 1.0, 0.5),
     ("Goran2.jpeg", "goran.webp", 1.12, 0.4),
     ("ecap-goran.jpg", "goran-ecap.webp", 1.0, 0.5),
+    ("sertifikati/Goran/goran-sertifikat07.jpg", "goran-masters.webp", 1.0, 0.5),
     ("kum2.jpeg", "zoran.webp", 1.0, 0.42),
     ("ecap-kum.jpg", "zoran-ecap.webp", 1.0, 0.5),
 ]
+TEAM_PARENT = os.path.dirname(TEAM_SRC)  # roditeljski folder projekta (…/eastservis)
 
 
 def build_team_photos():
@@ -1650,7 +1683,7 @@ def build_team_photos():
         return
     os.makedirs(TEAM_DIR, exist_ok=True)
     for src, out, zoom, focus_y in TEAM_PHOTOS:
-        path = os.path.join(TEAM_SRC, src)
+        path = os.path.join(TEAM_PARENT, src) if "/" in src else os.path.join(TEAM_SRC, src)
         dst = os.path.join(TEAM_DIR, out)
         if not os.path.exists(path):
             continue
@@ -1711,12 +1744,13 @@ def build_certs():
     for c in CERTS:
         _convert_cert(c["src"], c["slug"])
     all_list = [(c["slug"] + ".webp", c["cap"]) for c in CERTS]
+    all_certs = [(c["slug"] + ".webp", c["cap"]) for c in CERTS if c.get("all")]
     per_model = {}
     for page in MODELS:
         kinds = _model_engine_kinds(page)
         model_specific = [(c["slug"] + ".webp", c["cap"]) for c in CERTS if page in c.get("models", [])]
         engine_certs = [(c["slug"] + ".webp", c["cap"]) for c in CERTS if c.get("engine") in kinds]
-        combined = model_specific + engine_certs
+        combined = model_specific + engine_certs + all_certs
         if combined:
             per_model[page] = combined
     print(f"Sertifikati: {len(all_list)} ukupno; po modelu "
